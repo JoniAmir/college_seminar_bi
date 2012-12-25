@@ -1,2 +1,76 @@
-<h1>Student#index</h1>
-<p>Find me in app/views/student/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+
+	<head>
+	  <titles> Students </title>
+	</head>
+
+	<body>
+
+		<!-- Show all friends  -->
+		<table class='students_table'> 
+
+			<thead>
+				<tr>
+						<th> שנה </th>
+						<th> סמסטר </th>
+						<th> מפתח </th>
+						<th> תאריך לידה </th>
+						<th> עיר </th>
+						<th> מגדר </th>
+						<th> B.A </th>
+						<th> תת התמחות </th>
+						<th> ציון משוקלל </th>
+						<th> מוסד לימודים </th>
+						<th> ציון מתואם </th>
+						<th> ציון משולב </th>
+						<th> ציון פיסוכמטרי </th>
+						<th> ציון מכינה </th>
+						<th> רמת אנגלית </th>
+						<th> ציון 1 </th>
+						<th> יח"ל 1 </th>
+						<th> ציון 2 </th>
+						<th> יח"ל 2 </th>
+						<th> תאור קבוצה </th>
+						<th> עדיפות </th>
+						<th> מגמה </th>
+						<th> תכנית לימודים </th>
+						<th> מצ"ט </th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<% @students.each do |student| %>
+						<tr>
+							<td> <%= student.year %> </td>
+							<td> <%= student.semester %> </td>
+							<td> <%= student.id_number %> </td>
+							<td> <%= student.birthdate %> </td>
+							<td> <%= student.city %> </td>
+							<td> <%= student.gender %> </td>
+							<td> <%= student.ba_degree %> </td>
+							<td> <%= student.ba_minor %> </td>
+							<td> <%= student.combined_grade %> </td>
+							<td> <%= student.institute %> </td>
+							<td> <%= student.coordinated_grade %> </td>
+							<td> <%= student.integrated_grade %> </td>
+							<td> <%= student.sat_grade %> </td>
+							<td> <%= student.mehina_grade %> </td>
+							<td> <%= student.english_level %> </td>
+							<td> <%= student.subject1_grade %> </td>
+							<td> <%= student.subject1_units %> </td>
+							<td> <%= student.subject2_grade %> </td>
+							<td> <%= student.subject2_units %> </td>
+							<td> <%= student.group_description %> </td>
+							<td> <%= student.priority %> </td>
+							<td> <%= student.school %> </td>
+							<td> <%= student.curriculum %> </td>
+							<td> <%= student.mazat %> </td>
+						</tr>
+				<% end %>
+			</tbody>
+
+		</table>
+
+	</body>
+</html>
