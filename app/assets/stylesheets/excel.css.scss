@@ -17,6 +17,11 @@ a {
 	color: #c75f3e;
 }
 
+table.students_table
+{
+	direction: rtl;
+}
+
 #mytable {
 	width: 700px;
 	padding: 0;
@@ -78,4 +83,10 @@ th.specalt {
 	background: #f5fafa url(images/bullet2.gif) no-repeat;
 	font: bold 10px Arial, Verdana, Arial, Helvetica, sans-serif;
 	color: #797268;
+}
+
+
+h1
+{
+	text-align: left;
 }
