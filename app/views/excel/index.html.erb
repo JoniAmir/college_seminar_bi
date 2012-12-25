@@ -3,12 +3,11 @@
 
 	<head>
 	  <title>Import excel (xlsx) files</title>
-
-	  
 	</head>
 
 	<body>
-	
+
+		<h1> Hello </h1>
 		<div class=sum>
 		<br>
 		</div>
@@ -17,6 +16,8 @@
 		<!-- Show all friends  -->
 		<table> 
 
+			<% if @excel %>
+			
 			<!-- construct table head -->
 			<thead>
 				<tr>
@@ -37,6 +38,9 @@
 					</tr>
 				<% end %>
 			</tbody>
+
+			<% end %>
+
 		</table>
 	</body>
 </html>
