@@ -4,9 +4,6 @@
 
 
 
-
-
-
 body {
 	font: normal 11px auto Arial, Verdana, Arial, Helvetica, sans-serif;
 	color: #4f6b72;
@@ -20,6 +17,13 @@ a {
 table.students_table
 {
 	direction: rtl;
+	text-align: right;
+}
+
+table.excels_table
+{
+	direction: ltr;
+	text-align: left;
 }
 
 #mytable {
@@ -32,8 +36,22 @@ caption {
 	padding: 0 0 5px 0;
 	width: 700px;	 
 	font: italic 11px Arial, Verdana, Arial, Helvetica, sans-serif;
+}
+
+caption.left {
+	padding: 0 0 5px 0;
+	width: 700px;	 
+	font: italic 11px Arial, Verdana, Arial, Helvetica, sans-serif;
+}
+
+caption.right {
+	padding: 0 0 5px 0;
+	width: 700px;	 
+	font: italic 11px Arial, Verdana, Arial, Helvetica, sans-serif;
 	text-align: right;
 }
+
+
 
 th {
 	font: bold 11px Arial, Verdana, Arial, Helvetica, sans-serif;
@@ -43,7 +61,6 @@ th {
 	border-top: 1px solid #C1DAD7;
 	letter-spacing: 2px;
 	text-transform: uppercase;
-	text-align: right;
 	padding: 6px 6px 6px 12px;
 	background: #CAE8EA;
 }
@@ -61,7 +78,6 @@ td {
 	background: #fff;
 	padding: 6px 6px 6px 12px;
 	color: #000;
-	text-align: right;
 }
 
 

@@ -1,28 +1,23 @@
 require 'rubygems'
 require 'roo'
 
+
 class ExcelController < ApplicationController
-
-	before_filter :import
-
-	def import
-		files_dir = "#{Dir.pwd}/lib/assets/students/"
-		files_type = ".xls"
-
-		# Get all files in dir
-		@excel_files = Dir.glob("#{files_dir}*#{files_type}").sort
-		@excels = []
-
-		# Load excels to list
-		@excel_files.each do |filename|
-			excel = Excel.new("#{filename}")
-			excel.default_sheet = excel.sheets.first			
-			@excels << excel
-		end
-	end
+	include ExcelHelper
 
 	def show
-		@excel = @excels[params[:id].to_i]
+
+		@excels = load_students_excels
+		@excel = @excels.values[params[:id].to_i]
+		@excel_filename = File.basename(@excels.keys[params[:id].to_i])
+
+	end
+
+
+	def index
+
+		@excels = load_students_excels
+
 	end
 
 end

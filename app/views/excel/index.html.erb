@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="RTL">
+<html>
 
 	<head>
 	  <title>Import excel (xlsx) files</title>
@@ -7,42 +7,27 @@
 
 	<body>
 
-		<h1> Files imported </h1>
-
-		<div class=sum>
-		</div>
-
-		<br>
-		<br>
-
 		<!-- Show all friends  -->
-		<table> 
+		<table class='excels_table'> 
 
-			<% if @excel %>
-			
-			<!-- construct table head -->
 			<thead>
 				<tr>
-					<% 1.upto(@excel.last_column) do |j| %>
-						<th> <%= @excel.cell(1,j) %> </th>
-					<% end %>
+						<th> Filename </th>
+						<th> </th>
 				</tr>
 			</thead>
 			
 			<tbody>
-				<!-- generate rows -->
-				<% 2.upto(@excel.last_row) do |i| %>
-					<tr>
-						<!-- generate cells -->
-						<% 1.upto(@excel.last_column) do |j| %>
-							<td> <%= @excel.cell(i,j) %> </td>
-						<% end %>
-					</tr>
+				<% @excels.each_with_index do |(filename, excel), index| %>
+						<tr>
+							<td> <%= File.basename(filename) %> </td>
+							<td> <%= link_to "Show", "excel/#{index}" %> </td
+							
+						</tr>
 				<% end %>
 			</tbody>
 
-			<% end %>
-
 		</table>
+
 	</body>
 </html>

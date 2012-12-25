@@ -1,4 +1,8 @@
 College::Application.routes.draw do
+  get "student/index"
+
+  get "student/show"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

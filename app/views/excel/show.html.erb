@@ -2,15 +2,14 @@
 <html>
 
 	<head>
-	  <title>Import excel (xlsx) files</title>
 	</head>
 
 	<body>
-		<h1> Showing records for file: </h1>
-		<div class=sum>
-		</div>
-
+		<h1> Showing records for file: <%= @excel_filename %> </h1>
 		<br>
+
+		<h3> <%= link_to 'Back', '/excel' %> </h3>
+
 		<br>
 
 		<!-- Show all friends  -->
@@ -20,7 +19,9 @@
 			<thead>
 				<tr>
 					<% 1.upto(@excel.last_column) do |j| %>
-						<th> <%= @excel.cell(1,j) %> </th>
+						<% unless ((j > 5)  && (j < 11)) %>
+							<th> <%= @excel.cell(1,j) %> </th>
+						<% end %>		
 					<% end %>
 				</tr>
 			</thead>
@@ -31,7 +32,10 @@
 					<tr>
 						<!-- generate cells -->
 						<% 1.upto(@excel.last_column) do |j| %>
-							<td> <%= @excel.cell(i,j) %> </td>
+							
+							<% unless ((j > 5)  && (j < 11)) %>
+								<td> <%= @excel.cell(i,j) %> </td>
+							<% end %>
 						<% end %>
 					</tr>
 				<% end %>

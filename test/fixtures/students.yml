@@ -1,0 +1,55 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  year: 1
+  semester: 1
+  id: 1
+  birthdate: 2012-12-25
+  city: MyString
+  gender: MyString
+  ba_degree: MyString
+  ba_minor: MyString
+  combined_grade: 1.5
+  institute: MyString
+  coordinated_grade: 1.5
+  integrated_grade: MyString
+  sat_grade: 1
+  mehina_grade: 1.5
+  english_level: 1
+  school_grade: 1.5
+  subject1_grade: 1.5
+  subject2_units: 1
+  subject2_grade: 1.5
+  subject2_units: 1
+  group_description: MyString
+  school: MyString
+  curriculum: MyString
+  mazat: 1
+  field_display_text: MyString
+
+two:
+  year: 1
+  semester: 1
+  id: 1
+  birthdate: 2012-12-25
+  city: MyString
+  gender: MyString
+  ba_degree: MyString
+  ba_minor: MyString
+  combined_grade: 1.5
+  institute: MyString
+  coordinated_grade: 1.5
+  integrated_grade: MyString
+  sat_grade: 1
+  mehina_grade: 1.5
+  english_level: 1
+  school_grade: 1.5
+  subject1_grade: 1.5
+  subject2_units: 1
+  subject2_grade: 1.5
+  subject2_units: 1
+  group_description: MyString
+  school: MyString
+  curriculum: MyString
+  mazat: 1
+  field_display_text: MyString
