@@ -27,12 +27,9 @@
 			</thead>
 			
 			<tbody>
-				<!-- generate rows -->
 				<% 2.upto(@excel.last_row) do |i| %>
 					<tr>
-						<!-- generate cells -->
 						<% 1.upto(@excel.last_column) do |j| %>
-							
 							<% unless ((j > 5)  && (j < 11)) %>
 								<td> <%= @excel.cell(i,j) %> </td>
 							<% end %>
@@ -40,6 +37,7 @@
 					</tr>
 				<% end %>
 			</tbody>
+			
 		</table>
 	</body>
 </html>

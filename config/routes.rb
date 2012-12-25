@@ -9,6 +9,10 @@ College::Application.routes.draw do
   match 'manage/import' => 'manage#import'
   
   resources :excel
+  resources :student
+
+  match 'student_import' => 'student#import'
+
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
