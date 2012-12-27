@@ -18,6 +18,11 @@ class StudentController < ApplicationController
 
   def index
   	@students = Student.all
+
+
+  	#@students = @students.select { |student| student.sat_grade && student.sat_grade > 0 }.sort_by { |a| a.sat_grade }
+    #@students = @students.select { |student| student.city && student.city = "תל אביב-יפו" }
+
   end
 
   def show
@@ -48,9 +53,9 @@ class StudentController < ApplicationController
   	student.subject2_grade = excel_record.cell(line, 18)
   	student.subject2_units = excel_record.cell(line, 19)
   	student.group_description = excel_record.cell(line, 20)
-  	student.curriculum = excel_record.cell(line, 21)
-  	student.school_grade = excel_record.cell(line, 22)
-  	student.school = excel_record.cell(line, 23)
+    student.priority = excel_record.cell(line, 21)
+  	student.school = excel_record.cell(line, 22)
+    student.curriculum = excel_record.cell(line, 23)
   	student.mazat = excel_record.cell(line, 24)
   	student.save
 

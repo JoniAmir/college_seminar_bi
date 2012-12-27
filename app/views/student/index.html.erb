@@ -2,11 +2,11 @@
 <html>
 
 	<head>
-	  <titles> Students </title>
+	  <title> Students </title>
 	</head>
 
 	<body>
-
+		<h3 dir=rtl> מספר סטודנטים: <%= number_with_delimiter(@students.count, :delimiter => ',') %> </h3>
 		<!-- Show all friends  -->
 		<table class='students_table'> 
 
@@ -27,6 +27,7 @@
 						<th> ציון פיסוכמטרי </th>
 						<th> ציון מכינה </th>
 						<th> רמת אנגלית </th>
+						<th> ציון בגרות </th>
 						<th> ציון 1 </th>
 						<th> יח"ל 1 </th>
 						<th> ציון 2 </th>
@@ -57,6 +58,7 @@
 							<td> <%= student.sat_grade %> </td>
 							<td> <%= student.mehina_grade %> </td>
 							<td> <%= student.english_level %> </td>
+							<td> <%= student.school_grade %> </td>
 							<td> <%= student.subject1_grade %> </td>
 							<td> <%= student.subject1_units %> </td>
 							<td> <%= student.subject2_grade %> </td>
