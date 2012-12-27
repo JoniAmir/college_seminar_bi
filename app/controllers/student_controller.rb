@@ -1,3 +1,6 @@
+#!/bin/env ruby
+# encoding: utf-8
+
 class StudentController < ApplicationController
 	include ExcelHelper
 
@@ -7,22 +10,40 @@ class StudentController < ApplicationController
 		excels = load_students_excels
 
 		excels.each do |filename, excel|
-			logger.debug "started processing file #{filename}"
 			(excel.first_row + 1).upto(excel.last_row) do |i|
 				add_record(excel, i)
 			end
-			logger.debug "finished processing file #{filename}"
 		end
+  end
 
-	end
+
+
+# def import_single
+
+#     #Student.delete_all
+#     excels = load_students_excels
+
+#     excels|
+
+#     excels.each do |filename, excel|
+#       logger.debug "statred processing file #{filename}"
+#       (excel.first_row + 1).upto(excel.last_row) do |i|
+#         add_record(excel, i)
+#       end
+#       logger.debug "finished processing file #{filename}"
+#     end
+  
+#   end
+
 
   def index
-  	@students = Student.all
+  	@student_list = Student.all
 
 
-  	#@students = @students.select { |student| student.sat_grade && student.sat_grade > 0 }.sort_by { |a| a.sat_grade }
-    #@students = @students.select { |student| student.city && student.city = "תל אביב-יפו" }
+  	#@students = @students.select { |student| student.sat_grade }.sort_by { |student| student.sat_grade }
+    @students = @student_list.select { |student| student.city && student.city == "תל אביב-יפו" }
 
+    logger.debug "students count: " + @students.count.to_s
   end
 
   def show
