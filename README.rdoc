@@ -1,6 +1,6 @@
 == Rails Seminar Project
-=== By Johnatan Amir, Lior Kalifa and Lital Zubery===
-=== Advisor : Profesor Boris Epshtain ===
+=== By Johnatan Amir, Lior Kalifa and Lital Zubery
+=== Advisor : Profesor Boris Epshtain 
 
 This site would give the nominee a chance to predict 
 its result in this college. 
