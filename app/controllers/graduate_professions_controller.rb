@@ -1,6 +1,8 @@
+#!/bin/env ruby
+# encoding: utf-8
+
 class GraduateProfessionsController < ApplicationController
-  # GET /graduate_professions
-  # GET /graduate_professions.json
+
   def index
     @graduate_professions = GraduateProfession.all
 

@@ -4,10 +4,12 @@
 class StudentController < ApplicationController
 	include ExcelHelper
 
+  IMPORT_PATH = "#{Dir.pwd}/lib/assets/students/"
+
 	def import
 
 		Student.delete_all
-		excels = load_students_excels
+		excels = load_excels_by_path(IMPORT_PATH)
 
 		excels.each do |filename, excel|
 			(excel.first_row + 1).upto(excel.last_row) do |i|

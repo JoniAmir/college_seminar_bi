@@ -1,9 +1,9 @@
 module ExcelHelper
 
 
-	def load_students_excels
+	def load_excels_by_path(directory)
 
-		excel_files = get_students_filenames
+		excel_files = get_filenames_by_path(directory)
 		excels = Hash.new
 
 		# Load excels to list
@@ -16,7 +16,7 @@ module ExcelHelper
 
 	end
 
-	def get_students_filenames
+	def get_filenames_by_path(directory)
 		# set files info
 		files_dir = "#{Dir.pwd}/lib/assets/students/"
 		files_type = ".xls"

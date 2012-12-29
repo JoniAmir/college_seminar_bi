@@ -1,4 +1,40 @@
+#!/bin/env ruby
+# encoding: utf-8
+
 class GraduatesController < ApplicationController
+  include ExcelHelper
+
+  IMPORT_PATH = "#{Dir.pwd}/lib/assets/graduates/"
+
+  def import
+
+      Graduate.delete_all
+      excels = load_excels_by_path(IMPORT_PATH)
+
+      excels.each do |filename, excel|
+        (excel.first_row + 1).upto(excel.last_row) do |i|
+          add_record(excel, i)
+        end
+      end
+    end
+
+    def add_record (excel_record, line)
+
+    graduate = Graduate.new 
+    graduate.id_number = excel_record.cell(line, 1)
+    graduate.curriculum = excel_record.cell(line, 2)
+    graduate.curriculum_id = excel_record.cell(line, 3)
+    graduate.graduation_date = excel_record.cell(line, 5)
+    graduate.graduation_ceremony_date = excel_record.cell(line, 4)
+    graduate.final_grade = excel_record.cell(line, 6)
+    graduate.ranking = excel_record.cell(line, 7)
+    graduate.ranking_total = excel_record.cell(line, 8)
+    graduate.gender = excel_record.cell(line, 9)
+    graduate.save
+
+    return graduate
+  end
+
   # GET /graduates
   # GET /graduates.json
   def index
@@ -21,6 +57,7 @@ class GraduatesController < ApplicationController
     end
   end
 
+=begin
   # GET /graduates/new
   # GET /graduates/new.json
   def new
@@ -79,5 +116,5 @@ class GraduatesController < ApplicationController
       format.html { redirect_to graduates_url }
       format.json { head :no_content }
     end
-  end
+  end =end
 end
