@@ -23,6 +23,8 @@ class StudentController < ApplicationController
     (excel.first_row + 1).upto(excel.last_row) do |i|
       add_record(excel, i)
     end
+
+    @excel_filename = File.basename(excels.keys[params[:id].to_i])
   end
 
   def delete
@@ -33,6 +35,8 @@ class StudentController < ApplicationController
     semester = excel.cell(2, 'A').scan(/\d+/).last.to_i
 
     Student.delete_all("year = #{year} AND semester = #{semester}")
+
+    @excel_filename = File.basename(excels.keys[params[:id].to_i])
   end
 
   def delete_all
