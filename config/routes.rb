@@ -6,7 +6,8 @@ College::Application.routes.draw do
   resources :excel
   resources :student
 
-  match 'student_import' => 'student#import'
+  match 'student/import_all' => 'student#import_all'
+  match 'student/import/:id' => 'student#import'
 
 
   # Sample of regular route:
