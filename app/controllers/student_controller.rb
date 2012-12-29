@@ -4,8 +4,7 @@
 class StudentController < ApplicationController
 	include ExcelHelper
 
-	def import
-
+	def import_all
 		Student.delete_all
 		excels = load_students_excels
 
@@ -16,35 +15,28 @@ class StudentController < ApplicationController
 		end
   end
 
-# yoni
-# 2
 
-# def import_single
+  def import
+    excels = load_students_excels
+    excel = excels.values[params[:id].to_i]
 
-#     #Student.delete_all
-#     excels = load_students_excels
+    (excel.first_row + 1).upto(excel.last_row) do |i|
+      add_record(excel, i)
+    end
+  end
 
-#     excels|
+  def delete
+    excels = load_students_excels
+    excel = excels.values[params[:id].to_i]
 
-#     excels.each do |filename, excel|
-#       logger.debug "statred processing file #{filename}"
-#       (excel.first_row + 1).upto(excel.last_row) do |i|
-#         add_record(excel, i)
-#       end
-#       logger.debug "finished processing file #{filename}"
-#     end
-  
-#   end
+    year = excel.cell(2, 'A').scan(/\d+/).first.to_i
+    semester = excel.cell(2, 'A').scan(/\d+/).last.to_i
 
+    Student.delete_all("year = #{year} AND semester = #{semester}")
+  end
 
   def index
-  	@student_list = Student.all
-
-
-  	#@students = @students.select { |student| student.sat_grade }.sort_by { |student| student.sat_grade }
-    @students = @student_list.select { |student| student.city && student.city == "תל אביב-יפו" }
-
-    logger.debug "students count: " + @students.count.to_s
+  	@students = Student.all
   end
 
   def show

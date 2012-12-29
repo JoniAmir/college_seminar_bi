@@ -14,6 +14,8 @@
 				<tr>
 						<th> Filename </th>
 						<th> </th>
+						<th> </th>
+						<th> </th>
 				</tr>
 			</thead>
 			
@@ -21,13 +23,17 @@
 				<% @excels.each_with_index do |(filename, excel), index| %>
 						<tr>
 							<td> <%= File.basename(filename) %> </td>
-							<td> <%= link_to "Show", "excel/#{index}" %> </td
-							
-						</tr>
+							<td> <%= link_to "Show", "excel/#{index}" %> </td>
+							<td> <%= link_to "Delete", "student/delete/#{index}", :confirm => 'Are you sure?', :method => :delete %> </td>
+							<td> <%= link_to "Import", "student/import/#{index}"%> </td>
+						</tr>	
 				<% end %>
 			</tbody>
 
 		</table>
+
+
+		<p> <%= link_to "All students", "/student" %> </p>
 
 	</body>
 </html>
