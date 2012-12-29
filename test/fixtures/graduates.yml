@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id_number: 1
+  curriculum: MyString
+  curriculum_id: 1
+  graduation_ceremony_date: 2012-12-29
+  graduation_date: 2012-12-29
+  final_grade: 1
+  ranking: 1
+  ranking_total: 1
+  gender: MyString
+
+two:
+  id_number: 1
+  curriculum: MyString
+  curriculum_id: 1
+  graduation_ceremony_date: 2012-12-29
+  graduation_date: 2012-12-29
+  final_grade: 1
+  ranking: 1
+  ranking_total: 1
+  gender: MyString

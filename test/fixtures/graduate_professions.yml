@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id_number: 1
+  gender: MyString
+  marital_status: MyString
+  number_of_children: 1
+  second_degree_institute: MyString
+  second_degree: MyString
+  second_degree_type: MyString
+  third_degree_institute: MyString
+  third_degree_years: MyString
+  third_degree_type: MyString
+  current_job: MyString
+  current_company: MyString
+
+two:
+  id_number: 1
+  gender: MyString
+  marital_status: MyString
+  number_of_children: 1
+  second_degree_institute: MyString
+  second_degree: MyString
+  second_degree_type: MyString
+  third_degree_institute: MyString
+  third_degree_years: MyString
+  third_degree_type: MyString
+  current_job: MyString
+  current_company: MyString
