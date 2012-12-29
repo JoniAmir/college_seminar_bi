@@ -2,7 +2,8 @@
 # encoding: utf-8
 
 class StudentController < ApplicationController
-	include ExcelHelper
+  include ExcelHelper, ApplicationHelper
+  before_filter :hide_log
 
 	def import_all
 		Student.delete_all
@@ -14,7 +15,6 @@ class StudentController < ApplicationController
 			end
 		end
   end
-
 
   def import
     excels = load_students_excels
@@ -33,6 +33,10 @@ class StudentController < ApplicationController
     semester = excel.cell(2, 'A').scan(/\d+/).last.to_i
 
     Student.delete_all("year = #{year} AND semester = #{semester}")
+  end
+
+  def delete_all
+    Student.delete_all
   end
 
   def index

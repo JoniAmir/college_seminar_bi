@@ -11,7 +11,7 @@ module ApplicationHelper
 	def change_log(stream, colorize=true)
 	  ActiveRecord::Base.logger = ::Logger.new(stream)
 	  ActiveRecord::Base.clear_all_connections!
-	  ActiveRecord::Base.colorize_logging = colorize
+	  #ActiveRecord::Base.colorize_logging = colorize
 	end
-	
+
 end
