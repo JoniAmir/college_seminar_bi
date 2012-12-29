@@ -10,6 +10,8 @@ College::Application.routes.draw do
   resources :excel
   resources :student
 
+  root :to => "excel#index"
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
