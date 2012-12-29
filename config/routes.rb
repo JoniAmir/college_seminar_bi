@@ -1,5 +1,9 @@
 College::Application.routes.draw do
 
+  resources :graduate_professions
+
+  resources :graduates
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

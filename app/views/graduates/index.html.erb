@@ -1,0 +1,39 @@
+<h1>Listing graduates</h1>
+
+<table>
+  <tr>
+    <th>Id number</th>
+    <th>Curriculum</th>
+    <th>Curriculum</th>
+    <th>Graduation ceremony date</th>
+    <th>Graduation date</th>
+    <th>Final grade</th>
+    <th>Ranking</th>
+    <th>Ranking total</th>
+    <th>Gender</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @graduates.each do |graduate| %>
+  <tr>
+    <td><%= graduate.id_number %></td>
+    <td><%= graduate.curriculum %></td>
+    <td><%= graduate.curriculum_id %></td>
+    <td><%= graduate.graduation_ceremony_date %></td>
+    <td><%= graduate.graduation_date %></td>
+    <td><%= graduate.final_grade %></td>
+    <td><%= graduate.ranking %></td>
+    <td><%= graduate.ranking_total %></td>
+    <td><%= graduate.gender %></td>
+    <td><%= link_to 'Show', graduate %></td>
+    <td><%= link_to 'Edit', edit_graduate_path(graduate) %></td>
+    <td><%= link_to 'Destroy', graduate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Graduate', new_graduate_path %>
