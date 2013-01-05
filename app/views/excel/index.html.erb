@@ -13,27 +13,52 @@
 			<thead>
 				<tr>
 						<th> Filename </th>
-						<th> </th>
-						<th> </th>
-						<th> </th>
+						<th colspan="3"> </th>
 				</tr>
 			</thead>
 			
 			<tbody>
-				<% @excels.each_with_index do |(filename, excel), index| %>
+				<tr>
+					<td colspan="4">Students</td>
+				</tr>
+				<% @students_excels.each_with_index do |(filename, excel), index|
+						 %>
 						<tr>
 							<td> <%= File.basename(filename) %> </td>
-							<td> <%= link_to "Show", "excel/#{index}" %> </td>
+							<td> <%= link_to "Show", "excel/students/#{index}" %> </td>
 							<td> <%= link_to "Delete", "student/delete/#{index}", :confirm => 'Are you sure?', :method => :delete %> </td>
 							<td> <%= link_to "Import", "student/import/#{index}"%> </td>
+						</tr>	
+				<% end %>
+				<tr>
+					<td colspan="4">Graduates</td>
+				</tr>
+				<% @graduates_excels.each_with_index do |(filename, excel), index| %>
+						<tr>
+							<td> <%= File.basename(filename) %> </td>
+							<td> <%= link_to "Show", "excel/graduates/#{index}" %> </td>
+							<td> <%= link_to "Delete", "graduate/delete_all", :confirm => 'Are you sure?', :method => :delete_all %> </td>
+							<td> <%= link_to "Import", "graduate/import/#{index}"%> </td>
+						</tr>	
+				<% end %>
+				<tr>
+					<td colspan="4">Graduates Professions</td>
+				</tr>
+				<% @graduates_professions_excels.each_with_index do |(filename, excel), index| %>
+						<tr>
+							<td> <%= File.basename(filename) %> </td>
+							<td> <%= link_to "Show", "excel/graduates_professions/#{index}" %> </td>
+							<td> <%= link_to "Delete", "graduate_profession/delete_all", :confirm => 'Are you sure?', :method => :delete_all %> </td>
+							<td> <%= link_to "Import", "graduate_profession/import/#{index}"%> </td>
 						</tr>	
 				<% end %>
 			</tbody>
 
 		</table>
 
-
 		<p> <%= link_to "All students", "/student" %> </p>
+		<p> <%= link_to "All graduates", "/graduate" %> </p>
+		<p> <%= link_to "All graduates professions", "/graduate_profession" %> </p>
 
 	</body>
 </html>

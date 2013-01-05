@@ -2,22 +2,25 @@
 # encoding: utf-8
 
 class StudentController < ApplicationController
-  include ExcelHelper, ApplicationHelper
-  before_filter :hide_log
+	include ExcelHelper
+
+  IMPORT_PATH = "#{Dir.pwd}/lib/assets/students/"
 
 	def import_all
-		Student.delete_all
-		excels = load_students_excels
+		
+    Student.delete_all
+		excels = load_excels_by_path(IMPORT_PATH)
 
 		excels.each do |filename, excel|
 			(excel.first_row + 1).upto(excel.last_row) do |i|
 				add_record(excel, i)
 			end
 		end
+
   end
 
   def import
-    excels = load_students_excels
+    excels = load_excels_by_path(IMPORT_PATH)
     excel = excels.values[params[:id].to_i]
 
     (excel.first_row + 1).upto(excel.last_row) do |i|
@@ -28,7 +31,8 @@ class StudentController < ApplicationController
   end
 
   def delete
-    excels = load_students_excels
+    
+    excels = load_excels_by_path(IMPORT_PATH)
     excel = excels.values[params[:id].to_i]
 
     year = excel.cell(2, 'A').scan(/\d+/).first.to_i

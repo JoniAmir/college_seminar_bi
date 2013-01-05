@@ -1,5 +1,6 @@
 College::Application.routes.draw do
 
+<<<<<<< HEAD
   match 'student/import_all' => 'student#import_all'
   match 'student/import/:id' => 'student#import'
   match 'student/delete_all' => 'student#delete_all'
@@ -7,14 +8,32 @@ College::Application.routes.draw do
 
   resources :graduate_professions
   resources :graduates
+=======
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
+
+>>>>>>> a0d765244225da2f32f2e3856b866f2c275962b6
   resources :excel
   resources :student
+  resources :graduate_profession
+  resources :graduate
+
+  match 'excel/:type/:id' => 'excel#show'
 
   root :to => "excel#index"
 
 
+<<<<<<< HEAD
   # The priority is based upon order of creation:
   # first created -> highest priority.
+=======
+  match 'graduate/import/:id' => 'graduate#import'
+  match 'graduate/delete_all' => 'graduate#delete_all'
+
+  match 'graduate_profession/import/:id' => 'graduate_profession#import'
+  match 'graduate_profession/delete_all' => 'graduate_profession#delete_all'
+
+>>>>>>> a0d765244225da2f32f2e3856b866f2c275962b6
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
