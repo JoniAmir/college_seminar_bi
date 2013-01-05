@@ -44,7 +44,7 @@ class StudentController < ApplicationController
   end
 
   def index
-  	@students = Student.all
+  	@students = Student.all.sort! { |student1, student2| [student1.year, student1.semester] <=> [student2.year, student2.semester]}
   end
 
   def show
