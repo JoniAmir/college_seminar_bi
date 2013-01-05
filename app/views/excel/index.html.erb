@@ -59,6 +59,19 @@
 		<p> <%= link_to "All students", "/student" %> </p>
 		<p> <%= link_to "All graduates", "/graduate" %> </p>
 		<p> <%= link_to "All graduates professions", "/graduate_profession" %> </p>
+		<br>
+		<p> <%= link_to "Routes", "/rails/routes" %> </p>
+	
+		<br>
+		
+		<%= @pie=Gchart.pie_3d(:data => [20, 35, 45])
+        image_tag(@pie) %>
+
+    <br>
+    
+		<%= @bar= Gchart.bar(:data => [300, 100, 30, 200])
+        image_tag(@bar) %>        
+
 
 	</body>
 </html>
