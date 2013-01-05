@@ -6,9 +6,9 @@ class StudentController < ApplicationController
 
   IMPORT_PATH = "#{Dir.pwd}/lib/assets/students/"
 
-	def import
-
-		Student.delete_all
+	def import_all
+		
+    Student.delete_all
 		excels = load_excels_by_path(IMPORT_PATH)
 
 		excels.each do |filename, excel|
@@ -16,37 +16,35 @@ class StudentController < ApplicationController
 				add_record(excel, i)
 			end
 		end
+
   end
 
-# yoni
-# 2
+  def import
+    excels = load_excels_by_path(IMPORT_PATH)
+    excel = excels.values[params[:id].to_i]
 
-# def import_single
+    (excel.first_row + 1).upto(excel.last_row) do |i|
+      add_record(excel, i)
+    end
+  end
 
-#     #Student.delete_all
-#     excels = load_students_excels
+  def delete
+    
+    excels = load_excels_by_path(IMPORT_PATH)
+    excel = excels.values[params[:id].to_i]
 
-#     excels|
+    year = excel.cell(2, 'A').scan(/\d+/).first.to_i
+    semester = excel.cell(2, 'A').scan(/\d+/).last.to_i
 
-#     excels.each do |filename, excel|
-#       logger.debug "statred processing file #{filename}"
-#       (excel.first_row + 1).upto(excel.last_row) do |i|
-#         add_record(excel, i)
-#       end
-#       logger.debug "finished processing file #{filename}"
-#     end
-  
-#   end
+    Student.delete_all("year = #{year} AND semester = #{semester}")
+  end
 
+  def delete_all
+    Student.delete_all
+  end
 
   def index
-  	@student_list = Student.all
-
-
-  	#@students = @students.select { |student| student.sat_grade }.sort_by { |student| student.sat_grade }
-    @students = @student_list.select { |student| student.city && student.city == "תל אביב-יפו" }
-
-    logger.debug "students count: " + @students.count.to_s
+  	@students = Student.all
   end
 
   def show

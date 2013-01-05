@@ -1,16 +1,25 @@
 College::Application.routes.draw do
 
-  resources :graduate_professions
-
-  resources :graduates
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   resources :excel
   resources :student
+  resources :graduate_profession
+  resources :graduate
 
-  match 'student_import' => 'student#import'
+  match 'excel/:type/:id' => 'excel#show'
+
+  match 'student/import_all' => 'student#import_all'
+  match 'student/import/:id' => 'student#import'
+  match 'student/delete_all' => 'student#delete_all'
+  match 'student/delete/:id' => 'student#delete'
+
+  match 'graduate/import/:id' => 'graduate#import'
+  match 'graduate/delete_all' => 'graduate#delete_all'
+
+  match 'graduate_profession/import/:id' => 'graduate_profession#import'
+  match 'graduate_profession/delete_all' => 'graduate_profession#delete_all'
 
 
   # Sample of regular route:

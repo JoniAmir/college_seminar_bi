@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121229104527) do
+ActiveRecord::Schema.define(:version => 20130105130855) do
 
   create_table "graduate_professions", :force => true do |t|
     t.integer  "id_number"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20121229104527) do
     t.string   "marital_status"
     t.integer  "number_of_children"
     t.string   "second_degree_institute"
-    t.string   "second_degree"
+    t.string   "second_degree_years"
     t.string   "second_degree_type"
     t.string   "third_degree_institute"
     t.string   "third_degree_years"

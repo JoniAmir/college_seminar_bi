@@ -15,6 +15,7 @@ end
 
 group :development do
 	gem 'sqlite3'
+	gem 'meta_request'
 end
 
 group :test do
@@ -24,6 +25,3 @@ group :production do
   # gems specifically for Heroku go here
   gem "pg"
 end
-
-
-
