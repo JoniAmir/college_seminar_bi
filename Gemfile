@@ -16,6 +16,7 @@ end
 group :development do
 	gem 'sqlite3'
 	gem 'meta_request'
+	gem 'thin'
 end
 
 group :test do
