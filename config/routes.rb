@@ -1,5 +1,7 @@
 College::Application.routes.draw do
 
+  resources :nominees
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
   
