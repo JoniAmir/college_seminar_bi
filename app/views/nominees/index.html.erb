@@ -1,0 +1,21 @@
+<h1>Listing nominees</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @nominees.each do |nominee| %>
+  <tr>
+    <td><%= link_to 'Show', nominee %></td>
+    <td><%= link_to 'Edit', edit_nominee_path(nominee) %></td>
+    <td><%= link_to 'Destroy', nominee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Nominee', new_nominee_path %>
