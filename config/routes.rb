@@ -19,9 +19,8 @@ College::Application.routes.draw do
   resources :excel
   resources :student
   resources :graduate_profession
-  resources :graduate_professions
   resources :graduate
-  resources :graduates
+
 
 
 
