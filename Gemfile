@@ -5,7 +5,10 @@ source 'http://gems.github.com'
 gem 'rails', '3.2.8'
 gem 'jquery-rails'
 gem 'roo'
-gem "googlecharts", :require => "gchart"
+gem 'googlecharts', :require => 'gchart'
+gem 'paperclip'
+gem 'activeadmin'
+#gem 'delayed_job'
 
 # Gems used only for assets and not required
 # in production environments by default.

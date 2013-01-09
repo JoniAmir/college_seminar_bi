@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>College</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag 'jquery.js', 'jquery-ui.js', 'application.js' %>
-  <%= csrf_meta_tags %>
-</head>
+	<head>
+	  <title>College</title>
+	  <%= stylesheet_link_tag    "application", :media => "all" %>
+	  <%= javascript_include_tag "application" %>
+	  <%= javascript_include_tag 'jquery.js', 'jquery-ui.js', 'application.js' %>
+	  <%= csrf_meta_tags %>
+
+	  <p class="notice"><%= notice %></p>
+ 		<p class="alert"><%= alert %></p>
+	</head>
 <body>
 
 <%= yield %>
