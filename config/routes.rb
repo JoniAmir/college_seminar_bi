@@ -1,7 +1,6 @@
 College::Application.routes.draw do
 
   ActiveAdmin.routes(self)
-
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :nominees
@@ -21,14 +20,13 @@ College::Application.routes.draw do
   match 'student/delete_all' => 'student#delete_all'
   match 'student/delete/:id' => 'student#delete'
 
-  # TODO: clean duplicate resources
+
+    # TODO: clean duplicate resources
   resources :excel
   resources :student
   resources :graduate_profession
   resources :graduate
-
-
-
+  resources :nominee
 
 
 
