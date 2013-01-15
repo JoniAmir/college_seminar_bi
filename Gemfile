@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 source 'http://gems.github.com'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 gem 'jquery-rails'
 gem 'roo'
 gem 'googlecharts', :require => 'gchart'
