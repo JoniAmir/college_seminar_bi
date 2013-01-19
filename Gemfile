@@ -8,6 +8,7 @@ gem 'roo'
 gem 'googlecharts', :require => 'gchart'
 gem 'paperclip'
 gem 'activeadmin'
+gem 'mysql2'
 #gem 'delayed_job'
 
 # Gems used only for assets and not required
@@ -19,7 +20,7 @@ group :assets do
 end
 
 group :development do
-	gem 'sqlite3'
+	gem 'mysql2'
 	gem 'meta_request'
 	gem 'thin'
 	gem 'sextant'
