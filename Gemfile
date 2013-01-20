@@ -19,7 +19,7 @@ group :assets do
 end
 
 group :development do
-	gem 'mysql2	'
+	gem 'mysql2'
 	gem 'meta_request'
 	gem 'thin'
 	gem 'sextant'
