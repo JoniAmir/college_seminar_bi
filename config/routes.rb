@@ -3,30 +3,28 @@ College::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  resources :nominees
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
   
   # First priority
-  root :to => "excel#index"
-  match 'graduate/import/:id' => 'graduate#import'
-  match 'graduate/delete_all' => 'graduate#delete_all'
-  match 'excel/:type/:id' => 'excel#show'
-  match 'graduate_profession/import/:id' => 'graduate_profession#import'
-  match 'graduate_profession/delete_all' => 'graduate_profession#delete_all'
-  match 'student/import_all' => 'student#import_all'
-  match 'student/import/:id' => 'student#import'
-  match 'student/delete_all' => 'student#delete_all'
-  match 'student/delete/:id' => 'student#delete'
+  root :to => "excels#index"
+  match 'graduate/import/:id' => 'graduates#import'
+  match 'graduate/delete_all' => 'graduates#delete_all'
+  match 'excel/:type/:id' => 'excels#show'
+  match 'graduate_profession/import/:id' => 'graduate_professions#import'
+  match 'graduate_profession/delete_all' => 'graduate_professions#delete_all'
+  match 'student/import_all' => 'students#import_all'
+  match 'student/import/:id' => 'students#import'
+  match 'student/delete_all' => 'students#delete_all'
+  match 'student/delete/:id' => 'students#delete'
 
 
     # TODO: clean duplicate resources
-  resources :excel
-  resources :student
-  resources :graduate_profession
-  resources :graduate
-  resources :nominee
+  resources :excels
+  resources :students
+  resources :graduate_professions
+  resources :graduates
+  resources :nominees
 
 
 

@@ -1,7 +1,7 @@
 #!/bin/env ruby
 # encoding: utf-8
 
-class GraduateProfessionController < ApplicationController
+class GraduateProfessionsController < ApplicationController
 include ExcelHelper
 
   IMPORT_PATH = "#{Dir.pwd}/lib/assets/graduates_professions/"

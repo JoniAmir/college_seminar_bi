@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'roo'
 
-class ExcelController < ApplicationController
+class ExcelsController < ApplicationController
 	include ExcelHelper
 
 	IMPORT_PATH = "#{Dir.pwd}/lib/assets/"
@@ -16,9 +16,9 @@ class ExcelController < ApplicationController
 
 
 	def index
-		@students_excels = load_excels_by_path(StudentController::IMPORT_PATH)
-		@graduates_excels = load_excels_by_path(GraduateController::IMPORT_PATH)
-		@graduates_professions_excels = load_excels_by_path(GraduateProfessionController::IMPORT_PATH)
+		@students_excels = load_excels_by_path(StudentsController::IMPORT_PATH)
+		@graduates_excels = load_excels_by_path(GraduatesController::IMPORT_PATH)
+		@graduates_professions_excels = load_excels_by_path(GraduateProfessionsController::IMPORT_PATH)
 	end
 
 
