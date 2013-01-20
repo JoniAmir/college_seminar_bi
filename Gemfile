@@ -9,7 +9,6 @@ gem 'googlecharts', :require => 'gchart'
 gem 'paperclip'
 gem 'activeadmin'
 #gem 'delayed_job'
-gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
