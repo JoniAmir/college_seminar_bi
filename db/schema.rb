@@ -89,6 +89,14 @@ ActiveRecord::Schema.define(:version => 20130108230723) do
     t.string   "last_result_graphs"
   end
 
+  create_table "sequence_data", :primary_key => "sequence_name", :force => true do |t|
+    t.integer "sequence_increment",              :default => 1,                    :null => false
+    t.integer "sequence_min_value",              :default => 1,                    :null => false
+    t.integer "sequence_max_value", :limit => 8, :default => 18446744073709551615, :null => false
+    t.integer "sequence_cur_value", :limit => 8, :default => 1
+    t.boolean "sequence_cycle",                  :default => false,                :null => false
+  end
+
   create_table "students", :force => true do |t|
     t.integer  "year"
     t.integer  "semester"
@@ -118,5 +126,71 @@ ActiveRecord::Schema.define(:version => 20130108230723) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
+
+  create_table "students2", :force => true do |t|
+    t.integer "year"
+    t.integer "semester"
+    t.integer "id_number"
+    t.date    "birthdate"
+    t.string  "city"
+    t.string  "gender"
+    t.float   "coordinated_grade"
+    t.string  "integrated_grade"
+    t.integer "sat_grade"
+    t.float   "mehina_grade"
+    t.integer "english_level"
+    t.float   "school_grade"
+    t.float   "subject1_grade"
+    t.integer "subject1_units"
+    t.float   "subject2_grade"
+    t.integer "subject2_units"
+    t.string  "group_description"
+    t.integer "priority"
+    t.string  "school"
+    t.string  "curriculum"
+    t.integer "mazat"
+  end
+
+  add_index "students2", ["id_number"], :name => "IDNUM_IDX"
+
+  create_table "students_final", :id => false, :force => true do |t|
+    t.integer "id",                                  :default => 0, :null => false
+    t.integer "year"
+    t.integer "semester"
+    t.integer "id_number"
+    t.date    "birthdate"
+    t.string  "city"
+    t.integer "city_code",              :limit => 8
+    t.string  "gender"
+    t.integer "gender_code",            :limit => 8
+    t.float   "coordinated_grade"
+    t.string  "integrated_grade"
+    t.integer "sat_grade"
+    t.float   "mehina_grade"
+    t.integer "english_level"
+    t.float   "school_grade"
+    t.float   "subject1_grade"
+    t.integer "subject1_units"
+    t.float   "subject2_grade"
+    t.integer "subject2_units"
+    t.string  "group_description"
+    t.integer "group_description_code", :limit => 8
+    t.integer "priority"
+    t.string  "school"
+    t.integer "school_code",            :limit => 8
+    t.string  "curriculum"
+    t.integer "curriculum_code",        :limit => 8
+    t.integer "mazat"
+    t.integer "mazat_code",             :limit => 8
+    t.string  "mazat_display"
+  end
+
+  create_table "students_lookup", :force => true do |t|
+    t.string  "field_name"
+    t.integer "numeric_value"
+    t.string  "display_name"
+  end
+
+  add_index "students_lookup", ["numeric_value"], :name => "NUMERIC_IDX"
 
 end
