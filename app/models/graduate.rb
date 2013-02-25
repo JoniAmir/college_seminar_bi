@@ -18,9 +18,10 @@
 
 class Graduate < ActiveRecord::Base
   attr_accessible :curriculum, 
-                  :curriculum_id, 
+                  :curriculum_code, 
                   :final_grade, 
-                  :gender, 
+                  :gender,
+                  :gender_code 
                   :graduation_ceremony_date, 
                   :graduation_date, 
                   :id_number, 
