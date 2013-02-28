@@ -22,7 +22,7 @@ group :development do
 	gem 'mysql2'
 	gem 'meta_request'
 	gem 'sextant'
-	gem 'annotate'
+	gem 'annotate' #shows table description in class comments. type 'annotate' in console to refresh
 	gem 'better_errors'
 	gem 'binding_of_caller'
 end

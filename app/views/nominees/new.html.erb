@@ -1,5 +1,63 @@
-<h1>New nominee</h1>
+<div class="rtl">
 
-<%= render 'form' %>
+	<h1>הזנת נתוני מועמד</h1>
+	
+	<%= form_for(@nominee) do |f| %>
+		<table>
 
-<%= link_to 'Back', nominees_path %>
+			<tr>
+				<td> גיל </td>
+				<td> <%= f.number_field :age %> </td>
+			</tr>
+
+			<tr>
+				<td> עיר </td>
+				<td> <%= f.text_field :city %> </td>
+			</tr>
+
+			<tr>
+				<td> ממוצע בגרויות </td>
+				<td> <%= f.number_field :school_grade %> </td>
+			</tr>
+
+			<tr>
+				<td> פסיכומטרי </td>
+				<td> <%= f.number_field :sat_grade %> </td>
+			</tr>
+
+			<tr>
+				<td> יח' מתימטיקה </td>
+				<td> <%= f.range_field(:math_units, in: 0..5) %> </td>
+			</tr>
+
+			<tr>
+				<td> ציון מתימטיקה </td>
+				<td> <%= f.number_field :math_grade %> </td>
+			</tr>
+
+			<tr>
+				<td> יח' אנגלית </td>
+				<td> <%= f.range_field(:english_units, in: 0..5) %> </td>
+			</tr>
+
+			<tr>
+				<td> ציון אנגלית </td>
+				<td> <%= f.number_field :english_grade %> </td>
+			</tr>
+
+		</table>
+
+
+	
+		<div class="actions">
+		  <%= f.submit :class => 'submit_button' %>
+		</div>
+
+
+	<% end %>
+
+
+	<!-- Render partial form - error checking-->
+	<%= render 'form' %>
+
+</div>

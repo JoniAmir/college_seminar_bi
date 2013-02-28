@@ -42,6 +42,8 @@ class NomineesController < ApplicationController
   def create
     @nominee = Nominee.new(params[:nominee])
 
+    Rails.logger.debug(params.inspect)
+
     respond_to do |format|
       if @nominee.save
         format.html { redirect_to @nominee, notice: 'Nominee was successfully created.' }
