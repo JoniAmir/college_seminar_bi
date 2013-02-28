@@ -1,0 +1,13 @@
+class CodesAdditionGraduates < ActiveRecord::Migration
+  def up
+  	add_column :graduates, :gender_code, :integer
+  	add_column :graduates, :curriculum_code, :integer 
+  	
+  end
+
+  def down
+  	remove_column :graduates, :gender_code
+  	remove_column :graduates, :curriculum_code
+  end
+  
+end

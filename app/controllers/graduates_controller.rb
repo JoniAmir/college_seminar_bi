@@ -24,7 +24,7 @@ class GraduatesController < ApplicationController
     graduate = Graduate.new 
     graduate.id_number = excel_record.cell(line, 1)
     graduate.curriculum = excel_record.cell(line, 2)
-    graduate.curriculum_id = excel_record.cell(line, 3)
+    graduate.curriculum_code = excel_record.cell(line, 3)
     graduate.graduation_ceremony_date = if excel_record.cell(line, 4) != 0
                                          then (Date.parse(excel_record.cell(line, 4).to_i().to_s())) 
                                          else nil
