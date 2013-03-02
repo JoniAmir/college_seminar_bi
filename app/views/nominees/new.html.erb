@@ -7,7 +7,7 @@
 
 			<tr>
 				<td> גיל </td>
-				<td> <%= f.number_field :age %> </td>
+				<td> <%= f.number_field(:age, in: 10..99) %> </td>
 			</tr>
 
 			<tr>
@@ -17,32 +17,32 @@
 
 			<tr>
 				<td> ממוצע בגרויות </td>
-				<td> <%= f.number_field :school_grade %> </td>
+				<td> <%= f.number_field(:school_grade, in: 0..125) %> </td>
 			</tr>
 
 			<tr>
 				<td> פסיכומטרי </td>
-				<td> <%= f.number_field :sat_grade %> </td>
+				<td> <%= f.number_field(:sat_grade, in: 300..800) %> </td>
 			</tr>
 
 			<tr>
 				<td> יח' מתימטיקה </td>
-				<td> <%= f.range_field(:math_units, in: 0..5) %> </td>
+				<td> <%= f.number_field(:math_units, in: 0..5) %> </td>
 			</tr>
 
 			<tr>
 				<td> ציון מתימטיקה </td>
-				<td> <%= f.number_field :math_grade %> </td>
+				<td> <%= f.number_field(:math_grade, in: 0..125) %> </td>
 			</tr>
 
 			<tr>
 				<td> יח' אנגלית </td>
-				<td> <%= f.range_field(:english_units, in: 0..5) %> </td>
+				<td> <%= f.number_field(:english_units, in: 0..5) %> </td>
 			</tr>
 
 			<tr>
 				<td> ציון אנגלית </td>
-				<td> <%= f.number_field :english_grade %> </td>
+				<td> <%= f.number_field(:english_grade, in: 0..125) %> </td>
 			</tr>
 
 		</table>

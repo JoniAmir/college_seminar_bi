@@ -10,5 +10,12 @@
  *
  *= require_self
  *= require_tree .
+ *= require twitter/bootstrap
  */
 
+
+
+body {
+	background-color:#6bc6c5;
+	text-align: right;
+}
