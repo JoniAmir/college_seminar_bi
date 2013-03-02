@@ -1,5 +1,3 @@
-require 'rubygems'
-require 'roo'
 
 class ExcelsController < ApplicationController
 	include ExcelHelper
