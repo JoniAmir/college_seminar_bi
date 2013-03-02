@@ -1,3 +1,4 @@
+
 module ExcelHelper
 
 	def load_excels_by_path(directory)
