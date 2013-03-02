@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+require 'iconv'
+require 'rubygems'
+require 'roo'
+>>>>>>> 59b2a06e27045f22669a6eae16dfadc0addaec36
 
 class ExcelsController < ApplicationController
 	include ExcelHelper
