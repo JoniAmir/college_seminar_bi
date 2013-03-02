@@ -1,10 +1,12 @@
+require 'iconv'
+
 module ExcelHelper
 
 
 	def load_excels_by_path(directory)
 
 		excel_files = get_filenames_by_path(directory)
-		excels = Hash.new
+		excels = Hash.new		
 
 		# Load excels to list
 		excel_files.each do |filename|

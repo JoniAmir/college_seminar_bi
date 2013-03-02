@@ -8,8 +8,8 @@ development:
   database: sadna
   encoding: utf8
   host: 127.0.0.1
-  username: Sadna
-  password: Sadna
+  username: root
+  password: 
   pool: 5
   timeout: 5000
 
@@ -21,8 +21,8 @@ test:
   database: sadna
   encoding: utf8
   host: 127.0.0.1
-  username: Sadna
-  password: Sadna
+  username: root
+  password: 
   pool: 5
   timeout: 5000
 

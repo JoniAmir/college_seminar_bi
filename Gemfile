@@ -25,7 +25,9 @@ group :development do
 	gem 'annotate' #shows table description in class comments. type 'annotate' in console to refresh
 	gem 'better_errors'
 	gem 'binding_of_caller'
+	gem 'thin'
 end
+
 
 group :test do
 	gem 'mysql2'
