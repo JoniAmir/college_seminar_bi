@@ -21,7 +21,7 @@ class Graduate < ActiveRecord::Base
                   :curriculum_code, 
                   :final_grade, 
                   :gender,
-                  :gender_code 
+                  :gender_code,
                   :graduation_ceremony_date, 
                   :graduation_date, 
                   :id_number, 

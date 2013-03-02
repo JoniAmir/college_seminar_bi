@@ -8,7 +8,7 @@
 		<h1> Showing records for file: <%= @excel_filename %> </h1>
 		<br>
 
-		<h3> <%= link_to 'Back', '/excel' %> </h3>
+		<h3> <%= link_to 'Back', '/excels' %> </h3>
 
 		<br>
 
@@ -18,10 +18,8 @@
 			<!-- construct table head -->
 			<thead>
 				<tr>
-					<% 1.upto(@excel.last_column) do |j| %>
-						<% unless ((j > 5)  && (j < 11)) %>
+					<% 1.upto(@excel.last_column) do |j| %>	
 							<th> <%= @excel.cell(1,j) %> </th>
-						<% end %>		
 					<% end %>
 				</tr>
 			</thead>
@@ -30,9 +28,7 @@
 				<% 2.upto(@excel.last_row) do |i| %>
 					<tr>
 						<% 1.upto(@excel.last_column) do |j| %>
-							<% unless ((j > 5)  && (j < 11)) %>
-								<td> <%= @excel.cell(i,j) %> </td>
-							<% end %>
+							<td> <%= @excel.cell(i,j) %> </td>
 						<% end %>
 					</tr>
 				<% end %>

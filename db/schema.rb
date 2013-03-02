@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108230723) do
+ActiveRecord::Schema.define(:version => 20130225154701) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -288,6 +288,21 @@ ActiveRecord::Schema.define(:version => 20130108230723) do
     t.datetime "updated_at",              :null => false
   end
 
+  create_table "graduates", :force => true do |t|
+    t.integer  "id_number"
+    t.string   "curriculum"
+    t.integer  "curriculum_code"
+    t.date     "graduation_ceremony_date"
+    t.date     "graduation_date"
+    t.integer  "final_grade"
+    t.integer  "ranking"
+    t.integer  "ranking_total"
+    t.string   "gender"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.integer  "gender_code"
+  end
+
   create_table "graduates_backup", :id => false, :force => true do |t|
     t.integer  "id",                       :default => 0, :null => false
     t.integer  "id_number"
@@ -416,14 +431,6 @@ ActiveRecord::Schema.define(:version => 20130108230723) do
     t.string  "current_company",            :limit => 45
   end
 
-  create_table "sequence_data", :primary_key => "sequence_name", :force => true do |t|
-    t.integer "sequence_increment",              :default => 1,                    :null => false
-    t.integer "sequence_min_value",              :default => 1,                    :null => false
-    t.integer "sequence_max_value", :limit => 8, :default => 18446744073709551615, :null => false
-    t.integer "sequence_cur_value", :limit => 8, :default => 1
-    t.boolean "sequence_cycle",                  :default => false,                :null => false
-  end
-
   create_table "students", :force => true do |t|
     t.integer  "year"
     t.integer  "semester"
@@ -431,10 +438,6 @@ ActiveRecord::Schema.define(:version => 20130108230723) do
     t.date     "birthdate"
     t.string   "city"
     t.string   "gender"
-    t.string   "ba_degree"
-    t.string   "ba_minor"
-    t.float    "combined_grade"
-    t.string   "institute"
     t.float    "coordinated_grade"
     t.string   "integrated_grade"
     t.integer  "sat_grade"
@@ -452,74 +455,10 @@ ActiveRecord::Schema.define(:version => 20130108230723) do
     t.integer  "mazat"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.integer  "gender_code"
+    t.integer  "curriculum_code"
+    t.integer  "mazat_code"
+    t.string   "mazat_display"
   end
-
-  create_table "students2", :force => true do |t|
-    t.integer "year"
-    t.integer "semester"
-    t.integer "id_number"
-    t.date    "birthdate"
-    t.string  "city"
-    t.string  "gender"
-    t.float   "coordinated_grade"
-    t.string  "integrated_grade"
-    t.integer "sat_grade"
-    t.float   "mehina_grade"
-    t.integer "english_level"
-    t.float   "school_grade"
-    t.float   "subject1_grade"
-    t.integer "subject1_units"
-    t.float   "subject2_grade"
-    t.integer "subject2_units"
-    t.string  "group_description"
-    t.integer "priority"
-    t.string  "school"
-    t.string  "curriculum"
-    t.integer "mazat"
-  end
-
-  add_index "students2", ["id_number"], :name => "IDNUM_IDX"
-
-  create_table "students_final", :id => false, :force => true do |t|
-    t.integer "id",                                  :default => 0, :null => false
-    t.integer "year"
-    t.integer "semester"
-    t.integer "id_number"
-    t.date    "birthdate"
-    t.string  "city"
-    t.integer "city_code",              :limit => 8
-    t.string  "gender"
-    t.integer "gender_code",            :limit => 8
-    t.float   "coordinated_grade"
-    t.string  "integrated_grade"
-    t.integer "sat_grade"
-    t.float   "mehina_grade"
-    t.integer "english_level"
-    t.float   "school_grade"
-    t.float   "subject1_grade"
-    t.integer "subject1_units"
-    t.float   "subject2_grade"
-    t.integer "subject2_units"
-    t.string  "group_description"
-    t.integer "group_description_code", :limit => 8
-    t.integer "priority"
-    t.string  "school"
-    t.integer "school_code",            :limit => 8
-    t.string  "curriculum"
-    t.integer "curriculum_code",        :limit => 8
-    t.integer "mazat"
-    t.integer "mazat_code",             :limit => 8
-    t.string  "mazat_display"
-  end
-
-  add_index "students_final", ["id_number"], :name => "sidnumber_idx"
-
-  create_table "students_lookup", :force => true do |t|
-    t.string  "field_name"
-    t.integer "numeric_value"
-    t.string  "display_name"
-  end
-
-  add_index "students_lookup", ["numeric_value"], :name => "NUMERIC_IDX"
 
 end
