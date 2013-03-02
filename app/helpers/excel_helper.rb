@@ -1,7 +1,4 @@
-require 'iconv'
-
 module ExcelHelper
-
 
 	def load_excels_by_path(directory)
 
@@ -10,7 +7,7 @@ module ExcelHelper
 
 		# Load excels to list
 		excel_files.each do |filename|
-			excel = Excel.new("#{filename}")
+			excel = Roo::Excel.new("#{filename}")
 			excel.default_sheet = excel.sheets.first
 			excels[filename] = excel
 		end
