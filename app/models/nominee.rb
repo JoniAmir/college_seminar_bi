@@ -9,11 +9,20 @@
 #  city               :string(255)
 #  school_grade       :integer
 #  math_units         :integer
-#  grade              :integer
+#  math_grade         :integer
 #  sat_grade          :integer
 #  last_result_graphs :string(255)
+#  english_units      :integer
+#  english_grade      :integer
 #
 
-class Nominee < ActiveRecord::Base
-  # attr_accessible :title, :body
+class Nominee < ActiveRecord::Base      
+	attr_accessible :age, :city, :school_grade, :sat_grade,
+									:math_units, :math_grade, :english_units, :english_grade, :last_result_graphs
+
+  validates :age, :sat_grade, :school_grade, :math_units, :math_grade, :english_units, :english_grade,
+  					:numericality => { :greater_than_or_equal_to => 0 }
+
+	validates_presence_of :city
+
 end

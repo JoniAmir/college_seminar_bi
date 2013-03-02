@@ -348,6 +348,47 @@ ActiveRecord::Schema.define(:version => 20130225154701) do
     t.string "field_name",   :limit => 45
   end
 
+  create_table "graduates_old", :primary_key => "ID", :force => true do |t|
+    t.integer "id_number"
+    t.string  "curriculum",               :limit => 45
+    t.integer "curriculum_id"
+    t.date    "graduation_ceremony_date"
+    t.date    "graduation_date"
+    t.integer "final_grade"
+    t.integer "ranking"
+    t.integer "ranking_total"
+    t.string  "gender",                   :limit => 45
+    t.integer "gender_id"
+  end
+
+  create_table "graduates_professions_old", :primary_key => "ID", :force => true do |t|
+    t.integer "id_number"
+    t.integer "gender_id"
+    t.string  "gender",                     :limit => 45
+    t.integer "marital_status_id"
+    t.string  "marital_status",             :limit => 45
+    t.integer "number_of_children"
+    t.integer "second_degree_institute_id"
+    t.string  "second_degree_institute",    :limit => 45
+    t.integer "second_degree_start_year"
+    t.integer "second_degree_end_year"
+    t.integer "second_degree_type_id"
+    t.string  "second_degree_type",         :limit => 45
+    t.integer "third_degree_institute_id"
+    t.string  "third_degree_institute",     :limit => 45
+    t.integer "third_degree_start_year"
+    t.integer "third_degree_end_year"
+    t.integer "third_degree_type_id"
+    t.string  "third_degree_type",          :limit => 45
+    t.string  "current_job",                :limit => 45
+    t.string  "current_company",            :limit => 45
+  end
+
+  create_table "lookup_old", :primary_key => "ID", :force => true do |t|
+    t.string "display_name", :limit => 45
+    t.string "field_name",   :limit => 45
+  end
+
   create_table "nominees", :force => true do |t|
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
@@ -355,9 +396,11 @@ ActiveRecord::Schema.define(:version => 20130225154701) do
     t.string   "city"
     t.integer  "school_grade"
     t.integer  "math_units"
-    t.integer  "grade"
+    t.integer  "math_grade"
     t.integer  "sat_grade"
     t.string   "last_result_graphs"
+    t.integer  "english_units"
+    t.integer  "english_grade"
   end
 
   create_table "non_resonable_grad", :id => false, :force => true do |t|
