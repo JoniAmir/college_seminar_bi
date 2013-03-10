@@ -1,0 +1,22 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+he:
+  helpers:
+    submit:
+      create: "בדוק אותי!"
+  activerecord:
+    errors:
+      messages:
+        not_a_number: "צריך להיות מספר"
+        blank: "חייב להכיל ערך"
+    attributes:
+      nominee:
+        age: "גיל"
+        city: "עיר"
+        school_grade: "ציון בגרות"
+        sat_grade: "ציון פסיכומטרי"
+        math_units: "יח' מתמטיקה"
+        english_units: "יח' אנגלית"
+        math_grade: "ציון מתמטיקה"
+        english_grade: "ציון אנגלית"

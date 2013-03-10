@@ -1,63 +1,6 @@
-<div class="rtl">
+	<header class="inline"><h2>הזנת נתוני מועמד</h2></header>
 
-	<h1>הזנת נתוני מועמד</h1>
-	
-	<%= form_for(@nominee) do |f| %>
-		<table>
-
-			<tr>
-				<td> גיל </td>
-				<td> <%= f.number_field(:age, in: 10..99) %> </td>
-			</tr>
-
-			<tr>
-				<td> עיר </td>
-				<td> <%= f.text_field :city %> </td>
-			</tr>
-
-			<tr>
-				<td> ממוצע בגרויות </td>
-				<td> <%= f.number_field(:school_grade, in: 0..125) %> </td>
-			</tr>
-
-			<tr>
-				<td> פסיכומטרי </td>
-				<td> <%= f.number_field(:sat_grade, in: 300..800) %> </td>
-			</tr>
-
-			<tr>
-				<td> יח' מתימטיקה </td>
-				<td> <%= f.number_field(:math_units, in: 0..5) %> </td>
-			</tr>
-
-			<tr>
-				<td> ציון מתימטיקה </td>
-				<td> <%= f.number_field(:math_grade, in: 0..125) %> </td>
-			</tr>
-
-			<tr>
-				<td> יח' אנגלית </td>
-				<td> <%= f.number_field(:english_units, in: 0..5) %> </td>
-			</tr>
-
-			<tr>
-				<td> ציון אנגלית </td>
-				<td> <%= f.number_field(:english_grade, in: 0..125) %> </td>
-			</tr>
-
-		</table>
-
-
-	
-		<div class="actions">
-		  <%= f.submit :class => 'submit_button' %>
-		</div>
-
-
-	<% end %>
-
-
-	<!-- Render partial form - error checking-->
 	<%= render 'form' %>
 
-</div>
+	<%= link_to 'Back', nominees_path %>
+
