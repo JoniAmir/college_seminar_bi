@@ -3,7 +3,7 @@ Here you can put some of your remarks, fixed or generatl explanations.
 
 - Refreshing DB Scheme documentation in Models:
 	Run cmd in shell: annotate
+
+
 TODO:
 - Check for duplications when importing excels to the DB
-
-
