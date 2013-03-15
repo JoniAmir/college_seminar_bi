@@ -7,24 +7,31 @@ College::Application.routes.draw do
   # first created -> highest priority.
   
   # First priority
-  root :to => "excels#index"
-  match 'graduate/import/:id' => 'graduates#import'
-  match 'graduate/delete_all' => 'graduates#delete_all'
-  match 'excel/:type/:id' => 'excels#show'
-  match 'graduate_profession/import/:id' => 'graduate_professions#import'
-  match 'graduate_profession/delete_all' => 'graduate_professions#delete_all'
-  match 'student/import_all' => 'students#import_all'
-  match 'student/import/:id' => 'students#import'
-  match 'student/delete_all' => 'students#delete_all'
-  match 'student/delete/:id' => 'students#delete'
+  root :to => "dashboard#home"
+  match 'check' => 'nominees#new'
+  match 'dashboard' => 'dashboard#index'
+  match 'about' => "dashboard#about"
+  
+  
+  # match 'graduate/import/:id' => 'graduates#import'
+  # match 'graduate/delete_all' => 'graduates#delete_all'
+  # match 'excel/:type/:id' => 'excels#show'
+  # match 'graduate_profession/import/:id' => 'graduate_professions#import'
+  # match 'graduate_profession/delete_all' => 'graduate_professions#delete_all'
+
+
+  # match 'student/import_all' => 'students#import_all'
+  # match 'student/import/:id' => 'students#import'
+  # match 'student/delete_all' => 'students#delete_all'
+  # match 'student/delete/:id' => 'students#delete'
 
 
     # TODO: clean duplicate resources
-  resources :excels
-  resources :students
-  resources :graduate_professions
-  resources :graduates
-  resources :nominees
+  # resources :excels
+  # resources :students
+  # resources :graduate_professions
+  # resources :graduates
+  # resources :nominees
 
 
 

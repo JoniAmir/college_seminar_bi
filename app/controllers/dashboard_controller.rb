@@ -1,14 +1,23 @@
 class DashboardController < ApplicationController
 
+	# Display the home page
+	def home
 
-	def new_nominee
+	end
+
+
+	# Show all the general graphs and statistics
+	def index
 
 	end
 
 
-	def show_nominee
+	# About page
+	def about
 
 	end
+
+
 
 
 end
