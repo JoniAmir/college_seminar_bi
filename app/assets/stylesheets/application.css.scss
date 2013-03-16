@@ -16,6 +16,11 @@
 @import "bootstrap/docs.css.scss";
 
 
+.navbar .nav .current a
+{
+	color: #fff;
+}
+
 body {
 	text-align: right;
 }

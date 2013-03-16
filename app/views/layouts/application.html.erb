@@ -23,11 +23,10 @@
 								<% end %>
 							</p>
 							<ul class="nav pull-right">
-						  		
-						  		<li><a href="about">אודות</a></li>
-							    <li><a href="dashboard">דאשבורד</a></li>
-							    <li><a href="check">בדוק מועמד</a></li>
-							    <li><a href="/">ראשי</a></li>
+						  		<%= nav_link("אודות", about_path) %>
+						  		<%= nav_link("דאשבורד", dashboard_path) %>
+						  		<%= nav_link("בדוק מועמד", check_path) %>
+						  		<%= nav_link("ראשי", root_path) %>
 							</ul>
 				  		</div>
 			  		</div>
