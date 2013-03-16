@@ -1,4 +1,6 @@
 class NomineesController < ApplicationController
+  before_filter :require_login, :only => :new
+  
   # GET /nominees
   # GET /nominees.json
   def index
