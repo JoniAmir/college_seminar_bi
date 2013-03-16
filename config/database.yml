@@ -9,7 +9,7 @@ development:
   encoding: utf8
   host: 127.0.0.1
   username: root
-  password: Boris  
+  password: 
   pool: 5
   timeout: 5000
 
