@@ -3,9 +3,9 @@ College::Application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   get "signup" => "users#new", :as => "signup"
-  resources :users
-  resources :sessions
-  resources :nominees
+  resources :users, only: [ :create, :new ]
+  resources :sessions, only: [ :new, :destroy, :create ]
+  resources :nominees, only: [ :new ] 
 
   # ActiveAdmin.routes(self)
   # devise_for :admin_users, ActiveAdmin::Devise.config
