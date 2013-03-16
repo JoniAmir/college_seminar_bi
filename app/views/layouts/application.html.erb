@@ -9,26 +9,30 @@
 	
 	<body>
 		<header>
-		  <div class="navbar navbar-inverse navbar-fixed-top navbar-inner container-fluid">
-			  <a class="brand" href="#" > 
-					<%= image_tag "brand-img.png" %> WHAT ARE YOUR CHANCES? 
-				</a>
-			  <div class="nav-collapse collapse">
-					<p class="navbar-text pull-right">
-					  מחובר כ<a href="/" class="navbar-link">אורח</a>
-					</p>
-					<ul class="nav">
-					  <li><a href="/">ראשי</a></li>
-					  <li><a href="check">מועמדים</a></li>
-					  <li><a href="dashboard">דאשבורד</a></li>
-					  <li><a href="about">אודות</a></li>
-					</ul>
-			  </div>
-			</div>
+		  	<div class="navbar navbar-inverse navbar-fixed-top navbar-inner pull-right">
+	  			<div class="navbar-inner"/>
+	  				<div class="container">
+				    	<a class="brand" href="#" > 
+							<%= image_tag "brand-img.png" %> WHAT ARE YOUR CHANCES? 
+						</a>
+				    	<div class="nav-collapse collapse">
+							<p class="navbar-text pull-left">
+						  		מחובר כ<a href="/" class="navbar-link">אורח</a>
+							</p>
+							<ul class="nav pull-right">
+						  		<li><a href="about">אודות</a></li>
+							    <li><a href="dashboard">דאשבורד</a></li>
+							    <li><a href="check">מועמדים</a></li>
+							    <li><a href="/">ראשי</a></li>
+							</ul>
+				  		</div>
+			  		</div>
+				</div>
+		    </div>
 	  </header>
 
-	  <section class="container">
-		  <div>
+	  <div>
+		  	<div>
 				<!-- <p class="alert"><%= alert %></p> -->
 				<!-- <p class="notice"><%= notice %></p> -->
 			</div>
@@ -36,7 +40,7 @@
 			<div id="main_container">
 				<%= yield %>
 			</div>
-		</section>
+		</div>
 
 	</body>
 </html>
