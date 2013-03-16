@@ -1,0 +1,83 @@
+class CreateAllInfos < ActiveRecord::Migration
+  def change
+    create_table :all_infos do |t|
+      t.integer :year
+      t.integer :semester
+      t.integer :id_number
+      t.date :birthdate
+      t.integer :age
+      t.string :city
+      t.integer :city_code
+      t.integer :is_a_city
+      t.string :gender
+      t.integer :gender_code
+      t.integer :is_male
+      t.integer :coordinated_grade
+      t.integer :integrated_grade
+      t.integer :sat_grade
+      t.integer :mehina_grade
+      t.integer :english_level
+      t.integer :school_grade
+      t.integer :subject1_grade
+      t.string :subject1_units
+      t.integer :subject2_grade
+      t.integer :subject2_units
+      t.string :group_description
+      t.integer :group_description_code
+      t.integer :is_working
+      t.string :fp_school
+      t.integer :fp_school_code
+      t.string :sp_school
+      t.integer :sp_school_code
+      t.string :tp_school
+      t.integer :tp_school_code
+      t.string :fp_curriculum
+      t.integer :fp_curriculum_code
+      t.string :sp_curriculum
+      t.integer :sp_curriculum_code
+      t.string :tp_curriculum
+      t.integer :tp_curriculum_code
+      t.integer :fp_mazat_code
+      t.string :fp_mazat_display
+      t.integer :sp_mazat_code
+      t.string :sp_mazat_display
+      t.integer :tp_mazat_code
+      t.string :tp_mazat_display
+      t.integer :starting_semester
+      t.integer :droped_out
+      t.integer :did_start
+      t.integer :is_a_graduate
+      t.date :graduation_ceremony_date
+      t.date :graduation_date
+      t.integer :final_grade
+      t.string :graduation_school
+      t.integer :graduation_school_code
+      t.string :g_curriculum
+      t.integer :g_curriculum_code
+      t.integer :ranking
+      t.integer :ranking_total
+      t.integer :graduatep_gender_code
+      t.string :graduatep_gender
+      t.integer :marital_status_code
+      t.string :marital_status
+      t.integer :number_of_children
+      t.integer :second_degree_institute_code
+      t.string :second_degree_institute
+      t.integer :second_degree_start_year
+      t.integer :second_degree_end_year
+      t.integer :second_degree_type_code
+      t.string :second_degree_type
+      t.integer :third_degree_institute_code
+      t.string :third_degree_institute
+      t.integer :third_degree_start_year
+      t.integer :third_degree_end_year
+      t.integer :third_degree_type_code
+      t.string :third_degree_type
+      t.string :current_job
+      t.integer :job_level
+      t.string :current_company
+
+      t.timestamps
+    end
+  end
+end
