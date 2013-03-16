@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
+	before_filter :require_login, :only => :index
 
 	# Display the home page
 	def home

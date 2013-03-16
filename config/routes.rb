@@ -1,5 +1,12 @@
 College::Application.routes.draw do
 
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "login" => "sessions#new", :as => "login"
+  get "signup" => "users#new", :as => "signup"
+  resources :users
+  resources :sessions
+  resources :nominees
+
   # ActiveAdmin.routes(self)
   # devise_for :admin_users, ActiveAdmin::Devise.config
 
@@ -31,7 +38,7 @@ College::Application.routes.draw do
   # resources :students
   # resources :graduate_professions
   # resources :graduates
-  # resources :nominees
+
 
 
 
