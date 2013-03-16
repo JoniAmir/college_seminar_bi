@@ -17,17 +17,34 @@
 
 
 body {
-	background-color:#6bc6c5;
 	text-align: right;
-	padding-top: 60px;
 }
 
 
 .navbar .brand img {
-	height: 30px;
+	height: 25px;
+	margin: 0 10px;
 }
 
 .rtl
 {
 	direction: rtl;
+	text-align: right;
+}
+
+.navbar-inner
+{
+	border: none;
+	padding-right: 0;
+  	padding-left: 0;
+}
+
+.navbar .nav > li > a
+{
+	padding: 10px 25px 10px;
+}
+
+.nav-collapse .nav > li > a:hover
+{
+	text-shadow: #FFFFFF 0 0 10px;
 }
