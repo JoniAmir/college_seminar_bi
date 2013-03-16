@@ -9,6 +9,7 @@ gem 'roo'
 gem 'devise'
 gem 'googlecharts', :require => 'gchart'
 gem 'paperclip'
+gem 'sorcery'
 #gem 'delayed_job'
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302155201) do
+ActiveRecord::Schema.define(:version => 20130316110829) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -123,5 +123,22 @@ ActiveRecord::Schema.define(:version => 20130302155201) do
     t.integer  "group_description_code"
     t.integer  "school_code"
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "username",                        :null => false
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.string   "remember_me_token"
+    t.datetime "remember_me_token_expires_at"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_token_expires_at"
+    t.datetime "reset_password_email_sent_at"
+  end
+
+  add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token"
 
 end
