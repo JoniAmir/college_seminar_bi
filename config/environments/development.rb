@@ -34,9 +34,11 @@ College::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  # Set config level to warnings levels and up
+  config.log_level = :warn
 
-#*-*-*-*-*--*-*-**--*-*-**- CHANGED *-*-**--*-*-*-*-*-*-***-**-*-
+  #*-*-*-*-*--*-*-**--*-*-**- CHANGED *-*-**--*-*-*-*-*-*-***-**-*-
   config.action_controller.perform_caching = true
-#*-*-*-*-*--*-*-**--*-*-**- CHANGED *-*-**--*-*-*-*-*-*-***-**-*-
+  #*-*-*-*-*--*-*-**--*-*-**- CHANGED *-*-**--*-*-*-*-*-*-***-**-*-
 
 end
