@@ -5,27 +5,29 @@
 <body>
 	
 	<div class="jumbotron masthead">
-	  <div class="container">
-	    <h1>WHAT ARE YOUR CHANCES?</h1>
-	    <p>הדרך הטובה ביותר לדעת מה הסיכויים שלך לסיים, להצליח, להתקדם... </br>
-	    	אל תפחד לבדוק את העתיד!</p>
-	  </div>
+	  	<div class="container">
+	    	<h1>WHAT ARE YOUR CHANCES?</h1>
+	    	<p>הדרך הטובה ביותר לדעת מה הסיכויים שלך לסיים, להצליח, להתקדם... </br>
+	    		אל תפחד לבדוק את העתיד!</p>
+	  	</div>
 
-	  <%= form_tag sessions_path do %>
-	    <div class="field">
-	      <%= label_tag "שם משתמש" %>
-	      <%= text_field_tag :username, params[:email] %>
-	    </div>
-	    <div class="field">
-	      <%= label_tag "ססמא" %>
-	      <%= password_field_tag :password %>
-	    </div>
-	    <div class="field">
-	      <%= check_box_tag :remember_me, 1, params[:remember_me] %>
-	      <%= label_tag "זכור אותי" %>
-	    </div>
-	    <div class="actions"><%= submit_tag "התחבר" %></div>
-	  <% end %>
+  	 	<div class="container">
+		  <%= form_tag sessions_path do %>
+		    <div class="field">
+		      <%= label_tag "שם משתמש" %>
+		      <%= text_field_tag :username, params[:email] %>
+		    </div>
+		    <div class="field">
+		      <%= label_tag "ססמא" %>
+		      <%= password_field_tag :password %>
+		    </div>
+		    <div class="field">
+		      <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+		      <%= label_tag "זכור אותי" %>
+		    </div>
+		    <div class="actions"><%= submit_tag "התחבר" %></div>
+		  <% end %>
+		</div>
 	  
 	</div>
 	
