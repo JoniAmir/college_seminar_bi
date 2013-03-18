@@ -19,4 +19,4 @@
 *.sublime-project
 *.sublime-workspace
 *.DS_Store
-/config/database.yml
+*.yml
