@@ -8,7 +8,7 @@ class DashboardController < ApplicationController
 
 
 	# Show all the general graphs and statistics
-	def index
+	def show_dashboard
 
 	end
 

@@ -48,8 +48,15 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.5.0)
+    columnize (0.3.6)
     daemons (1.1.9)
     debug_inspector (0.0.2)
+    debugger (1.5.0)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.0)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.0)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -80,6 +87,7 @@ GEM
     meta_request (0.2.2)
       rack-contrib
       railties
+    method_source (0.8.1)
     mime-types (1.21)
     multi_json (1.6.1)
     multipart-post (1.2.0)
@@ -98,6 +106,18 @@ GEM
     pg (0.14.1)
     pg (0.14.1-x86-mingw32)
     polyglot (0.3.3)
+    pry (0.9.12)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    pry (0.9.12-x86-mingw32)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+      win32console (~> 1.3)
+    pry-debugger (0.2.2)
+      debugger (~> 1.3)
+      pry (~> 0.9.10)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -139,6 +159,7 @@ GEM
     sextant (0.2.3)
       activesupport (>= 3.2)
       rails (>= 3.2)
+    slop (3.4.4)
     sorcery (0.8.1)
       bcrypt-ruby (~> 3.0.0)
       oauth (~> 0.4.4)
@@ -165,6 +186,7 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
+    win32console (1.3.2-x86-mingw32)
 
 PLATFORMS
   ruby
@@ -181,6 +203,8 @@ DEPENDENCIES
   meta_request
   mysql2
   pg
+  pry
+  pry-debugger
   rails
   roo
   sass-rails (~> 3.2.3)

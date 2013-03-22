@@ -16,7 +16,7 @@ College::Application.routes.draw do
   # First priority
   root :to => "dashboard#home"
   match 'check' => 'nominees#new'
-  match 'dashboard' => 'dashboard#index'
+  match 'dashboard' => 'dashboard#show_dashboard'
   match 'about' => "dashboard#about"
   
   

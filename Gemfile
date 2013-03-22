@@ -9,6 +9,7 @@ gem 'roo'
 gem 'devise'
 gem 'googlecharts', :require => 'gchart'
 gem 'sorcery'
+gem 'pry'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,6 +27,7 @@ group :development do
 	gem 'better_errors'
 	gem 'binding_of_caller'
 	gem 'thin'
+	gem 'pry-debugger'
 end
 
 
