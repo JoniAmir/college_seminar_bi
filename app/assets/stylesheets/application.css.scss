@@ -59,32 +59,17 @@ section
     padding-top: 0;
 }
 
+#main_container
+{
+	height: 100%;
+}
+
 .content-holder
 {
 	padding: 30px 10px;
 	direction: rtl;
 	margin: 0 20px;
 	width: auto;
-}
-
-.masthead h1 
-{
-	font-size: 80px;
-	text-shadow: #FFFFFF 0 0 15px;
-}
-
-.masthead .container
-{
-	padding: 30px 0px 30px;
-}
-
-.masthead
-{
-	padding-bottom: 2000px;
-	margin-bottom: -2000px;
-	min-height: 100%;
-	height: 100%;
-	overflow: hidden;
 }
 
 body
