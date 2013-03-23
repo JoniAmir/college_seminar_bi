@@ -38,7 +38,7 @@ College::Application.configure do
   config.log_level = :warn
 
   #*-*-*-*-*--*-*-**--*-*-**- CHANGED *-*-**--*-*-*-*-*-*-***-**-*-
-  config.action_controller.perform_caching = true
+  config.action_controller.perform_caching = false
   #*-*-*-*-*--*-*-**--*-*-**- CHANGED *-*-**--*-*-*-*-*-*-***-**-*-
 
 end

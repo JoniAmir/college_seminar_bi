@@ -1,3 +1,4 @@
+// graduates by grade range
 $(function () {
     var chart;
     $(document).ready(function() {
@@ -6,7 +7,8 @@ $(function () {
                 renderTo: 'grades_range_chart',
                 plotBackgroundColor: null,
                 plotBorderWidth: null,
-                plotShadow: true
+                plotShadow: true,
+                type: 'pie'
             },
             title: {
                 text: 'פילוח לפי טווח ציוני סיום'
@@ -20,19 +22,116 @@ $(function () {
                     allowPointSelect: true,
                     cursor: 'pointer',
                     dataLabels: {
-                        enabled: true,
                         color: '#000000',
-                        connectorColor: '#000000'
-                        
+                        connectorColor: '#000000',
+                        enabled: true
                     },
                     percentageDecimals: 1
                 }
             },
             series: [{
-                type: 'pie',
                 name: 'טווח ציונים',
-                data: <%= StatRowsHelper::grades_range_pie(StatRow.all) %>
+                data: <%= StatRowsHelper::grades_range %>
             }]
         });
+    }); 
+});
+
+// graduates by period
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'graduates_by_year_chart',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: true,
+                type: 'line'
+            },
+            title: {
+                text: 'סטודנטים לפי שנה'
+            },
+            yAxis: [{ 
+                title: {
+                    text: 'סטודנטים'
+                },
+                min: 0 
+            }],
+            xAxis: [{ 
+                title: {
+                    text: 'שנה'
+                },
+                allowDecimals: false,
+            }],
+            legend: {
+                enabled: true,
+                rtl: true
+            },
+            tooltip: {
+                pointFormat: '<b>{point.y}</b>'
+            },
+            plotOptions: {
+                line: {
+                    enableMouseTracking: true
+                }
+            },
+            series: [{
+                name: 'מתחילים',
+                data: <%= StatRowsHelper::graduates_by_period %>
+            }, {
+                name: 'בוגרים',
+                data: <%= StatRowsHelper::beginners_by_period %>
+            }]
+        });
+    }); 
+});
+
+// grades scattered (dots)
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'grades_dots_chart',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: true,
+                type: 'scatter'            
+            },
+            title: {
+                text: 'פיזור ציונים בבי"ס למדעי המחשב'
+            },
+            yAxis: [{ 
+                title: {
+                    text: 'ציון מתואם (פסיכומטרי+בגרויות)'
+                }
+            }],
+            xAxis: [{ 
+                title: {
+                    text: 'ציון סופי'
+                }
+            }],
+            legend: {
+                enabled: true,
+                rtl: true
+            },
+            tooltip: {
+                pointFormat: '{point.x},{point.y}'
+            },
+            series: [{
+                name: 'התנהגות',
+                data: <%= StatRowsHelper::grade_combination(1) %>
+            }, {
+                name: 'מדעי המחשב',
+                data: <%= StatRowsHelper::grade_combination(2) %>
+            }, {
+                name: 'ממשל וחברה',
+                data: <%= StatRowsHelper::grade_combination(3) %>
+            }, {
+                name: 'כלכלה וניהול',
+                data: <%= StatRowsHelper::grade_combination(4) %>
+            }]
+        });  
     }); 
 });

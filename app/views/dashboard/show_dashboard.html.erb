@@ -1,35 +1,20 @@
-<div class="jumbotron" id="index_page">
+<div dir="rtl" class="jumbotron" id="index_page">
   	
-	<div class="container">
-  	<h2>דוחות להנאתך</h2>
-	</div>
-
-
 	<div class="content-holder container">
 		
 		<div class="row-fluid">
-			<div id="grades_range_chart" class="span6 graph">
-			</div>
-			<div class="span6 graph">
-				
-			</div>
+			<div id="grades_range_chart" class="span6 graph"></div>
+			<div id="graduates_by_year_chart" class="span6 graph"></div>
 		</div>
 
 		<div class="row-fluid">
-			<div class="span6"></div>
-			<div class="span6"></div>
+			<div class="span6 graph"></div>
+			<div class="span6 graph"></div>
 		</div>
 
 		<div class="row-fluid">
-			<div class="span6 graph">
-				<%= @line=Gchart.line(:data => [0, 40, 10, 70, 20], :title => 'Pretty')
-				 image_tag(@line) %>
-			</div>
-			<div class="span6 graph">
-			<%= @line=Gchart.line(:data => [0, 40, 10, 70, 20], :title => 'Smelly')
-				 image_tag(@line) %>
-			</div>
+			<div id="grades_dots_chart" class="span12 graph"></div>
 		</div>
-	</div>
 	
+	</div>
 </div>
