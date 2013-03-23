@@ -1,3 +1,5 @@
+
+
 // graduates by grade range
 $(function () {
     var chart;
@@ -87,7 +89,8 @@ $(function () {
     }); 
 });
 
-// grades scattered (dots)
+
+// graduatesdes scattered (dots)
 $(function () {
     var chart;
     $(document).ready(function() {
@@ -135,3 +138,141 @@ $(function () {
         });  
     }); 
 });
+
+
+// students by year
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'graduates_by_year_chart',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: true,
+                type: 'line'
+            },
+            title: {
+                text: 'סטודנטים לפי שנה'
+            },
+            yAxis: [{ 
+                title: {
+                    text: 'סטודנטים'
+                },
+                min: 0 
+            }],
+            xAxis: [{ 
+                title: {
+                    text: 'שנה'
+                },
+                allowDecimals: false,
+            }],
+            legend: {
+                enabled: true,
+                rtl: true
+            },
+            tooltip: {
+                pointFormat: '<b>{point.y}</b>'
+            },
+            plotOptions: {
+                line: {
+                    enableMouseTracking: true
+                }
+            },
+            series: [{
+                name: 'מתחילים',
+                data: <%= StatRowsHelper::graduates_by_period %>
+            }, {
+                name: 'בוגרים',
+                data: <%= StatRowsHelper::beginners_by_period %>
+            }]
+        });
+    }); 
+});
+
+
+// job level and whetever working in profession
+$(function () {
+    var colors = Highcharts.getOptions().colors,
+    job_level_data = [],
+    job_level_rows = <%= StatRowsHelper::job_level %>,
+    working_in_subject_data = [],
+    working_in_subject_rows = <%= StatRowsHelper::working_in_subject %>;
+
+    for (var i = 0; i < job_level_rows.length; i++) {
+        // add browser data
+        job_level_data.push({
+            name: job_level_rows[i][0],
+            y: job_level_rows[i][1],
+            color: colors[i]
+        });
+    }
+
+    // add version data
+    for (var j = 0; j < working_in_subject_rows.length; j++) {
+        var brightness = 0.2 - (j / working_in_subject_rows.length) / 4 ;
+        working_in_subject_data.push({
+            name: working_in_subject_rows[j][0],
+            y: working_in_subject_rows[j][1],
+            color: Highcharts.Color(colors[working_in_subject_rows[j][2]]).brighten(brightness).get()
+        });
+    }
+
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'job_level_chart',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: true,
+                type: 'pie'
+            },
+            title: {
+                text: 'פילוח לפי רמת עיסוק'
+            },
+            xAxis: [{ 
+                title: {
+                    text: 'מועסק במקצוע'
+                }
+            }],
+            yAxis: [{ 
+                title: {
+                    text: 'רמת תעסוקה'
+                }
+            }],
+            legend: {
+                enabled: true,
+                rtl: true
+            },
+            tooltip: {
+                pointFormat: '<b>{point.y}</b>'
+            },
+            plotOptions: {
+                pie: {
+                    shadow: false,
+                    center: ['50%', '50%'],
+                    allowPointSelect: true
+                }
+            },
+            series: [{
+                name: 'רמת תפקיד',
+                size: '60%',
+                data: job_level_data,
+                dataLabels: {
+                    formatter: function() {
+                        return this.point.name;
+                    },
+                    color: 'white',
+                    distance: -30
+                }
+            }, {
+                name: 'עובד במקצוע',
+                data: working_in_subject_data,
+                size: '80%',
+                innerSize: '60%',
+            }]
+        });
+    }); 
+});
+
