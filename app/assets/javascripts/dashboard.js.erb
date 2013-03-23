@@ -1,0 +1,38 @@
+$(function () {
+    var chart;
+    $(document).ready(function() {
+        chart = new Highcharts.Chart({
+            chart: {
+                renderTo: 'grades_range_chart',
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: true
+            },
+            title: {
+                text: 'פילוח לפי טווח ציוני סיום'
+            },
+            tooltip: {
+                pointFormat: '{point.percentage}%',
+                percentageDecimals: 2,
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        color: '#000000',
+                        connectorColor: '#000000'
+                        
+                    },
+                    percentageDecimals: 1
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'טווח ציונים',
+                data: <%= StatRowsHelper::grades_range_pie(StatRow.all) %>
+            }]
+        });
+    }); 
+});

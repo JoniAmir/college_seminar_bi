@@ -12,6 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap/bootstrap.js
+//= require bootstrap.js
+//= require highcharts.js
 //= require_tree .
-

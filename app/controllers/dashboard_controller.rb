@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-	before_filter :require_login, :only => :index
+	before_filter :require_login, :only => :show_dashboard
 
 	# Display the home page
 	def home
@@ -17,4 +17,11 @@ class DashboardController < ApplicationController
 	def about
 
 	end
+
+
+	def generate_gender_grade_graph
+		
+	end
+
+
 end

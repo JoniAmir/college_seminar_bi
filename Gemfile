@@ -28,6 +28,7 @@ group :development do
 	gem 'binding_of_caller'
 	gem 'thin'
 	gem 'pry-debugger'
+	gem 'pry-rails'
 end
 
 

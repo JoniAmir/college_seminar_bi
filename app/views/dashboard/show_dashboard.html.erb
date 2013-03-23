@@ -8,13 +8,10 @@
 	<div class="content-holder container">
 		
 		<div class="row-fluid">
-			<div class="span6 graph">
-				<%= @bar= Gchart.bar(:data => [300, 100, 30, 200, 10, 100], :title => 'Noisy') 
-				image_tag(@bar) %>
+			<div id="grades_range_chart" class="span6 graph">
 			</div>
 			<div class="span6 graph">
-				<%= @pie=Gchart.pie_3d(:data => [20, 35, 45], :title => 'Steamy')
-				 image_tag(@pie) %>
+				
 			</div>
 		</div>
 
