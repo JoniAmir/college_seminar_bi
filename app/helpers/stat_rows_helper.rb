@@ -39,16 +39,16 @@ module StatRowsHelper
 
 
   def self.job_level
-  	rows = StatRow.where("job_level is not null and work_in_profession is not null").group("job_level").select("job_level, count(*) as amount")
+  	rows = StatRow.where("job_level_code is not null and work_in_profession is not null and job_level_code != 6").group("job_level,job_level_code").select("job_level, job_level_code, count(*) as amount").order("job_level_code")
   	rows.map do |row|
-      [row.job_level.to_i, row.amount.to_i]
+      [row.job_level, row.amount.to_i]
    	end
   end
 
   def self.working_in_subject
-  	rows = StatRow.where("job_level is not null and work_in_profession is not null").group("job_level, work_in_profession").select("job_level, work_in_profession, count(*) as amount").order("job_level, work_in_profession")
+  	rows = StatRow.where("job_level_code is not null and work_in_profession is not null and job_level_code != 6").group("job_level,job_level_code, work_in_profession").select("job_level, job_level_code, work_in_profession, count(*) as amount").order("job_level_code, work_in_profession")
   	rows.map do |row|
-      [(row.work_in_profession.to_i == 0) ? "Yes" : "No", row.amount.to_i, row.job_level]
+      [row.work_in_profession.to_i, row.amount.to_i, row.job_level_code]
    	end
   end  
 

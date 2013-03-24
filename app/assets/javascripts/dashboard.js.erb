@@ -200,7 +200,7 @@ $(function () {
     working_in_subject_rows = <%= StatRowsHelper::working_in_subject %>;
 
     for (var i = 0; i < job_level_rows.length; i++) {
-        // add browser data
+        // Add job level inner circle
         job_level_data.push({
             name: job_level_rows[i][0],
             y: job_level_rows[i][1],
@@ -208,11 +208,11 @@ $(function () {
         });
     }
 
-    // add version data
+    // Add working in subject outer circle
     for (var j = 0; j < working_in_subject_rows.length; j++) {
         var brightness = 0.2 - (j / working_in_subject_rows.length) / 4 ;
         working_in_subject_data.push({
-            name: working_in_subject_rows[j][0],
+            name: working_in_subject_rows[j][0] ? 'כן' : 'לא',
             y: working_in_subject_rows[j][1],
             color: Highcharts.Color(colors[working_in_subject_rows[j][2]]).brighten(brightness).get()
         });
@@ -229,7 +229,7 @@ $(function () {
                 type: 'pie'
             },
             title: {
-                text: 'פילוח לפי רמת עיסוק'
+                text: 'פילוח לפי רמת עיסוק והאם עובד במקצוע'
             },
             xAxis: [{ 
                 title: {
@@ -240,13 +240,21 @@ $(function () {
                 title: {
                     text: 'רמת תעסוקה'
                 }
+
             }],
             legend: {
                 enabled: true,
                 rtl: true
             },
             tooltip: {
-                pointFormat: '<b>{point.y}</b>'
+                formatter: function() {
+
+                return '<b>'+ this.point.series.name + '-' +
+                    this.point.name + '-' + this.point.y + '</b>';
+                },
+                rtl: true,
+                animation: false
+
             },
             plotOptions: {
                 pie: {
@@ -275,4 +283,8 @@ $(function () {
         });
     }); 
 });
+
+
+
+
 
