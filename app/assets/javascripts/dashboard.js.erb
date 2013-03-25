@@ -1,290 +1,333 @@
 
-
 // graduates by grade range
 $(function () {
-    var chart;
-    $(document).ready(function() {
-        chart = new Highcharts.Chart({
-            chart: {
-                renderTo: 'grades_range_chart',
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: true,
-                type: 'pie'
-            },
-            title: {
-                text: 'פילוח לפי טווח ציוני סיום'
-            },
-            tooltip: {
-                pointFormat: '{point.percentage}%',
-                percentageDecimals: 2,
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        color: '#000000',
-                        connectorColor: '#000000',
-                        enabled: true
-                    },
-                    percentageDecimals: 1
-                }
-            },
-            series: [{
-                name: 'טווח ציונים',
-                data: <%= StatRowsHelper::grades_range %>
-            }]
-        });
-    }); 
-});
-
-// graduates by period
-$(function () {
-    var chart;
-    $(document).ready(function() {
-        chart = new Highcharts.Chart({
-            chart: {
-                renderTo: 'graduates_by_year_chart',
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: true,
-                type: 'line'
-            },
-            title: {
-                text: 'סטודנטים לפי שנה'
-            },
-            yAxis: [{ 
-                title: {
-                    text: 'סטודנטים'
-                },
-                min: 0 
-            }],
-            xAxis: [{ 
-                title: {
-                    text: 'שנה'
-                },
-                allowDecimals: false,
-            }],
-            legend: {
-                enabled: true,
-                rtl: true
-            },
-            tooltip: {
-                pointFormat: '<b>{point.y}</b>'
-            },
-            plotOptions: {
-                line: {
-                    enableMouseTracking: true
-                }
-            },
-            series: [{
-                name: 'מתחילים',
-                data: <%= StatRowsHelper::graduates_by_period %>
-            }, {
-                name: 'בוגרים',
-                data: <%= StatRowsHelper::beginners_by_period %>
-            }]
-        });
-    }); 
-});
-
-
-// graduatesdes scattered (dots)
-$(function () {
-    var chart;
-    $(document).ready(function() {
-        chart = new Highcharts.Chart({
-            chart: {
-                renderTo: 'grades_dots_chart',
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: true,
-                type: 'scatter'            
-            },
-            title: {
-                text: 'פיזור ציונים בבי"ס למדעי המחשב'
-            },
-            yAxis: [{ 
-                title: {
-                    text: 'ציון סופי'
-                }
-            }],
-            xAxis: [{ 
-                title: {
-                    text: 'ציון מתואם (פסיכומטרי+בגרויות)1'
-                }
-            }],
-            legend: {
-                enabled: true,
-                rtl: true
-            },
-            tooltip: {
-                pointFormat: '{point.x},{point.y}'
-            },
-            series: [{
-                name: 'התנהגות',
-                data: <%= StatRowsHelper::grade_combination(1) %>
-            }, {
-                name: 'מדעי המחשב',
-                data: <%= StatRowsHelper::grade_combination(2) %>
-            }, {
-                name: 'ממשל וחברה',
-                data: <%= StatRowsHelper::grade_combination(3) %>
-            }, {
-                name: 'כלכלה וניהול',
-                data: <%= StatRowsHelper::grade_combination(4) %>
-            }]
-        });  
-    }); 
+	var chart;
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'grades_range_chart',
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: true,
+				type: 'pie'
+			},
+			title: {
+				text: 'פילוח לפי טווח ציוני סיום'
+			},
+			tooltip: {
+				pointFormat: 'יש {point.y} סטודנטים המהווים {point.percentage}%',
+				style: {
+					fontSize: '16px',
+					align: 'right'
+				},
+				percentageDecimals: 2
+			},
+			plotOptions: {
+				pie: {
+					allowPointSelect: true,
+					cursor: 'pointer',
+					dataLabels: {
+						color: '#000000',
+						connectorColor: '#000000',
+						enabled: true
+					},
+					percentageDecimals: 1
+				}
+			},
+			series: [{
+				name: 'טווח ציונים',
+				data: <%= StatRowsHelper::grades_range %>
+			}]
+		});
+	}); 
 });
 
 
 // students by year
 $(function () {
-    var chart;
-    $(document).ready(function() {
-        chart = new Highcharts.Chart({
-            chart: {
-                renderTo: 'graduates_by_year_chart',
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: true,
-                type: 'line'
-            },
-            title: {
-                text: 'סטודנטים לפי שנה'
-            },
-            yAxis: [{ 
-                title: {
-                    text: 'סטודנטים'
-                },
-                min: 0 
-            }],
-            xAxis: [{ 
-                title: {
-                    text: 'שנה'
-                },
-                allowDecimals: false,
-            }],
-            legend: {
-                enabled: true,
-                rtl: true
-            },
-            tooltip: {
-                pointFormat: '<b>{point.y}</b>'
-            },
-            plotOptions: {
-                line: {
-                    enableMouseTracking: true
-                }
-            },
-            series: [{
-                name: 'מתחילים',
-                data: <%= StatRowsHelper::graduates_by_period %>
-            }, {
-                name: 'בוגרים',
-                data: <%= StatRowsHelper::beginners_by_period %>
-            }]
-        });
-    }); 
+	var chart;
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'graduates_by_year_chart',
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: true,
+				type: 'line'
+			},
+			title: {
+				text: 'סטודנטים לפי שנה'
+			},
+			yAxis: [{ 
+				title: {
+					text: 'סטודנטים'
+				},
+				min: 0 
+			}],
+			xAxis: [{ 
+				title: {
+					text: 'שנה'
+				},
+				allowDecimals: false,
+			}],
+			legend: {
+				enabled: true,
+				rtl: true
+			},
+			tooltip: {
+				pointFormat: '{series.name}: {point.y}',
+				style: {
+					fontSize: '16px',
+					align: 'right'
+				}
+			},
+			plotOptions: {
+				line: {
+					enableMouseTracking: true
+				}
+			},
+			series: [{
+				name: 'בוגרים',
+				data: <%= StatRowsHelper::graduates_by_period %>
+			}, {
+				name: 'מתחילים',
+				data: <%= StatRowsHelper::beginners_by_period %>
+			}]
+		});
+	}); 
 });
 
 
-// job level and whetever working in profession
+// graduates dots chart
 $(function () {
-    var colors = Highcharts.getOptions().colors,
-    job_level_data = [],
-    job_level_rows = <%= StatRowsHelper::job_level %>,
-    working_in_subject_data = [],
-    working_in_subject_rows = <%= StatRowsHelper::working_in_subject %>;
+	var chart;
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'grades_dots_chart',
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: true,
+				type: 'scatter'            
+			},
+			title: {
+				text: 'פיזור ציונים בבי"ס למדעי המחשב'
+			},
+			yAxis: [{ 
+				title: {
+					text: 'ציון ממוצע בתואר'
+				}
+			}],
+			xAxis: [{ 
+				title: {
+					text: 'ציון משוקלל ( פסיכמוטרי ובגרויות )ו'
+				}
+			}],
+			legend: {
+				enabled: true,
+				rtl: true
+			},
+			series: [{
+				name: 'התנהגות',
+				data: <%= StatRowsHelper::grade_combination(1) %>
+			}, {
+				name: 'מדעי המחשב',
+				data: <%= StatRowsHelper::grade_combination(2) %>
+			}, {
+				name: 'ממשל וחברה',
+				data: <%= StatRowsHelper::grade_combination(3) %>
+			}, {
+				name: 'כלכלה וניהול',
+				data: <%= StatRowsHelper::grade_combination(4) %>
+			}]
+		});  
+	}); 
+});
 
-    for (var i = 0; i < job_level_rows.length; i++) {
-        // Add job level inner circle
-        job_level_data.push({
-            name: job_level_rows[i][0],
-            y: job_level_rows[i][1],
-            color: colors[i]
-        });
-    }
 
-    // Add working in subject outer circle
-    for (var j = 0; j < working_in_subject_rows.length; j++) {
-        var brightness = 0.2 - (j / working_in_subject_rows.length) / 4 ;
-        working_in_subject_data.push({
-            name: working_in_subject_rows[j][0] ? 'כן' : 'לא',
-            y: working_in_subject_rows[j][1],
-            color: Highcharts.Color(colors[working_in_subject_rows[j][2]]).brighten(brightness).get()
-        });
-    }
+// job level chart
+$(function () {
+	var colors = Highcharts.getOptions().colors,
+	job_level_data = [],
+	job_level_rows = <%= StatRowsHelper::job_level %>,
+	working_in_subject_data = [],
+	working_in_subject_rows = <%= StatRowsHelper::working_in_subject %>;
 
-    var chart;
-    $(document).ready(function() {
-        chart = new Highcharts.Chart({
-            chart: {
-                renderTo: 'job_level_chart',
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: true,
-                type: 'pie'
-            },
-            title: {
-                text: 'פילוח לפי רמת עיסוק והאם עובד במקצוע'
-            },
-            xAxis: [{ 
-                title: {
-                    text: 'מועסק במקצוע'
-                }
-            }],
-            yAxis: [{ 
-                title: {
-                    text: 'רמת תעסוקה'
-                }
+	for (var i = 0; i < job_level_rows.length; i++) {
+		// Add job level inner circle
+		job_level_data.push({
+			name: job_level_rows[i][0],
+			y: job_level_rows[i][1],
+			color: colors[i]
+		});
+	}
 
-            }],
-            legend: {
-                enabled: true,
-                rtl: true
-            },
-            tooltip: {
-                formatter: function() {
+	// Add working in subject outer circle
+	for (var j = 0; j < working_in_subject_rows.length; j++) {
+		var brightness = 0.2 - (j / working_in_subject_rows.length) / 4 ;
+		working_in_subject_data.push({
+			name: working_in_subject_rows[j][0] ? 'כן' : 'לא',
+			y: working_in_subject_rows[j][1],
+			color: Highcharts.Color(colors[working_in_subject_rows[j][2]]).brighten(brightness).get()
+		});
+	}
 
-                return '<b>'+ this.point.series.name + '-' +
-                    this.point.name + '-' + this.point.y + '</b>';
-                },
-                rtl: true,
-                animation: false
+	var chart;
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'job_level_chart',
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: true,
+				type: 'pie'
+			},
+			title: {
+				text: 'פילוח לפי רמת עיסוק והאם עובד במקצוע'
+			},
+			xAxis: [{ 
+				title: {
+					text: 'מועסק במקצוע'
+				}
+			}],
+			yAxis: [{ 
+				title: {
+					text: 'רמת תעסוקה'
+				}
 
-            },
-            plotOptions: {
-                pie: {
-                    shadow: false,
-                    center: ['50%', '50%'],
-                    allowPointSelect: true
-                }
-            },
-            series: [{
-                name: 'רמת תפקיד',
-                size: '60%',
-                data: job_level_data,
-                dataLabels: {
-                    formatter: function() {
-                        return this.point.name;
-                    },
-                    color: 'white',
-                    distance: -30
-                }
-            }, {
-                name: 'עובד במקצוע',
-                data: working_in_subject_data,
-                size: '80%',
-                innerSize: '60%',
-            }]
-        });
-    }); 
+			}],
+			legend: {
+				enabled: true,
+				rtl: true
+			},
+			tooltip: {
+				formatter: function() {
+
+				return this.point.name + '<br> ' +
+								this.point.percentage.toFixed(0) +'%';
+				},
+				style: {
+					fontSize: '16px'				
+				}
+			},
+			plotOptions: {
+				pie: {
+					shadow: false,
+					center: ['50%', '50%'],
+					allowPointSelect: true
+				}
+			},
+			series: [{
+				name: 'רמת תפקיד',
+				size: '60%',
+				data: job_level_data,
+				dataLabels: {
+					formatter: function() {
+						return this.point.name;
+					},
+					color: 'white',
+					distance: -30
+				}
+			}, {
+				name: 'עובד במקצוע',
+				data: working_in_subject_data,
+				size: '80%',
+				innerSize: '60%',
+			}]
+		});
+	}); 
 });
 
 
 
+
+// students by year
+$(function () {
+	var chart;
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'grades_by_school_chart',
+				plotBackgroundColor: null,
+				plotBorderWidth: null,
+				plotShadow: true,
+				type: 'column'
+			},
+			title: {
+				text: 'פיולח ציונים לפי בית ספר'
+			},
+			yAxis: [{ 
+				title: {
+					text: 'טווח ציונים'
+				},
+				min: 0 
+			}],
+			xAxis: [{ 
+				title: {
+					text: 'בית ספר'
+				},
+        labels: {
+            formatter: function() {
+                return <%= StatRowsHelper::grades_by_school(2)%>[this.value][0].toString()
+            }
+        },
+				allowDecimals: false,
+			}],
+			legend: {
+				enabled: true,
+				rtl: true
+			},
+			tooltip: {
+				pointFormat: '{series.name}: {point.y} בטווח זה {point.x}',
+				style: {
+					fontSize: '16px',
+					align: 'right'
+				}
+			},
+			plotOptions: {
+				line: {
+					enableMouseTracking: true
+				}
+			},
+			series: [{
+				name: 'התנהגות',
+				data: <%= StatRowsHelper::grades_by_school(1) %>,
+				dataLabels: {
+				  enabled: true,
+				  formatter: function() {
+				     return this.y;
+				  }
+				} 
+			}, {
+				name: 'מדעי המחשב',
+				data: <%= StatRowsHelper::grades_by_school(2) %>,
+				dataLabels: {
+				  enabled: true,
+				  formatter: function() {
+				     return this.y;
+				  }
+				} 
+			}, {
+				name: 'ממשל וחברה',
+				data: <%= StatRowsHelper::grades_by_school(3) %>,
+				dataLabels: {
+				  enabled: true,
+				  formatter: function() {
+				     return this.y;
+				  }
+				} 
+			}, {
+				name: 'כלכלה וניהול',
+				data: <%= StatRowsHelper::grades_by_school(4) %>,
+				dataLabels: {
+				  enabled: true,
+				  formatter: function() {
+				     return this.y;
+				  }
+				} 
+			}]
+		});
+	}); 
+});
 
 

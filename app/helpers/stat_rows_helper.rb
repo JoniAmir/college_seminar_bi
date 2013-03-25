@@ -2,7 +2,7 @@ module StatRowsHelper
 
 	@rows = StatRow.all
 
-	# Graph grades_range_chart
+	# Chart 1
   def self.grades_range
   	
   	group_size = 5
@@ -13,23 +13,26 @@ module StatRowsHelper
    	end
   end
 
-  # Graph graduates_by_year_chart
-  def self.graduates_by_period
-		rows = StatRow.where('graduation_date is not null').group("YEAR(graduation_date)").select("YEAR(graduation_date) as year, count(*) as amount")
-    rows.map do |row|
-      [row.year, row.amount]
-   	end
-  end
 
-  #Graph graduates_by_year_chart
+
+  # Chart 2
   def self.beginners_by_period
-  	rows = StatRow.group("year").select("year, count(*) as amount")
+    rows = StatRow.group("year").select("year, count(*) as amount")
+    rows.map do |row|
+      [row.year, row.amount]
+    end
+  end
+
+  def self.graduates_by_period
+		rows = StatRow.where("graduation_date is not null AND YEAR(graduation_date) between 2006 and 2011").group("YEAR(graduation_date)").select("YEAR(graduation_date) as year, count(*) as amount")
     rows.map do |row|
       [row.year, row.amount]
    	end
   end
 
-  # Graph grades_dots_chart
+
+
+  # Chart 3
   def self.grade_combination(school_code)
   	rows = StatRow.where('final_grade is not null AND integrated_grade is not null AND graduation_school_code = ?', school_code).select("integrated_grade, final_grade")
     rows.map do |row|
@@ -38,6 +41,8 @@ module StatRowsHelper
   end
 
 
+
+  # Chart 4
   def self.job_level
   	rows = StatRow.where("job_level_code is not null and work_in_profession is not null and job_level_code != 6").group("job_level,job_level_code").select("job_level, job_level_code, count(*) as amount").order("job_level_code")
   	rows.map do |row|
@@ -53,5 +58,15 @@ module StatRowsHelper
   end  
 
 
+
+  # Chart 5
+  def self.grades_by_school(school_code)
+    group_size = 5
+    rows = StatRow.where('final_grade is not null AND graduation_school_code = ?', school_code).group("final_grade - (final_grade % #{group_size})").select("final_grade - (final_grade % #{group_size}) as finali_grade, count(*) as students_count")
+    rows.map do |grade_range|
+      range = grade_range.finali_grade.to_s + "-" + (grade_range.finali_grade + 5).to_s
+      [range.to_s, grade_range.students_count.to_i]
+    end
+  end
 
 end

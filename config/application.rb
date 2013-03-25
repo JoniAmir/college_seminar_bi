@@ -62,6 +62,16 @@ module College
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false
-    
+
+    # before_filter :set_cache_buster
+
+	# def set_cache_buster
+	# 	if Rails.env.development?
+	# 	  response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
+	# 	  response.headers["Pragma"] = "no-cache"
+	# 	  response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+	# 	end
+	# end
+
   end
 end
