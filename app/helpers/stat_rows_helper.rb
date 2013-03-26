@@ -7,10 +7,12 @@ module StatRowsHelper
   	
   	group_size = 5
 		rows = StatRow.where('final_grade is not null').group("final_grade - (final_grade % #{group_size})").select("final_grade - (final_grade % #{group_size}) as finali_grade, count(*) as students_count")
-    rows.map do |grade_range|
+    res = rows.map do |grade_range|
       range = grade_range.finali_grade.to_s + "-" + (grade_range.finali_grade + 5).to_s
       [range, grade_range.students_count.to_i]
    	end
+    
+    self.complete_grade_range(Hash[res])
   end
 
 
@@ -63,10 +65,28 @@ module StatRowsHelper
   def self.grades_by_school(school_code)
     group_size = 5
     rows = StatRow.where('final_grade is not null AND graduation_school_code = ?', school_code).group("final_grade - (final_grade % #{group_size})").select("final_grade - (final_grade % #{group_size}) as finali_grade, count(*) as students_count")
-    rows.map do |grade_range|
+    temp = rows.map do |grade_range|
       range = grade_range.finali_grade.to_s + "-" + (grade_range.finali_grade + 5).to_s
       [range.to_s, grade_range.students_count.to_i]
     end
+
+    temp = self.complete_grade_range(Hash[temp])    
+    res = []
+    temp.map do |s|
+      res << s[1]
+    end
+    res
+  end
+
+
+  protected
+
+  def self.complete_grade_range(ranges)    
+    (65..95).step(5) do |i|
+      range = i.to_s + "-" + (i+5).to_s
+      ranges[range] = 0 if ranges[range].nil?
+    end
+    ranges.sort
   end
 
 end
