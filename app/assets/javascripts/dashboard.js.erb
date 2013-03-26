@@ -240,8 +240,7 @@ $(function () {
 
 
 
-
-// students by year
+// grade range by school
 $(function () {
 	var chart;
 	$(document).ready(function() {
@@ -251,23 +250,23 @@ $(function () {
 				type: 'column'
 			},
 			title: {
-				text: 'פיולח ציונים לפי בית ספר'
+				text: 'פילוח ציונים לפי בית ספר'
 			},
 			yAxis: [{ 
 				title: {
-					text: 'כמות סטודנטים לפי טווח ציונים'
+					text: 'כמות סטודנטים לכל בית ספר'
 				},
 				min: 0 
 			}],
 			xAxis: [{ 
 				title: {
-					text: 'בית ספר'
+					text: 'טווח ציונים'
 				},
-        // labels: {
-        //     formatter: function() {
-        //         return ['65-70', '70-75', '75-80', '80-85', '85-90', '90-95', '95-100'][this.value]
-        //     }
-        // },
+        labels: {
+            formatter: function() {
+                return ['התנהגות', 'מדעי המחשב', 'ממשל וחברה', 'כלכלה וניהול'][this.value]
+            }
+        },
 				allowDecimals: false,
 			}],
 			legend: {
@@ -287,11 +286,129 @@ $(function () {
         }
 			},
 			series: [{
+				name: '65-70',
+				data: <%= StatRowsHelper::grades_by_range(65) %>,
+				dataLabels: {
+				  enabled: true,
+				  color: 'white',
+				  formatter: function() {
+				     return this.y;
+				  }
+				} 
+			}, {
+				name: '70-75',
+				data: <%= StatRowsHelper::grades_by_range(70) %>,
+				dataLabels: {
+				  enabled: true,
+				  color: 'white',
+				  formatter: function() {
+				     return this.y;
+				  }
+				} 
+			},{
+				name: '75-80',
+				data: <%= StatRowsHelper::grades_by_range(75) %>,
+				dataLabels: {
+				  enabled: true,
+				  color: 'white',
+				  formatter: function() {
+				     return this.y;
+				  }
+				} 
+			},{
+				name: '80-85',
+				data: <%= StatRowsHelper::grades_by_range(80) %>,
+				dataLabels: {
+				  enabled: true,
+				  color: 'white',
+				  formatter: function() {
+				     return this.y;
+				  }
+				} 
+			},{
+				name: '85-90',
+				data: <%= StatRowsHelper::grades_by_range(85) %>,
+				dataLabels: {
+				  enabled: true,
+				  color: 'white',
+				  formatter: function() {
+				     return this.y;
+				  }
+				} 
+			},{
+				name: '90-95',
+				data: <%= StatRowsHelper::grades_by_range(90) %>,
+				dataLabels: {
+				  enabled: true,
+				  color: 'white',
+				  formatter: function() {
+				     return this.y;
+				  }
+				} 
+			},{
+				name: '95-100',
+				data: <%= StatRowsHelper::grades_by_range(95) %>,
+				dataLabels: {
+				  enabled: true,
+				  color: 'white',
+				  formatter: function() {
+				     return this.y;
+				  }
+				}
+			}]
+		});
+	}); 
+});
+
+
+
+// students by year
+$(function () {
+	var chart;
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'grades_by_range_and_by_school_chart',
+				type: 'column'
+			},
+			title: {
+				text: 'פיולח ציונים לפי בית ספר'
+			},
+			yAxis: [{ 
+				title: {
+					text: 'כמות סטודנטים לכל בית ספר'
+				},
+				min: 0 
+			}],
+			xAxis: [{ 
+				title: {
+					text: 'טווח ציונים'
+				},
+        labels: {
+            formatter: function() {
+                return ['65-70', '70-75', '75-80', '80-85', '85-90', '90-95', '95-100'][this.value]
+            }
+        },
+				allowDecimals: false,
+			}],
+			legend: {
+				enabled: true,
+				rtl: true
+			},
+			tooltip: {
+				pointFormat: '{series.name}: {point.y} בטווח זה {point.x}',
+				style: {
+					fontSize: '16px',
+					align: 'right'
+				}
+			},
+			plotOptions: {
+			},
+			series: [{
 				name: 'התנהגות',
 				data: <%= StatRowsHelper::grades_by_school(1) %>,
 				dataLabels: {
 				  enabled: true,
-				  color: 'white',
 				  formatter: function() {
 				     return this.y;
 				  }
@@ -301,7 +418,6 @@ $(function () {
 				data: <%= StatRowsHelper::grades_by_school(2) %>,
 				dataLabels: {
 				  enabled: true,
-				  color: 'white',
 				  formatter: function() {
 				     return this.y;
 				  }
@@ -311,7 +427,6 @@ $(function () {
 				data: <%= StatRowsHelper::grades_by_school(3) %>,
 				dataLabels: {
 				  enabled: true,
-				  color: 'white',
 				  formatter: function() {
 				     return this.y;
 				  }
@@ -321,7 +436,6 @@ $(function () {
 				data: <%= StatRowsHelper::grades_by_school(4) %>,
 				dataLabels: {
 				  enabled: true,
-				  color: 'white',
 				  formatter: function() {
 				     return this.y;
 				  },
@@ -330,3 +444,4 @@ $(function () {
 		});
 	}); 
 });
+

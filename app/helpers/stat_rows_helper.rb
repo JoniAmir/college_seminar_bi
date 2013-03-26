@@ -78,6 +78,18 @@ module StatRowsHelper
     res
   end
 
+  def self.grades_by_range(range_start)
+    rows = StatRow.where('final_grade is not null AND final_grade >= ? AND final_grade <= ?', range_start ,range_start + 5).group("graduation_school_code").select("graduation_school_code, count(*) as students_count").order("graduation_school_code")
+    tmp = rows.map do |r|
+      [r.graduation_school_code, r.students_count]
+    end
+    rows_hash = Hash[tmp]
+    res = []
+    (1..4).each do |i|
+      res[i-1] = rows_hash[i] ||= 0
+    end
+    res
+  end
 
   protected
 

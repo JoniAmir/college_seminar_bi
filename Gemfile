@@ -5,7 +5,6 @@ source 'http://gems.github.com'
 
 gem 'rails'
 gem 'jquery-rails'
-gem 'roo'
 gem 'devise'
 gem 'googlecharts', :require => 'gchart'
 gem 'sorcery'
