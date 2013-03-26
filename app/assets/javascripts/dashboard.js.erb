@@ -243,6 +243,7 @@ $(function () {
 // grade range by school
 $(function () {
 	var chart;
+	var colors = Highcharts.getOptions().colors;
 	$(document).ready(function() {
 		chart = new Highcharts.Chart({
 			chart: {
@@ -274,7 +275,7 @@ $(function () {
 				rtl: true
 			},
 			tooltip: {
-				pointFormat: '{series.name}: {point.y} בטווח זה {point.x}',
+				pointFormat: 'טווח ציונים: {series.name}',
 				style: {
 					fontSize: '16px',
 					align: 'right'
@@ -362,7 +363,7 @@ $(function () {
 
 
 
-// students by year
+// grades by range chart
 $(function () {
 	var chart;
 	$(document).ready(function() {
@@ -372,7 +373,7 @@ $(function () {
 				type: 'column'
 			},
 			title: {
-				text: 'פיולח ציונים לפי בית ספר'
+				text: 'פיולח ציונים לפי טווח'
 			},
 			yAxis: [{ 
 				title: {
@@ -382,7 +383,7 @@ $(function () {
 			}],
 			xAxis: [{ 
 				title: {
-					text: 'טווח ציונים'
+					text: 'טווחי ציונים'
 				},
         labels: {
             formatter: function() {
@@ -396,7 +397,7 @@ $(function () {
 				rtl: true
 			},
 			tooltip: {
-				pointFormat: '{series.name}: {point.y} בטווח זה {point.x}',
+				pointFormat: 'בית ספר: {series.name}',
 				style: {
 					fontSize: '16px',
 					align: 'right'
