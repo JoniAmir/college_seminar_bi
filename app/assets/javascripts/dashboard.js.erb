@@ -287,8 +287,8 @@ $(function () {
         }
 			},
 			series: [{
-				name: '65-70',
-				data: <%= StatRowsHelper::grades_by_range(65) %>,
+				name: '95-100',
+				data: <%= StatRowsHelper::grades_by_range(95) %>,
 				dataLabels: {
 				  enabled: true,
 				  color: 'white',
@@ -297,28 +297,8 @@ $(function () {
 				  }
 				} 
 			}, {
-				name: '70-75',
-				data: <%= StatRowsHelper::grades_by_range(70) %>,
-				dataLabels: {
-				  enabled: true,
-				  color: 'white',
-				  formatter: function() {
-				     return this.y;
-				  }
-				} 
-			},{
-				name: '75-80',
-				data: <%= StatRowsHelper::grades_by_range(75) %>,
-				dataLabels: {
-				  enabled: true,
-				  color: 'white',
-				  formatter: function() {
-				     return this.y;
-				  }
-				} 
-			},{
-				name: '80-85',
-				data: <%= StatRowsHelper::grades_by_range(80) %>,
+				name: '90-95',
+				data: <%= StatRowsHelper::grades_by_range(90) %>,
 				dataLabels: {
 				  enabled: true,
 				  color: 'white',
@@ -337,8 +317,8 @@ $(function () {
 				  }
 				} 
 			},{
-				name: '90-95',
-				data: <%= StatRowsHelper::grades_by_range(90) %>,
+				name: '80-85',
+				data: <%= StatRowsHelper::grades_by_range(80) %>,
 				dataLabels: {
 				  enabled: true,
 				  color: 'white',
@@ -347,8 +327,28 @@ $(function () {
 				  }
 				} 
 			},{
-				name: '95-100',
-				data: <%= StatRowsHelper::grades_by_range(95) %>,
+				name: '75-80',
+				data: <%= StatRowsHelper::grades_by_range(75) %>,
+				dataLabels: {
+				  enabled: true,
+				  color: 'white',
+				  formatter: function() {
+				     return this.y;
+				  }
+				} 
+			},{
+				name: '70-75',
+				data: <%= StatRowsHelper::grades_by_range(70) %>,
+				dataLabels: {
+				  enabled: true,
+				  color: 'white',
+				  formatter: function() {
+				     return this.y;
+				  }
+				} 
+			},{
+				name: '65-70',
+				data: <%= StatRowsHelper::grades_by_range(65) %>,
 				dataLabels: {
 				  enabled: true,
 				  color: 'white',
