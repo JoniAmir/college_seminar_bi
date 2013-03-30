@@ -1,11 +1,9 @@
 <div class="row nominee_section">
 
-  <%= form_for(@nominee, :html => {:class => "form-horizontal"}) do |f| %>
+  <%= form_for(@nominee) do |f| %>
     
-    <div class="nominee_form">
-
     <% if @nominee.errors.any? %>
-      <div class="alert alert-error span3 rtl" id="error_explanation">
+      <div class="alert alert-error nominee_form_error" id="error_explanation">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <h5>ישנן שגיאות בהזנת הפרטים</h5>
         <ul>
@@ -16,54 +14,54 @@
       </div>
     <% end %> 
     
-    
-      <table class="table-bordered rtl">
-        <tr>
-          <td> <%= Nominee.human_attribute_name("age") %> </td>
-          <td> <%= f.number_field(:age, in: 10..99) %> </td>
-        </tr>
-        <tr>
-          <td> <%= Nominee.human_attribute_name("gender") %> </td>
-          <td> <%= select_tag(:gender_code, options_for_select(NomineesHelper::get_list_by_field("gender"))) %> </td>
-        </tr>
-        <tr>
-          <td> <%= Nominee.human_attribute_name("city") %> </td>
-          <td> <%= select_tag(:city_code, options_for_select(NomineesHelper::get_list_by_field("city"))) %> </td>
-        </tr>
-        <tr>
-          <td> <%= Nominee.human_attribute_name("school_grade") %> </td>
-          <td> <%= f.number_field(:school_grade, in: 0..125) %> </td>
-        </tr>
-        <tr>
-          <td> <%= Nominee.human_attribute_name("sat_grade") %> </td>
-          <td> <%= f.number_field(:sat_grade, in: 300..800) %> </td>
-        </tr>
-        <tr>
-          <td> <%= Nominee.human_attribute_name("math_units") %> </td>
-          <td> <%= f.number_field(:math_units, in: 0..5) %> </td>
-        </tr>
-        <tr>
-          <td> <%= Nominee.human_attribute_name("math_grade") %> </td>
-          <td> <%= f.number_field(:math_grade, in: 0..125) %> </td>
-        </tr>
-        <tr>
-          <td> <%= Nominee.human_attribute_name("english_units") %> </td>
-          <td> <%= f.number_field(:english_units, in: 0..5) %> </td>
-        </tr>
-        <tr>
-          <td> <%= Nominee.human_attribute_name("english_grade") %> </td>
-          <td> <%= f.number_field(:english_grade, in: 0..125) %> </td>
-        </tr>
-        <tr>
-          <td> <%= Nominee.human_attribute_name("starting_semester") %> </td>
-          <td> <%= f.number_field(:starting_semester, in: 1..2) %> </td>
-        </tr>
-      </table>
-      <br/>
-      <div class="actions">
-        <%= f.submit :class => 'btn btn-success btn-large' %>
-      </div>
-    </div>
+    <table class="table-bordered form-horizontal nominee_form">
+      <tr>
+        <td> <%= Nominee.human_attribute_name("age") %> </td>
+        <td> <%= f.number_field(:age, in: 10..99) %> </td>
+      </tr>
+      <tr>
+        <td> <%= Nominee.human_attribute_name("gender") %> </td>
+        <td> <%= select_tag(:gender_code, options_for_select(NomineesHelper::get_list_by_field("gender"))) %> </td>
+      </tr>
+      <tr>
+        <td> <%= Nominee.human_attribute_name("city") %> </td>
+        <td> <%= select_tag(:city_code, options_for_select(NomineesHelper::get_list_by_field("city"))) %> </td>
+      </tr>
+      <tr>
+        <td> <%= Nominee.human_attribute_name("school_grade") %> </td>
+        <td> <%= f.number_field(:school_grade, in: 0..125) %> </td>
+      </tr>
+      <tr>
+        <td> <%= Nominee.human_attribute_name("sat_grade") %> </td>
+        <td> <%= f.number_field(:sat_grade, in: 300..800) %> </td>
+      </tr>
+      <tr>
+        <td> <%= Nominee.human_attribute_name("math_units") %> </td>
+        <td> <%= f.number_field(:math_units, in: 0..5) %> </td>
+      </tr>
+      <tr>
+        <td> <%= Nominee.human_attribute_name("math_grade") %> </td>
+        <td> <%= f.number_field(:math_grade, in: 0..125) %> </td>
+      </tr>
+      <tr>
+        <td> <%= Nominee.human_attribute_name("english_units") %> </td>
+        <td> <%= f.number_field(:english_units, in: 0..5) %> </td>
+      </tr>
+      <tr>
+        <td> <%= Nominee.human_attribute_name("english_grade") %> </td>
+        <td> <%= f.number_field(:english_grade, in: 0..125) %> </td>
+      </tr>
+      <tr>
+        <td> <%= Nominee.human_attribute_name("starting_semester") %> </td>
+        <td> <%= f.number_field(:starting_semester, in: 1..2) %> </td>
+      </tr>
+      <tr class="actions nominee_form_submit">
+        <td colspan="2">
+            <%= f.submit :class => 'btn btn-success btn-large' %>
+        </td>
+      </tr> 
+    </table> 
+      
   <% end %>
 
 </div>

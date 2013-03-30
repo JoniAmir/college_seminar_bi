@@ -9,39 +9,41 @@
 	
 	<body>
 		<header>
-		  	<div class="navbar navbar-inverse navbar-fixed-top navbar-inner pull-right">
-	  			<div class="navbar-inner"/>
-	  				<div class="container">
-				    	<a class="brand" href="#" > 
-							<%= image_tag "brand-img.png" %> WHAT ARE YOUR CHANCES? 
-						</a>
-				    	<div class="nav-collapse collapse">
-							<p class="navbar-text pull-left user_logged">
-								<% if current_user %>
-									מחובר כ-<%= current_user.username %>
-								  <%= link_to "התנתק", logout_path, { class: "navbar-link" } %>
-								<% end %>
-							</p>
-							<ul class="nav pull-right">
-						  		<%= nav_link("אודות", about_path) %>
-						  		<%= nav_link("דאשבורד", dashboard_path) %>
-						  		<%= nav_link("בדוק מועמד", check_path) %>
-						  		<%= nav_link("ראשי", root_path) %>
-							</ul>
-				  		</div>
+	  	<div class="navbar navbar-inverse navbar-fixed-top navbar-inner pull-right">
+				<div class="navbar-inner"/>
+					<div class="container">
+			    	<a class="brand" href="#" > 
+						<%= image_tag "brand-img.png" %> WHAT ARE YOUR CHANCES? 
+					</a>
+			    	<div class="nav-collapse collapse">
+						<p class="navbar-text pull-left user_logged">
+							<% if current_user %>
+								מחובר כ-<%= current_user.username %>
+							  <%= link_to "התנתק", logout_path, { class: "navbar-link" } %>
+							<% end %>
+						</p>
+						<ul class="nav pull-right">
+					  		<%= nav_link("אודות", about_path) %>
+					  		<%= nav_link("דאשבורד", dashboard_path) %>
+					  		<%= nav_link("בדוק מועמד", check_path) %>
+					  		<%= nav_link("ראשי", root_path) %>
+						</ul>
 			  		</div>
+		  		</div>
 				</div>
-		    </div>
-	  </header>
+	    </div>
+		</header>
+		
 	  <section>
-	  		<div>
+			<div>	
 				<!-- <p class="alert"><%= alert %></p> -->
 				<!-- <p class="notice"><%= notice %></p> -->
 			</div>
 
-			<div id="main_container">
+			<div class="main_container">
 				<%= yield %>
 			</div>
-	   </section>
+	  </section>
+
 	</body>
 </html>

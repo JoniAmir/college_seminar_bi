@@ -15,7 +15,7 @@
 .nominee_section {
 	margin-left: auto;
 	margin-right: auto;
-	width: 600px;
+	width: 800px;
 	text-align: rtl;
 }
 
@@ -25,6 +25,17 @@
 	border-style: solid;
 	border-radius: 10px;
 	box-shadow:0 0 10px #FFFFFF;
+	text-align: right;
+	display: inline-block;
+}
+
+.nominee_form_error {
+	display: inline-block;
+	float: left;
+	text-align: right;
+}
+
+.nominee_form_submit {
 	text-align: center;
 }
 
