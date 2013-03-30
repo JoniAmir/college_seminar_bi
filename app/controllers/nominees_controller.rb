@@ -42,9 +42,13 @@ class NomineesController < ApplicationController
   # POST /nominees
   # POST /nominees.json
   def create
+    Rails.logger.error(params[:nominee])
     @nominee = Nominee.new(params[:nominee])
 
-    Rails.logger.debug(params.inspect)
+    @nominee.city = StudentsLookup.where("field_name = 'city' and numeric_value = ? ", @nominee.city_code).first.display_name
+    @nominee.gender = StudentsLookup.where("field_name = 'gender' and numeric_value = ? ", @nominee.gender_code).first.display_name
+    
+    Rails.logger.error("$$$$$" + @nominee.inspect)
 
     respond_to do |format|
       if @nominee.save
