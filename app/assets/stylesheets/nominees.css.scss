@@ -3,18 +3,23 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.rtl
-{
-	direction: rtl;
+.nominee_page {
+	  background: -moz-linear-gradient(45deg,  #020031 0%, #399200 100%); /* FF3.6+ */
+	  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#399200)); /* Chrome,Safari4+ */
+	  background: -webkit-linear-gradient(45deg,  #020031 0%,#399200 100%); /* Chrome10+,Safari5.1+ */
+	  background: -o-linear-gradient(45deg,  #020031 0%,#399200 100%); /* Opera 11.10+ */
+	  background: -ms-linear-gradient(45deg,  #020031 0%,#399200 100%); /* IE10+ */
+	  background: linear-gradient(45deg,  #020031 0%,#399200 100%); /* W3C */
 }
 
-header h2
-{
-	text-align: center
+.nominee_section {
+	margin-left: auto;
+	margin-right: auto;
+	width: 600px;
+	text-align: rtl;
 }
 
-.Form
-{
+.nominee_form {
 	border-width: 2px;
 	border-color: #FFFFFF;
 	border-style: solid;
@@ -23,16 +28,7 @@ header h2
 	text-align: center;
 }
 
-header, .Form table, .Form .actions
+header, .nominee_form table, .nominee_form .actions
 {
 	width: 100%;
-}
-
-#nominee_page {
-	  background: -moz-linear-gradient(45deg,  #020031 0%, #399200 100%); /* FF3.6+ */
-	  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#399200)); /* Chrome,Safari4+ */
-	  background: -webkit-linear-gradient(45deg,  #020031 0%,#399200 100%); /* Chrome10+,Safari5.1+ */
-	  background: -o-linear-gradient(45deg,  #020031 0%,#399200 100%); /* Opera 11.10+ */
-	  background: -ms-linear-gradient(45deg,  #020031 0%,#399200 100%); /* IE10+ */
-	  background: linear-gradient(45deg,  #020031 0%,#399200 100%); /* W3C */
 }
