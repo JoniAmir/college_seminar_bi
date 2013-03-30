@@ -14,7 +14,7 @@
       </div>
     <% end %>   
 
-    <div class="Form span5" >
+    <div class="Form" >
       <table class="table-bordered">
         <tr>
           <td> <%= Nominee.human_attribute_name("age") %> </td>
@@ -56,11 +56,15 @@
           <td> <%= Nominee.human_attribute_name("starting_semester") %> </td>
           <td> <%= f.number_field(:starting_semester, in: 1..2) %> </td>
         </tr>
+        <tr>
+          <td> <%= Nominee.human_attribute_name("school") %> </td>
+          <td> <%= f.select(:school, options_for_select(NomineesHelper::get_list_by_field("school"))) %> </td>
+        </tr>
         <tr class="actions nominee_form_submit">
           <td colspan="2">
               <%= f.submit :class => 'btn btn-success btn-large' %>
           </td>
-        </tr> 
+        </tr>
       </table>
     </div>
   <% end %>
