@@ -1,16 +1,18 @@
 <div class="row">
-  <div class="span12 offset2"/>
+  <div class="span12"/>
     <%= form_for(@nominee, :html => {:class => "form-horizontal"}) do |f| %>
-      <div class="span3 rtl">
+      
       <% if @nominee.errors.any? %>
-        <div class="alert alert-error" id="error_explanation">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <h5>ישנן שגיאות בהזנת הפרטים</h5>
-          <ul>
-          <% @nominee.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-          </ul>
+        <div class="span3 rtl">
+          <div class="alert alert-error" id="error_explanation">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <h5>ישנן שגיאות בהזנת הפרטים</h5>
+            <ul>
+            <% @nominee.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
         </div>
       <% end %> 
       </div>
@@ -23,6 +25,7 @@
           </tr>
           <tr>
             <td> <%= Nominee.human_attribute_name("gender") %> </td>
+
             <td> <%= f.select(:gender_code, options_for_select(NomineesHelper::get_list_by_field("gender"))) %> </td>
           </tr>
           <tr>
@@ -64,5 +67,6 @@
         </div>
       </div>
     <% end %>
+
   </div>
 </div>
