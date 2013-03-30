@@ -22,8 +22,12 @@
               <td> <%= f.number_field(:age, in: 10..99) %> </td>
             </tr>
             <tr>
+              <td> <%= Nominee.human_attribute_name("gender") %> </td>
+              <td> <%= select_tag(:gender_code, options_for_select(NomineesHelper::get_list_by_field("gender"))) %> </td>
+            </tr>
+            <tr>
               <td> <%= Nominee.human_attribute_name("city") %> </td>
-              <td> <%= f.text_field :city %> </td>
+              <td> <%= select_tag(:city_code, options_for_select(NomineesHelper::get_list_by_field("city"))) %> </td>
             </tr>
             <tr>
               <td> <%= Nominee.human_attribute_name("school_grade") %> </td>
@@ -48,6 +52,10 @@
             <tr>
               <td> <%= Nominee.human_attribute_name("english_grade") %> </td>
               <td> <%= f.number_field(:english_grade, in: 0..125) %> </td>
+            </tr>
+            <tr>
+              <td> <%= Nominee.human_attribute_name("starting_semester") %> </td>
+              <td> <%= f.number_field(:starting_semester, in: 1..2) %> </td>
             </tr>
           </table>
           <br/>

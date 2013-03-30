@@ -17,8 +17,8 @@
 #
 
 class Nominee < ActiveRecord::Base      
-	attr_accessible :age, :city, :school_grade, :sat_grade,
-									:math_units, :math_grade, :english_units, :english_grade, :last_result_graphs
+	attr_accessible :age, :gender, :gender_code, :city, :city_code, :school_grade, :sat_grade,
+									:math_units, :math_grade, :english_units, :english_grade, :last_result_graphs, :starting_semester
 
   validates :age, :sat_grade, :school_grade, :math_units, :math_grade, :english_units, :english_grade,
   					:numericality => { :greater_than_or_equal_to => 0 }

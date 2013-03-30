@@ -14,6 +14,7 @@ he:
     attributes:
       nominee:
         age: "גיל"
+        gender: "מין"
         city: "עיר"
         school_grade: "ציון בגרות"
         sat_grade: "ציון פסיכומטרי"
@@ -21,3 +22,4 @@ he:
         english_units: "יח' אנגלית"
         math_grade: "ציון מתמטיקה"
         english_grade: "ציון אנגלית"
+        starting_semester: "סמסטר תחילת לימודים"
