@@ -15,7 +15,7 @@
 .nominee_section {
 	margin-left: auto;
 	margin-right: auto;
-	width: 800px;
+	width: 900px;
 	text-align: right;
 }
 
@@ -49,4 +49,9 @@ header, .nominee_form table, .nominee_form .actions
 	border-color: black;
 	border-style: solid;
 
+}
+
+.table-bordered {
+	margin: 0 auto;
+	width: 550px;
 }
