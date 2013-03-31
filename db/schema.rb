@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(:version => 20130330162403) do
     t.string   "gender"
     t.integer  "starting_semester"
     t.string   "school"
+    t.integer  "school_code"
   end
 
   create_table "regression_formulas", :force => true do |t|
