@@ -1,15 +1,30 @@
-<div dir="ltr" class="jumbotron nominee_page">
-  	
+<div dir="" class="jumbotron nominee_page">  	
 	<div class="content-holder container">
 		
 		<div class="row-fluid">
-			<div class="span8 nominee_section_span">
-				span8
+			<div class="span9 nominee_section_span">
+
+
 			</div>
-			<div class="span4 nominee_section_span">
-				<table>
-					
-				</table>
+
+			
+			<div class="span3 nominee_section_span">
+
+				<% @nominee_predictions.each do |p| %>
+
+					<div class="row-fluid thumbnail">
+						<h4>
+						<b><%= p[0] %>:</b> 
+						<br>
+						<%= p[1] %>% 
+						<br>
+						<%= p[2] %>
+						</h4>
+					</div>
+					<br>
+					<br>
+					<br>
+				<% end %>
 
 			</div>
 		</div>
