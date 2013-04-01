@@ -1,5 +1,5 @@
 class NomineesController < ApplicationController
-  before_filter :require_login, :only => :new
+  before_filter :require_login, :only => [:new, :show, :create]
   
   def show
     @nominee = Nominee.find(params[:id])
@@ -8,10 +8,16 @@ class NomineesController < ApplicationController
     query_codes = RegressionFormula.where(school_code: @nominee.school_code).select("distinct query_code, regression_type_code, question")
     query_codes.each do |f|
     
-      y = NomineesHelper::calc_formula(f.query_code, f.regression_type_code)
-      
+      y = NomineesHelper::calc_formula(f.query_code, f.regression_type_code).round(2)
       r = 0
-      @nominee_predictions << [f.question, y, r]
+
+      if (f.regression_type_code == 9)
+        y_formatted = (y * 100).to_s + "%" 
+      else
+        y_formatted = y
+      end
+
+      @nominee_predictions << [f.question, y_formatted, r]
     end
 
 
@@ -22,10 +28,6 @@ class NomineesController < ApplicationController
     @nominee = Nominee.new
   end
 
-  # GET /nominees/1/edit
-  def edit
-    @nominee = Nominee.find(params[:id])
-  end
 
   # POST /nominees
   # POST /nominees.json
