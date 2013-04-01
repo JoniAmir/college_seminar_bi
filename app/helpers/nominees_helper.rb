@@ -69,8 +69,27 @@ module NomineesHelper
   	return y
   end
 
-  def self.get_graph_count
-    3
+  def self.calc_graphs(query_code)
+    school_rows = RegressionGraph.where(school_code: school_code)
+
+      query_vars = RegressionFormula.where(query_code: query_code)
+      y = 0
+      query_vars.each do |var|
+        if (var.var_code.present?)
+          field_value = get_field_value(checked_nominee, var.var_code)
+          y += (field_value * var.var_coefficient) 
+        else
+          y += var.var_coefficient
+        end
+      end
+
+      # Calc logistic regression
+      if (regression_type_code == 9)
+        y = 1/(1+Math.exp(-y))
+      end
+
+      return y
+
   end
 
 end

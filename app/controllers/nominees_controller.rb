@@ -2,24 +2,25 @@ class NomineesController < ApplicationController
   before_filter :require_login, :only => [:new, :show, :create]
   
   def show
+    @graph_count = 1 #NomineesHelper::get_graph_count(params[:id])
     @nominee = Nominee.find(params[:id])
     @nominee_predictions = []
 
+    # Generate box results
     query_codes = RegressionFormula.where(school_code: @nominee.school_code).select("distinct query_code, regression_type_code, question, correlation_coefficient")
     query_codes.each do |f|
-    
       y = NomineesHelper::calc_formula(@nominee, f.query_code, f.regression_type_code).round(2)
       r = f.correlation_coefficient
-
       if (f.regression_type_code == 9)
         y_formatted = (y * 100).to_s + "%" 
       else
         y_formatted = y
       end
-
       @nominee_predictions << [f.question, y_formatted, r]
-
     end
+
+    # Generate charts
+
   end
 
   # GET /nominees/new
