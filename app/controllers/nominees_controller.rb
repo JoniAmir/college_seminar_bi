@@ -6,11 +6,11 @@ class NomineesController < ApplicationController
     
     # Generate box results
     @nominee_boxes = []
-    query_codes = RegressionFormula.where(school_code: @nominee.school_code).select("distinct query_code, regression_type_code, question, correlation_coefficient")
+    query_codes = RegressionFormula.where(school_code: @nominee.school_code).select("distinct query_code, regression_type_code, question, question_code, correlation_coefficient")
     query_codes.each do |f|
       y = NomineesHelper::calc_formula(@nominee, f.query_code, f.regression_type_code).round(2)
       r = f.correlation_coefficient
-      y_formatted = (y * 100).to_s + "%" if (f.regression_type_code == 9)
+      y_formatted = (y * 100).round(2).to_s + "%" if (f.regression_type_code == 9)
       @nominee_boxes << [f.question, y_formatted || y.to_s, r]
     end
 
@@ -21,9 +21,9 @@ class NomineesController < ApplicationController
       chart = Hash.new
       chart[:x_axis] = NomineesHelper::get_display_by_code_regressions("variable", g.var_code)
       chart[:y_axis] = g.question 
-      chart[:title] = chart[:y_axis] + "  " + chart[:x_axis]      
+      chart[:title] = chart[:y_axis] + " - " + chart[:x_axis]      
       chart[:data_linear] = NomineesHelper.nominee_chart_data_linear(@nominee, g.query_code)
-      chart[:data_dots_obs] = NomineesHelper.nominee_chart_data_dots_observations(@nominee.school_code, chart[:x_axis], "final_grade")
+      chart[:data_dots_obs] = NomineesHelper.nominee_chart_data_dots_observations(@nominee.school_code, chart[:x_axis], NomineesHelper::get_tag_by_code_regressions("question", g.question_code, "y_variable"))
       chart[:data_dots_ind] = NomineesHelper.nominee_chart_data_dots_single(@nominee, g.var_code, g.query_code)
       @nominee_charts << chart
     end

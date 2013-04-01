@@ -115,12 +115,12 @@ module NomineesHelper
   def self.nominee_chart_data_dots_observations(school_code, x_axis_field, y_axis_field)
     rows = StatRow.where(x_axis_field + ' is not null and ' + y_axis_field + ' is not null and graduation_school_code is not null AND graduation_school_code = ?', school_code).select(x_axis_field + ',' + y_axis_field)
 
-    res = rows.map { |r| [r[x_axis_field].to_i, r[y_axis_field].to_i] }
+    res = rows.map { |r| [r[x_axis_field].to_f, r[y_axis_field].to_f] }
     res
   end
 
   def self.nominee_chart_data_dots_single(nominee, x_axis_field, graph_query_code)
-    x_value = self.get_field_value(nominee, x_axis_field).to_i
+    x_value = self.get_field_value(nominee, x_axis_field).to_f
     query_rows = RegressionGraph.where(query_code: graph_query_code).order('var_code desc')
 
     res = [x_value, query_rows.first.var_coefficient * x_value + query_rows.second.var_coefficient]
