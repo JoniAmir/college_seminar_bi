@@ -102,8 +102,9 @@ module NomineesHelper
   def self.nominee_chart_data_linear(nominee, graph_query_code)
     query_rows = RegressionGraph.where(query_code: graph_query_code).order('var_code desc')
     
-    x_min = 1
-    x_max = 100
+    x_min = get_tag_by_code_regressions("variable", query_rows.first.var_code, "min_display").to_i
+    x_max = get_tag_by_code_regressions("variable", query_rows.first.var_code, "max_display").to_i
+
     res = []
     res << [x_min, query_rows.first.var_coefficient * x_min + query_rows.second.var_coefficient]
     res << [x_max, query_rows.first.var_coefficient * x_max + query_rows.second.var_coefficient]
