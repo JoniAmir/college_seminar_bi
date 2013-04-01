@@ -11,8 +11,12 @@ module NomineesHelper
     StudentsLookup.where("field_name = ? and numeric_value = ?", field_name, code).select("substr(tags,locate('"+tag_name+"=', tags) + length('"+tag_name+"='),1) as val").first.val
   end
 
+  def self.get_dispaly_by_code_regressions(field_name, code)
+    RegressionsLookup.where("field_name = ? and id = ?", field_name, code).first.display_name
+  end
+
   def self.get_field_value(checked_nominee, var_code)
-    var_display = RegressionsLookup.where("field_name = 'variable' and id = ? ", var_code).first.display_name
+    var_display = self.get_dispaly_by_code_regressions("variable", var_code)
     var_value = 0;
     case var_display 
       when "start_studying_age"   
