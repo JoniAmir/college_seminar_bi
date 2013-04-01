@@ -8,7 +8,11 @@ module NomineesHelper
   end
 
   def self.get_tag_by_code_students(field_name, code, tag_name)
-    StudentsLookup.where("field_name = ? and numeric_value = ?", field_name, code).select("substr(tags,locate('"+tag_name+"=', tags) + length('"+tag_name+"='),1) as val").first.val
+    StudentsLookup.where("field_name = ? and numeric_value = ?", field_name, code).select("substr(tags,locate('" + tag_name + "=', tags) + length('" + tag_name + "='), locate(';', tags,locate('" + tag_name + "=', tags)) - (locate('" + tag_name + "=', tags) + length('" + tag_name + "=')) ) as val").first.val
+  end
+
+  def self.get_tag_by_code_regressions(field_name, code, tag_name)
+    RegressionsLookup.where("field_name = ? and id = ?", field_name, code).select("substr(tags,locate('" + tag_name + "=', tags) + length('" + tag_name + "='), locate(';', tags,locate('" + tag_name + "=', tags)) - (locate('" + tag_name + "=', tags) + length('" + tag_name + "=')) ) as val").first.var_value
   end
 
   def self.get_dispaly_by_code_regressions(field_name, code)
