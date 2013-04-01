@@ -10,7 +10,7 @@
 	  background: -o-linear-gradient(45deg,  #020031 0%,#399200 100%); /* Opera 11.10+ */
 	  background: -ms-linear-gradient(45deg,  #020031 0%,#399200 100%); /* IE10+ */
 	  background: linear-gradient(45deg,  #020031 0%,#399200 100%); /* W3C */
-	  height: 1000px;
+	  height: 1800px;
 }
 
 .nominee_section {
@@ -49,6 +49,7 @@ header, .nominee_form table, .nominee_form .actions
 	border: 4px;
 	border-color: black;
 	border-style: solid;
+	height: 500px;
 }
 
 .table-bordered {

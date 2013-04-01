@@ -1,7 +1,6 @@
 module NomineesHelper
 	
 	def self.get_list_by_field_students(field_name)
-  	
 		rows = StudentsLookup.where('field_name = ? and display_name != \'unknown\'', field_name).order('display_name')
   	res = rows.map do |option|
     		[option.display_name, option.numeric_value]
@@ -13,7 +12,6 @@ module NomineesHelper
   end
 
   def self.get_field_value(checked_nominee, var_code)
-
     var_display = RegressionsLookup.where("field_name = 'variable' and id = ? ", var_code).first.display_name
     var_value = 0;
     case var_display 
@@ -70,4 +68,9 @@ module NomineesHelper
 
   	return y
   end
+
+  def self.get_graph_count
+    3
+  end
+
 end
