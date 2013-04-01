@@ -2,25 +2,28 @@ class NomineesController < ApplicationController
   before_filter :require_login, :only => [:new, :show, :create]
   
   def show
-    @graph_count = 1 #NomineesHelper::get_graph_count(params[:id])
     @nominee = Nominee.find(params[:id])
-    @nominee_predictions = []
-
+    
     # Generate box results
+    @nominee_boxes = []
     query_codes = RegressionFormula.where(school_code: @nominee.school_code).select("distinct query_code, regression_type_code, question, correlation_coefficient")
     query_codes.each do |f|
       y = NomineesHelper::calc_formula(@nominee, f.query_code, f.regression_type_code).round(2)
       r = f.correlation_coefficient
-      if (f.regression_type_code == 9)
-        y_formatted = (y * 100).to_s + "%" 
-      else
-        y_formatted = y
-      end
-      @nominee_predictions << [f.question, y_formatted, r]
+      y_formatted = (y * 100).to_s + "%" if (f.regression_type_code == 9)
+      @nominee_boxes << [f.question, y_formatted || y.to_s, r]
     end
-
     # Generate charts
-
+    @nominee_charts = []
+    graph_rows = RegressionGraph.where('school_code = ? AND var_code is not null', @nominee.school_code)
+    graph_rows.each do |g|
+      chart = Hash.new
+      chart[:x_axis] = NomineesHelper::get_display_code_regressions("variable", g.var_code)
+      chart[:y_axis] = question 
+      chart[:title] = chart[:y_axis] + "  " + chart[:x_axis]      
+      graph_data = NomineesHelper.nominee_chart_data(@nominee, g.id)
+      @nominee_charts << graph_data
+    end
   end
 
   # GET /nominees/new

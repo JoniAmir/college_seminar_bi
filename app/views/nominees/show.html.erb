@@ -1,6 +1,6 @@
 <script type="text/javascript" charset="utf-8">
 
-<% 1.upto(@graph_count) do |i| %>
+<% 1.upto(@nominee_charts.count) do |i| %>
 
   $(function () {
     var chart;
@@ -57,7 +57,6 @@
 		<div class="row-fluid">
 			
 			<div class="row-fluid span10">
-				
 				<% 1.upto(@graph_count) do |i| %>
 				<div class="row-fluid"> 
 					<div id= <%="prediction_chart#{i.to_s}"%> class="nominee_section_span"></div>
@@ -67,7 +66,7 @@
 			</div>
 
 			<div class="span2">
-				<% @nominee_predictions.each do |p| %>
+				<% @@nominee_boxes.each do |p| %>
 					<div class="row-fluid thumbnail nominee_result_box">
 						<h4> <%= p[0] %> </h4>
 						<h3> <b> <%= p[1] %> </b> </h3>
