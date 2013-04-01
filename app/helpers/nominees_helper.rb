@@ -12,15 +12,15 @@ module NomineesHelper
   end
 
   def self.get_tag_by_code_regressions(field_name, code, tag_name)
-    RegressionsLookup.where("field_name = ? and id = ?", field_name, code).select("substr(tags,locate('" + tag_name + "=', tags) + length('" + tag_name + "='), locate(';', tags,locate('" + tag_name + "=', tags)) - (locate('" + tag_name + "=', tags) + length('" + tag_name + "=')) ) as val").first.var_value
+    RegressionsLookup.where("field_name = ? and id = ?", field_name, code).select("substr(tags,locate('" + tag_name + "=', tags) + length('" + tag_name + "='), locate(';', tags,locate('" + tag_name + "=', tags)) - (locate('" + tag_name + "=', tags) + length('" + tag_name + "=')) ) as val").first.val
   end
 
-  def self.get_display_by_code_regressions(field_name, code)
+  def self.get_dispaly_by_code_regressions(field_name, code)
     RegressionsLookup.where("field_name = ? and id = ?", field_name, code).first.display_name
   end
 
   def self.get_field_value(checked_nominee, var_code)
-    var_display = self.get_display_by_code_regressions("variable", var_code)
+    var_display = self.get_dispaly_by_code_regressions("variable", var_code)
     var_value = 0;
     case var_display 
       when "start_studying_age"   
@@ -97,24 +97,7 @@ module NomineesHelper
       end
 
       return y
-  end
 
-  def self.nominee_chart_data_linear(nominee, graph_query_code)
-    query_rows = RegressionGraph.where(query_code: graph_query_code).order('var_code desc')
-    
-    x_min = 1
-    x_max = 100
-    res = []
-    res << [x_min, query_rows.first.var_coefficient * x_min + query_rows.second.var_coefficient]
-    res << [x_max, query_rows.first.var_coefficient * x_max + query_rows.second.var_coefficient]
-
-    return res
-  end
-
-  def self.nominee_chart_data_dots_observations(nominee, var_code)
-  end
-
-  def self.nominee_chart_data_dots_single(nominee, var_code)
   end
 
 end
