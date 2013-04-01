@@ -12,15 +12,15 @@ module NomineesHelper
   end
 
   def self.get_tag_by_code_regressions(field_name, code, tag_name)
-    RegressionsLookup.where("field_name = ? and id = ?", field_name, code).select("substr(tags,locate('" + tag_name + "=', tags) + length('" + tag_name + "='), locate(';', tags,locate('" + tag_name + "=', tags)) - (locate('" + tag_name + "=', tags) + length('" + tag_name + "=')) ) as val").first.var_value
+    RegressionsLookup.where("field_name = ? and id = ?", field_name, code).select("substr(tags,locate('" + tag_name + "=', tags) + length('" + tag_name + "='), locate(';', tags,locate('" + tag_name + "=', tags)) - (locate('" + tag_name + "=', tags) + length('" + tag_name + "=')) ) as val").first.val
   end
 
-  def self.get_display_by_code_regressions(field_name, code)
+  def self.get_dispaly_by_code_regressions(field_name, code)
     RegressionsLookup.where("field_name = ? and id = ?", field_name, code).first.display_name
   end
 
   def self.get_field_value(checked_nominee, var_code)
-    var_display = self.get_display_by_code_regressions("variable", var_code)
+    var_display = self.get_dispaly_by_code_regressions("variable", var_code)
     var_value = 0;
     case var_display 
       when "start_studying_age"   
@@ -78,25 +78,25 @@ module NomineesHelper
   end
 
   def self.calc_graphs(query_code)
-    school_rows = RegressionGraph.where(school_code: school_code)
+    # school_rows = RegressionGraph.where(school_code: school_code)
 
-      query_vars = RegressionFormula.where(query_code: query_code)
-      y = 0
-      query_vars.each do |var|
-        if (var.var_code.present?)
-          field_value = get_field_value(checked_nominee, var.var_code)
-          y += (field_value * var.var_coefficient) 
-        else
-          y += var.var_coefficient
-        end
+    query_vars = RegressionFormula.where(query_code: query_code)
+    y = 0
+    query_vars.each do |var|
+      if (var.var_code.present?)
+        field_value = get_field_value(checked_nominee, var.var_code)
+        y += (field_value * var.var_coefficient) 
+      else
+        y += var.var_coefficient
       end
+    end
 
-      # Calc logistic regression
-      if (regression_type_code == 9)
-        y = 1/(1+Math.exp(-y))
-      end
+    # Calc logistic regression
+    if (regression_type_code == 9)
+      y = 1/(1+Math.exp(-y))
+    end
 
-      return y
+    return y  
   end
 
   def self.nominee_chart_data_linear(nominee, graph_query_code)
