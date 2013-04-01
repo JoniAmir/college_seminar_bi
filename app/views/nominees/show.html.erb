@@ -41,16 +41,16 @@
         }, {
             type: 'scatter',
             name: 'Observations',
-            data: [[1, 2], [1.5, 2.8], [3.5, 3.9], [4.2, 5]],
+            data: <%= chart[:data_dots_obs] %>,
             marker: {
-                radius: 4
+                radius: 3
             }
         }, {
             type: 'scatter',
             name: 'Individual',
-            data: [[3, 4.5]],
+            data: [<%= chart[:data_dots_ind] %>],
             marker: {
-                radius: 4
+                radius: 7
             }
         }]
       });

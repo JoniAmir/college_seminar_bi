@@ -23,8 +23,8 @@ class NomineesController < ApplicationController
       chart[:y_axis] = g.question 
       chart[:title] = chart[:y_axis] + "  " + chart[:x_axis]      
       chart[:data_linear] = NomineesHelper.nominee_chart_data_linear(@nominee, g.query_code)
-      chart[:data_dots_obs] = NomineesHelper.nominee_chart_data_dots_observations(@nominee, g.var_code)
-      chart[:data_dots_ind] = NomineesHelper.nominee_chart_data_dots_single(@nominee, g.var_code)
+      chart[:data_dots_obs] = NomineesHelper.nominee_chart_data_dots_observations(@nominee.school_code, chart[:x_axis], "final_grade")
+      chart[:data_dots_ind] = NomineesHelper.nominee_chart_data_dots_single(@nominee, g.var_code, g.query_code)
       @nominee_charts << chart
     end
   end
