@@ -5,23 +5,21 @@ class NomineesController < ApplicationController
     @nominee = Nominee.find(params[:id])
     @nominee_predictions = []
 
-    query_codes = RegressionFormula.where(school_code: @nominee.school_code).select("distinct query_code, regression_type_code, question")
+    query_codes = RegressionFormula.where(school_code: @nominee.school_code).select("distinct query_code, regression_type_code, question, correlation_coefficient")
     query_codes.each do |f|
     
-    y = NomineesHelper::calc_formula(@nominee, f.query_code, f.regression_type_code).round(2)
-    r = 0
+      y = NomineesHelper::calc_formula(@nominee, f.query_code, f.regression_type_code).round(2)
+      r = f.correlation_coefficient
 
-    if (f.regression_type_code == 9)
-      y_formatted = (y * 100).to_s + "%" 
-    else
-      y_formatted = y
+      if (f.regression_type_code == 9)
+        y_formatted = (y * 100).to_s + "%" 
+      else
+        y_formatted = y
+      end
+
+      @nominee_predictions << [f.question, y_formatted, r]
+
     end
-
-    @nominee_predictions << [f.question, y_formatted, r]
-
-    end
-
-
   end
 
   # GET /nominees/new
