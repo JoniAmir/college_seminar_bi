@@ -1,6 +1,6 @@
 <script type="text/javascript" charset="utf-8">
 
-<% 1.upto(@graph_count) do |i| %>
+<% @nominee_charts.each_with_index do |chart, i| %>
 
   $(function () {
     var chart;
@@ -13,19 +13,22 @@
           plotShadow: true
         },
         xAxis: {
-            min: -0.5,
-            max: 5.5
+            title: {
+                text: '<%= chart[:x_axis] %>'
+            }
         },
         yAxis: {
-            min: 0
+            title: {
+                text: '<%= chart[:y_axis] %>'
+            }
         },
         title: {
-            text: 'Scatter plot with regression line'
+            text: '<%= chart[:title] %>'
         },
         series: [{
             type: 'line',
             name: 'Regression Line',
-            data: [[0, 1.11], [5, 4.51]],
+            data: <%= chart[:data_linear] %>,
             marker: {
                 enabled: false
             },
@@ -38,7 +41,14 @@
         }, {
             type: 'scatter',
             name: 'Observations',
-            data: [1, 1.5, 2.8, 3.5, 3.9, 4.2],
+            data: [[1, 2], [1.5, 2.8], [3.5, 3.9], [4.2, 5]],
+            marker: {
+                radius: 4
+            }
+        }, {
+            type: 'scatter',
+            name: 'Individual',
+            data: [[3, 4.5]],
             marker: {
                 radius: 4
             }
@@ -57,8 +67,7 @@
 		<div class="row-fluid">
 			
 			<div class="row-fluid span10">
-				
-				<% 1.upto(@graph_count) do |i| %>
+				<% 0.upto(@nominee_charts.count - 1) do |i| %>
 				<div class="row-fluid"> 
 					<div id= <%="prediction_chart#{i.to_s}"%> class="nominee_section_span"></div>
 				</div>
@@ -67,7 +76,7 @@
 			</div>
 
 			<div class="span2">
-				<% @nominee_predictions.each do |p| %>
+				<% @nominee_boxes.each do |p| %>
 					<div class="row-fluid thumbnail nominee_result_box">
 						<h4> <%= p[0] %> </h4>
 						<h3> <b> <%= p[1] %> </b> </h3>
