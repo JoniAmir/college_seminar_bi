@@ -46,10 +46,16 @@ header, .nominee_form table, .nominee_form .actions
 }
 
 .nominee_section_span {
+	height: 500px;
 	border: 4px;
 	border-color: black;
-	border-style: solid;
-	height: 500px;
+	border-style: solid;	
+	-webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	border-radius: 7px;
+	box-shadow: 3px 3px 3px #111;
+	-webkit-box-shadow: 3px 3px 3px #111;
+	-moz-box-shadow: 3px 3px 3px #111;
 }
 
 .table-bordered {
@@ -66,6 +72,7 @@ header, .nominee_form table, .nominee_form .actions
 	border-radius: 20px;
 	box-shadow: 3px 3px 5px #111;
 	-webkit-box-shadow: 3px 3px 5px #111;
+	-moz-box-shadow: 3px 3px 5px #111;
 	background: #CC6600;
 	color: #fff !important;
 	text-shadow: 0px 0px 10px #000;
