@@ -22,11 +22,11 @@
       </tr>
       <tr>
         <td> <%= Nominee.human_attribute_name("gender") %> </td>
-        <td> <%= f.select(:gender_code, options_for_select(NomineesHelper::get_list_by_field("gender"))) %> </td>
+        <td> <%= f.select(:gender_code, options_for_select(NomineesHelper::get_list_by_field_students("gender"))) %> </td>
       </tr>
       <tr>
         <td> <%= Nominee.human_attribute_name("city") %> </td>
-        <td> <%= f.select(:city_code, options_for_select(NomineesHelper::get_list_by_field("city"))) %> </td>
+        <td> <%= f.select(:city_code, options_for_select(NomineesHelper::get_list_by_field_students("city"))) %> </td>
       </tr>
       <tr>
         <td> <%= Nominee.human_attribute_name("school_grade") %> </td>
@@ -53,12 +53,20 @@
         <td> <%= f.number_field(:english_grade, in: 0..125) %> </td>
       </tr>
       <tr>
+        <td> <%= Nominee.human_attribute_name("english_level") %> </td>
+        <td> <%= f.number_field(:english_level, in: 1..5) %> </td>
+      </tr>
+      <tr>
         <td> <%= Nominee.human_attribute_name("starting_semester") %> </td>
         <td> <%= f.number_field(:starting_semester, in: 1..2) %> </td>
       </tr>
       <tr>
+        <td> <%= Nominee.human_attribute_name("is_working") %> </td>
+        <td> <%= f.select(:is_working, options_for_select([["לא",0],["כן",1]])) %> </td>
+      </tr>
+      <tr>
         <td> <%= Nominee.human_attribute_name("school") %> </td>
-        <td> <%= f.select(:school_code, options_for_select(NomineesHelper::get_list_by_field("school"))) %> </td>
+        <td> <%= f.select(:school_code, options_for_select(NomineesHelper::get_list_by_field_students("school"))) %> </td>
       </tr>
       <tr class="actions nominee_form_submit">
         <td colspan="2">
