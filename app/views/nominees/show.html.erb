@@ -15,7 +15,12 @@
         xAxis: {
             title: {
                 text: '<%= chart[:x_axis] %>'
-            }
+            }<% if chart[:tickInterval].present? %>,
+            tickInterval: <%= chart[:tickInterval] %>,
+            min: 0,
+            max: 3,
+            categories: ['', 'א', 'ב', '']
+            <% end %>
         },
         yAxis: {
             title: {

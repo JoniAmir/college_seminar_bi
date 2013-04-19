@@ -19,11 +19,14 @@ class NomineesController < ApplicationController
     graph_rows = RegressionGraph.where('school_code = ? AND var_code is not null', @nominee.school_code)
     graph_rows.each do |g|
       chart = Hash.new
-      chart[:x_axis] = NomineesHelper::get_display_by_code_regressions("variable", g.var_code)
+      x_axis_field = NomineesHelper::get_display_by_code_regressions("variable", g.var_code)
+      x_title = t("views.nominee_show.#{x_axis_field}")
+      chart[:tickInterval] = 1 if x_axis_field == 'starting_semester'
+      chart[:x_axis] = x_title
       chart[:y_axis] = g.question 
-      chart[:title] = chart[:y_axis] + " - " + chart[:x_axis]      
+      chart[:title] = chart[:x_axis] + " - " + chart[:y_axis]
       chart[:data_linear] = NomineesHelper.nominee_chart_data_linear(@nominee, g.query_code)
-      chart[:data_dots_obs] = NomineesHelper.nominee_chart_data_dots_observations(@nominee.school_code, chart[:x_axis], NomineesHelper::get_tag_by_code_regressions("question", g.question_code, "y_variable"))
+      chart[:data_dots_obs] = NomineesHelper.nominee_chart_data_dots_observations(@nominee.school_code, x_axis_field, NomineesHelper::get_tag_by_code_regressions("question", g.question_code, "y_variable"))
       chart[:data_dots_ind] = NomineesHelper.nominee_chart_data_dots_single(@nominee, g.var_code, g.query_code)
       @nominee_charts << chart
     end

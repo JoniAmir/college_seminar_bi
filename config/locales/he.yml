@@ -28,7 +28,7 @@ he:
         is_working: "האם במסלול עבודה+לימודים"
   views:
     nominee_show:
-      integrated_grade: "ציון משולב )בגרויות + פסיכומרטי("
+      integrated_grade: "ציון משולב"
       is_a_city: "האם גר/ה בעיר"
       is_male: "האם זכר" 
       is_working: "האם במסלול עבודה+לימודים"
