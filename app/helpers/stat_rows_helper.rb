@@ -21,14 +21,14 @@ module StatRowsHelper
   def self.beginners_by_period
     rows = StatRow.group("year").select("year, count(*) as amount")
     rows.map do |row|
-      [row.year, row.amount]
+      [row.year, row.amount.to_i]
     end
   end
 
   def self.graduates_by_period
 		rows = StatRow.where("graduation_date is not null AND date_part('year', graduation_date) between 2006 and 2011").group("date_part('year', graduation_date)").select("date_part('year', graduation_date) as year, count(*) as amount")
     rows.map do |row|
-      [row.year, row.amount]
+      [row.year.to_i, row.amount.to_i]
    	end
   end
 
@@ -38,7 +38,7 @@ module StatRowsHelper
   def self.grade_combination(school_code)
   	rows = StatRow.where('final_grade is not null AND integrated_grade is not null AND graduation_school_code = ?', school_code).select("integrated_grade, final_grade")
     rows.map do |row|
-      [row.integrated_grade.to_f, row.final_grade]
+      [row.integrated_grade.to_f, row.final_grade.to_i]
    	end
   end
 
@@ -55,7 +55,7 @@ module StatRowsHelper
   def self.working_in_subject
   	rows = StatRow.where("job_level_code is not null and work_in_profession is not null and job_level_code != 6").group("job_level,job_level_code, work_in_profession").select("job_level, job_level_code, work_in_profession, count(*) as amount").order("job_level_code, work_in_profession")
   	rows.map do |row|
-      [row.work_in_profession.to_i, row.amount.to_i, row.job_level_code]
+      [row.work_in_profession.to_i, row.amount.to_i, row.job_level_code.to_i]
    	end
   end  
 
@@ -81,7 +81,7 @@ module StatRowsHelper
   def self.grades_by_range(range_start)
     rows = StatRow.where('final_grade is not null AND final_grade >= ? AND final_grade <= ?', range_start ,range_start + 5).group("graduation_school_code").select("graduation_school_code, count(*) as students_count").order("graduation_school_code")
     tmp = rows.map do |r|
-      [r.graduation_school_code, r.students_count]
+      [r.graduation_school_code.to_i, r.students_count.to_i]
     end
     rows_hash = Hash[tmp]
     res = []

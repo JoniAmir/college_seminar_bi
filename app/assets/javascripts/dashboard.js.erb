@@ -407,7 +407,7 @@ $(function () {
 			},
 			series: [{
 				name: 'התנהגות',
-				data: <%= StatRowsHelper::grades_by_school(1) %>,
+				data: <%=  StatRowsHelper::grades_by_school(1) %>,
 				dataLabels: {
 				  enabled: true,
 				  formatter: function() {
