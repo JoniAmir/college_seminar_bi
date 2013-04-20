@@ -21,3 +21,5 @@
 *.DS_Store
 
 logfile
+mysql2pgsql.perl
+*.sql
