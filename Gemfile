@@ -1,11 +1,8 @@
-
 source 'https://rubygems.org'
 source 'http://gems.github.com'
 
-
 gem 'rails'
 gem 'jquery-rails'
-gem 'devise'
 gem 'sorcery'
 gem 'pg'
 
