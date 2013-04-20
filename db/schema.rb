@@ -24,9 +24,8 @@ ActiveRecord::Schema.define(:version => 20130331174003) do
     t.string   "namespace"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+  add_index "active_admin_comments", ["author_type", "author_id"], :name => "active_admin_comments_1_idx"
+  add_index "active_admin_comments", ["namespace"], :name => "active_admin_comments_namespace_idx"
 
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -43,8 +42,8 @@ ActiveRecord::Schema.define(:version => 20130331174003) do
     t.datetime "updated_at",                             :null => false
   end
 
-  add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
-  add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+  add_index "admin_users", ["email"], :name => "admin_users_email_key", :unique => true
+  add_index "admin_users", ["reset_password_token"], :name => "admin_users_reset_password_token_key", :unique => true
 
   create_table "nominees", :force => true do |t|
     t.datetime "created_at",                                        :null => false
@@ -76,19 +75,24 @@ ActiveRecord::Schema.define(:version => 20130331174003) do
     t.integer "school_code"
     t.integer "var_code"
     t.float   "var_coefficient"
+    t.float   "correlation_coefficient"
+  end
+
+  create_table "regression_graphs", :force => true do |t|
+    t.integer "query_code"
+    t.integer "question_code"
+    t.string  "question"
+    t.integer "regression_type_code"
+    t.integer "school_code"
+    t.integer "var_code"
+    t.float   "var_coefficient"
+    t.float   "correlation_coefficient"
   end
 
   create_table "regressions_lookup", :force => true do |t|
     t.string "field_name",   :limit => 500
     t.string "display_name", :limit => 500
-  end
-
-  create_table "sequence_data", :primary_key => "sequence_name", :force => true do |t|
-    t.integer "sequence_increment",              :default => 1,                    :null => false
-    t.integer "sequence_min_value",              :default => 1,                    :null => false
-    t.integer "sequence_max_value", :limit => 8, :default => 18446744073709551615, :null => false
-    t.integer "sequence_cur_value", :limit => 8, :default => 1
-    t.boolean "sequence_cycle",                  :default => false,                :null => false
+    t.string "tags"
   end
 
   create_table "stat_rows", :id => false, :force => true do |t|
@@ -181,9 +185,10 @@ ActiveRecord::Schema.define(:version => 20130331174003) do
     t.string  "field_name"
     t.integer "numeric_value"
     t.string  "display_name"
+    t.string  "tags"
   end
 
-  add_index "students_lookup", ["numeric_value"], :name => "NUMERIC_IDX"
+  add_index "students_lookup", ["numeric_value"], :name => "students_lookup_numeric_value_idx"
 
   create_table "users", :force => true do |t|
     t.string   "username",                        :null => false
@@ -199,7 +204,7 @@ ActiveRecord::Schema.define(:version => 20130331174003) do
     t.datetime "reset_password_email_sent_at"
   end
 
-  add_index "users", ["remember_me_token"], :name => "index_users_on_remember_me_token"
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token"
+  add_index "users", ["remember_me_token"], :name => "users_remember_me_token_idx"
+  add_index "users", ["reset_password_token"], :name => "users_reset_password_token_idx"
 
 end
