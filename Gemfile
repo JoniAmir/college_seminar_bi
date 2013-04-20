@@ -5,6 +5,7 @@ gem 'rails'
 gem 'jquery-rails'
 gem 'sorcery'
 gem 'pg'
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,7 +21,6 @@ group :development do
 	gem 'annotate' #shows table description in class comments. type 'annotate' in console to refresh
 	gem 'better_errors'
 	gem 'binding_of_caller'
-	gem 'thin'
 	gem 'pry-debugger'
 	gem 'pry-rails'
 	gem 'pry'
