@@ -18,7 +18,7 @@ group :assets do
 end
 
 group :development do
-	gem 'mysql2'
+	#gem 'mysql2'
 	gem 'meta_request'
 	gem 'sextant'
 	gem 'annotate' #shows table description in class comments. type 'annotate' in console to refresh
@@ -32,7 +32,7 @@ end
 
 
 group :test do
-	gem 'mysql2'
+	#gem 'mysql2'
 end
 
 group :production do
