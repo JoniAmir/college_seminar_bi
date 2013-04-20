@@ -19,14 +19,14 @@ module StatRowsHelper
 
   # Chart 2
   def self.beginners_by_period
-    rows = StatRow.group("year").select("year, count(*) as amount")
+    rows = StatRow.group("year").select("year, count(*) as amount").order("year asc")
     rows.map do |row|
       [row.year, row.amount.to_i]
     end
   end
 
   def self.graduates_by_period
-		rows = StatRow.where("graduation_date is not null AND date_part('year', graduation_date) between 2006 and 2011").group("date_part('year', graduation_date)").select("date_part('year', graduation_date) as year, count(*) as amount")
+		rows = StatRow.where("graduation_date is not null AND date_part('year', graduation_date) between 2006 and 2011").group("date_part('year', graduation_date)").select("date_part('year', graduation_date) as year, count(*) as amount").order("date_part('year', graduation_date) asc")
     rows.map do |row|
       [row.year.to_i, row.amount.to_i]
    	end
