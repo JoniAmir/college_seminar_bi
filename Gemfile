@@ -5,10 +5,8 @@ source 'http://gems.github.com'
 
 gem 'rails'
 gem 'jquery-rails'
-gem 'devise'
-gem 'googlecharts', :require => 'gchart'
+#gem 'devise'
 gem 'sorcery'
-gem 'pry'
 gem 'pg'
 
 # Gems used only for assets and not required
@@ -29,6 +27,7 @@ group :development do
 	gem 'thin'
 	gem 'pry-debugger'
 	gem 'pry-rails'
+	gem 'pry'
 end
 
 
