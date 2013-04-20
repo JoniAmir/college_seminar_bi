@@ -85,8 +85,6 @@ GEM
     mime-types (1.22)
     multi_json (1.7.2)
     multipart-post (1.2.0)
-    mysql2 (0.3.11)
-    mysql2 (0.3.11-x86-mingw32)
     oauth (0.4.7)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -156,6 +154,8 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.7)
+    sqlite3 (1.3.7-x86-mingw32)
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -182,7 +182,6 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   jquery-rails
   meta_request
-  mysql2
   pg
   pry
   pry-debugger
@@ -191,5 +190,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sextant
   sorcery
+  sqlite3
   thin
   uglifier (>= 1.0.3)

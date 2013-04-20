@@ -31,8 +31,9 @@ group :development do
 end
 
 
-group :test do
+group :development, :test do
 	#gem 'mysql2'
+	gem 'sqlite3'
 end
 
 group :production do

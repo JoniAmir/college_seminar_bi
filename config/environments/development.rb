@@ -37,6 +37,8 @@ College::Application.configure do
   # Set config level to warnings levels and up
   config.log_level = :warn
 
+  config.assets.initialize_on_precompile = false
+  
   #*-*-*-*-*--*-*-**--*-*-**- CHANGED *-*-**--*-*-*-*-*-*-***-**-*-
   config.action_controller.perform_caching = false
   #*-*-*-*-*--*-*-**--*-*-**- CHANGED *-*-**--*-*-*-*-*-*-***-**-*-
