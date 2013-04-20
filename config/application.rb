@@ -63,7 +63,7 @@ module College
 
     #config.assets.initialize_on_precompile = false
 
-    Rails.application.config.assets.compile = true
+    #Rails.application.config.assets.compile = true
 
     # config.autoload_paths += %W(#{config.root}/app/helpers)
     

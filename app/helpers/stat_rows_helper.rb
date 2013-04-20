@@ -8,7 +8,7 @@ module StatRowsHelper
   	group_size = 5
 		rows = StatRow.where('final_grade is not null').group("final_grade - (final_grade % #{group_size})").select("final_grade - (final_grade % #{group_size}) as finali_grade, count(*) as students_count")
     res = rows.map do |grade_range|
-      range = grade_range.finali_grade.to_s + "-" + (grade_range.finali_grade + 5).to_s
+      range = grade_range.finali_grade.to_s + "-" + (grade_range.finali_grade.to_i + 5).to_s
       [range, grade_range.students_count.to_i]
    	end
     
@@ -26,7 +26,7 @@ module StatRowsHelper
   end
 
   def self.graduates_by_period
-		rows = StatRow.where("graduation_date is not null AND YEAR(graduation_date) between 2006 and 2011").group("YEAR(graduation_date)").select("YEAR(graduation_date) as year, count(*) as amount")
+		rows = StatRow.where("graduation_date is not null AND date_part('year', graduation_date) between 2006 and 2011").group("date_part('year', graduation_date)").select("date_part('year', graduation_date) as year, count(*) as amount")
     rows.map do |row|
       [row.year, row.amount]
    	end
@@ -66,7 +66,7 @@ module StatRowsHelper
     group_size = 5
     rows = StatRow.where('final_grade is not null AND graduation_school_code = ?', school_code).group("final_grade - (final_grade % #{group_size})").select("final_grade - (final_grade % #{group_size}) as finali_grade, count(*) as students_count")
     temp = rows.map do |grade_range|
-      range = grade_range.finali_grade.to_s + "-" + (grade_range.finali_grade + 5).to_s
+      range = grade_range.finali_grade.to_s + "-" + (grade_range.finali_grade.to_i + 5).to_s
       [range.to_s, grade_range.students_count.to_i]
     end
 
