@@ -15,7 +15,6 @@ group :assets do
 end
 
 group :development do
-	#gem 'mysql2'
 	gem 'meta_request'
 	gem 'sextant'
 	gem 'annotate' #shows table description in class comments. type 'annotate' in console to refresh
@@ -29,11 +28,8 @@ end
 
 
 group :development, :test do
-	#gem 'mysql2'
-	gem 'sqlite3'
 end
 
 group :production do
-  # gems specifically for Heroku go here
   #gem 'pg'
 end
