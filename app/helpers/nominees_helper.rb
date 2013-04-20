@@ -8,11 +8,15 @@ module NomineesHelper
   end
 
   def self.get_tag_by_code_students(field_name, code, tag_name)
-    StudentsLookup.where("field_name = ? and numeric_value = ?", field_name, code).select("substr(tags,locate('" + tag_name + "=', tags) + length('" + tag_name + "='), locate(';', tags,locate('" + tag_name + "=', tags)) - (locate('" + tag_name + "=', tags) + length('" + tag_name + "=')) ) as val").first.val
+    #select_string = "substring(tags,locate('#{tag_name}=', tags) + length('#{tag_name}='), locate(';', tags,locate('#{tag_name}=', tags)) - (locate('#{tag_name}=', tags) + length('#{tag_name}=')) ) as val"
+    res = StudentsLookup.where("field_name = ? and numeric_value = ?", field_name, code).select(:tags).first
+    res.tags.match(/#{tag_name}=([a-zA-Z0-9_]*){1};/)[1]
   end
 
   def self.get_tag_by_code_regressions(field_name, code, tag_name)
-    RegressionsLookup.where("field_name = ? and id = ?", field_name, code).select("substr(tags,locate('" + tag_name + "=', tags) + length('" + tag_name + "='), locate(';', tags,locate('" + tag_name + "=', tags)) - (locate('" + tag_name + "=', tags) + length('" + tag_name + "=')) ) as val").first.val
+    #select_string = "substring(tags,locate('#{tag_name}=', tags) + length('#{tag_name}='), locate(';', tags,locate('#{tag_name}=', tags)) - (locate('#{tag_name}=', tags) + length('#{tag_name}=')) ) as val"
+    res = RegressionsLookup.where("field_name = ? and id = ?", field_name, code).select(:tags).first
+    res.tags.match(/#{tag_name}=([a-zA-Z0-9_]*){1};/)[1] if res.present?
   end
 
   def self.get_display_by_code_regressions(field_name, code)
@@ -100,14 +104,16 @@ module NomineesHelper
   end
 
   def self.nominee_chart_data_linear(nominee, graph_query_code)
-    query_rows = RegressionGraph.where(query_code: graph_query_code).order('var_code desc')
+    # factors as in: ax + b
+    a_factor = RegressionGraph.where("query_code = ? AND var_code IS NOT NULL", graph_query_code).first
+    b_factor = RegressionGraph.where("query_code = ? AND var_code IS NULL", graph_query_code).first
     
-    x_min = get_tag_by_code_regressions("variable", query_rows.first.var_code, "min_display").to_i
-    x_max = get_tag_by_code_regressions("variable", query_rows.first.var_code, "max_display").to_i
+    x_min = get_tag_by_code_regressions("variable", a_factor.var_code, "min_display").to_i
+    x_max = get_tag_by_code_regressions("variable", a_factor.var_code, "max_display").to_i
 
     res = []
-    res << [x_min, query_rows.first.var_coefficient * x_min + query_rows.second.var_coefficient]
-    res << [x_max, query_rows.first.var_coefficient * x_max + query_rows.second.var_coefficient]
+    res << [x_min, a_factor.var_coefficient * x_min + b_factor.var_coefficient]
+    res << [x_max, a_factor.var_coefficient * x_max + b_factor.var_coefficient]
 
     return res
   end
@@ -121,9 +127,11 @@ module NomineesHelper
 
   def self.nominee_chart_data_dots_single(nominee, x_axis_field, graph_query_code)
     x_value = self.get_field_value(nominee, x_axis_field).to_f
-    query_rows = RegressionGraph.where(query_code: graph_query_code).order('var_code desc')
+    
+    a_factor = RegressionGraph.where("query_code = ? AND var_code IS NOT NULL", graph_query_code).first
+    b_factor = RegressionGraph.where("query_code = ? AND var_code IS NULL", graph_query_code).first
 
-    res = [x_value, query_rows.first.var_coefficient * x_value + query_rows.second.var_coefficient]
+    res = [x_value, a_factor.var_coefficient * x_value + b_factor.var_coefficient]
   end
 
 end

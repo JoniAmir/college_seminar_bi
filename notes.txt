@@ -5,5 +5,7 @@ Here you can put some of your remarks, fixed or generatl explanations.
 	Run cmd in shell: annotate
 
 
-TODO:
-- Check for duplications when importing excels to the DB
+DB:
+- To export database, type from main cmd: mysqldump --user=root -p sadna > sadna.sql
+- Convert mySql to postgres: perl mysql2pgsql.perl sadna.sql postgres.sql
+- Import to postgres: psql sadna < postgres.sql
