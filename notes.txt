@@ -39,3 +39,4 @@ and restore the signup path in routes.rb :)
 User/Pass for prod:
 user: mta-admin
 pass: bi2013
+
