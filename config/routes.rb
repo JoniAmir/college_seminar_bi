@@ -2,8 +2,8 @@ College::Application.routes.draw do
 
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
-  get "signup" => "users#new", :as => "signup"
-  resources :users, only: [ :create, :new ]
+  #get "signup" => "users#new", :as => "signup"
+  #resources :users, only: [ :create, :new ]
   resources :sessions, only: [ :new, :destroy, :create ]
   resources :nominees, only: [ :new, :create, :show ] 
 
