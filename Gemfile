@@ -25,6 +25,7 @@ group :development do
 	gem 'pry-debugger'
 	gem 'pry-rails'
 	gem 'pry'
+	gem 'awesome_print'
 end
 
 
@@ -32,5 +33,4 @@ group :development, :test do
 end
 
 group :production do
-  #gem 'pg'
 end

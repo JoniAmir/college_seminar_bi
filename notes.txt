@@ -9,3 +9,12 @@ DB:
 - To export database, type from main cmd: mysqldump --user=root -p sadna > sadna.sql
 - Convert mySql to postgres: perl mysql2pgsql.perl sadna.sql postgres.sql
 - Import to postgres: psql sadna < postgres.sql
+
+
+Fixes:
+updating degree duration. rails c:
+a= RegressionFormula.where(question_code: 3).where("var_code is null")
+a.each do |p|
+p.var_coefficient += 0.75
+p.save
+end
