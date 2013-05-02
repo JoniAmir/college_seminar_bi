@@ -12,20 +12,30 @@ DB:
 
 
 Fixes:
-updating degree duration. rails c:
+- updating degree duration. rails c:
 a= RegressionFormula.where(question_code: 3).where("var_code is null")
 a.each do |p|
 p.var_coefficient += 0.75
 p.save
 end
 
+a= RegressionGraph.where(question_code: 3).where("var_code is null")
+a.each do |p|
+p.var_coefficient += 0.75
+p.save
+end
 
-User/Pass for prod:
-user: mta-admin
-pass: bi2013
+
+- updating degree duration for students: (not currently set in prod and dev)
+update stat_rows set degree_duration = degree_duration+0.75 where degree_duration is not null;
 
 
 
 to restore the signup link, add this in line 26 in home.html.erb:
 <%= link_to("הירשם", signup_path) %> 
 and restore the signup path in routes.rb :)
+
+
+User/Pass for prod:
+user: mta-admin
+pass: bi2013
