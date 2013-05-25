@@ -6,8 +6,9 @@ class NomineesController < ApplicationController
     
     # Generate box results
     @nominee_boxes = []
-    query_codes = RegressionFormula.where(school_code: @nominee.school_code).select("distinct query_code, regression_type_code, question, question_code, correlation_coefficient")
+    query_codes = RegressionFormula.where(school_code: @nominee.school_code).select("distinct query_code, regression_type_code, question, question_code, correlation_coefficient").order('question_code')
     query_codes.each do |f|
+      next if f.question_code == 7 # Skip this one. didnt remove in db just in case..
       y = NomineesHelper::calc_formula(@nominee, f.query_code, f.regression_type_code).round(2)
       r = f.correlation_coefficient
       y_formatted = (y * 100).round(2).to_s + "%" if (f.regression_type_code == 9)
