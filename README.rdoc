@@ -1,11 +1,9 @@
-== Rails Seminar Project
-=== By Johnatan Amir, Lior Kalifa and Lital Zubery
-=== Advisor : Profesor Boris Epshtain 
+== Rails Seminar Project ==
+== By Yonatan Amir, Lior Kalifa and Lital Zubery
+=== Advisor : Boris Epshtain, Ph.D
 
-This site would give the nominee a chance to predict 
-its result in this college. 
-
+This site would give the nominee a somewhat useful prediction on his success in college.
 The prediction is made by statistic analysis on data from the recent years.
 
-Thre is no garentee about the actual result but it may give you
-a good prepective. Enjoy :) 
+Thre is no guarantee about the actual result but it may give you
+a good prepective. Enjoy :)

@@ -15,15 +15,17 @@ Fixes:
 - updating degree duration. rails c:
 a= RegressionFormula.where(question_code: 3).where("var_code is null")
 a.each do |p|
-p.var_coefficient -= 0.50
+p.var_coefficient -= 0.00??
 p.save
 end
 
 a= RegressionGraph.where(question_code: 3).where("var_code is null")
 a.each do |p|
-p.var_coefficient -= 0.50
+p.var_coefficient -= 0.00??
 p.save
 end
+
+# currently with 0.75
 
 
 - updating degree duration for students: (not currently set in prod and dev)
@@ -36,7 +38,5 @@ to restore the signup link, add this in line 26 in home.html.erb:
 and restore the signup path in routes.rb :)
 
 
-User/Pass for prod:
-user: mta-admin
-pass: bi2013
+
 
