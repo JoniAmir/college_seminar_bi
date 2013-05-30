@@ -25,36 +25,36 @@ module NomineesHelper
 
   def self.get_field_value(checked_nominee, var_code)
     var_display = self.get_display_by_code_regressions("variable", var_code)
-    var_value = 0;
+    
     case var_display 
-      when "start_studying_age"   
-        var_value = checked_nominee.age
-      when "is_male"  
-        var_value = NomineesHelper::get_tag_by_code_students("gender", checked_nominee.gender_code, "is_male").to_i
-      when "is_a_city"
-        var_value = NomineesHelper::get_tag_by_code_students("city", checked_nominee.city_code, "is_a_city").to_i
-      when "school_grade"
-        var_value = checked_nominee.school_grade
-      when "sat_grade" 
-        var_value = checked_nominee.sat_grade
-      when "integrated_grade"  
-        var_value = (checked_nominee.sat_grade + 10 * (checked_nominee.school_grade-30))/2
-      when "subject1_grade"  
-        var_value = checked_nominee.math_grade
-      when "subject1_units"  
-        var_value = checked_nominee.math_units
-      when "subject2_grade"  
-        var_value = checked_nominee.english_grade
-      when "subject2_units"  
-        var_value = checked_nominee.english_units
-      when "english_level"  
-        var_value = checked_nominee.english_level
-      when "is_working"  
-        var_value = checked_nominee.is_working
-      when "starting_semester"  
-        var_value = checked_nominee.starting_semester
-      else
-        var_value = 0
+    when "start_studying_age"   
+      var_value = checked_nominee.age
+    when "is_male"  
+      var_value = NomineesHelper::get_tag_by_code_students("gender", checked_nominee.gender_code, "is_male").to_i
+    when "is_a_city"
+      var_value = NomineesHelper::get_tag_by_code_students("city", checked_nominee.city_code, "is_a_city").to_i
+    when "school_grade"
+      var_value = checked_nominee.school_grade
+    when "sat_grade" 
+      var_value = checked_nominee.sat_grade
+    when "integrated_grade"  
+      var_value = (checked_nominee.sat_grade + 10 * (checked_nominee.school_grade-30))/2
+    when "subject1_grade"  
+      var_value = checked_nominee.math_grade
+    when "subject1_units"  
+      var_value = checked_nominee.math_units
+    when "subject2_grade"  
+      var_value = checked_nominee.english_grade
+    when "subject2_units"  
+      var_value = checked_nominee.english_units
+    when "english_level"  
+      var_value = checked_nominee.english_level
+    when "is_working"  
+      var_value = checked_nominee.is_working
+    when "starting_semester"  
+      var_value = checked_nominee.starting_semester
+    else
+      var_value = 0
     end
 
     return var_value.to_i

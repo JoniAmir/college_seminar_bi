@@ -70,8 +70,8 @@
 	<div class="content-holder container">
 		
 		<div class="row-fluid">
-			
 			<div class="row-fluid span10">
+                <h4 class="header lead" style="text-align: center;"> מועמד ל<%= @nominee.school %> </h4>
 				<% 0.upto(@nominee_charts.count - 1) do |i| %>
 				<div class="row-fluid"> 
 					<div id= <%="prediction_chart#{i.to_s}"%> class="nominee_section_span"></div>
