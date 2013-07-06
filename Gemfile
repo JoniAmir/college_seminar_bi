@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 source 'http://gems.github.com'
 
+ruby '1.9.2'
+
 gem 'rails'
 gem 'jquery-rails'
 gem 'sorcery'
