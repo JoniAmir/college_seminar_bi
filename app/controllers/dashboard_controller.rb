@@ -3,25 +3,16 @@ class DashboardController < ApplicationController
 
 	# Display the home page
 	def home
-
 	end
 
 
 	# Show all the general graphs and statistics
 	def show_dashboard
-
 	end
 
 
 	# About page
 	def about
-
 	end
-
-
-	def generate_gender_grade_graph
-		
-	end
-
 
 end

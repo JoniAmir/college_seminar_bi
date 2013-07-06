@@ -43,4 +43,5 @@ College::Application.configure do
   config.action_controller.perform_caching = false
   #*-*-*-*-*--*-*-**--*-*-**- CHANGED *-*-**--*-*-*-*-*-*-***-**-*-
 
+  config.serve_static_assets = false
 end

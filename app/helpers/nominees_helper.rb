@@ -2,19 +2,15 @@ module NomineesHelper
 	
 	def self.get_list_by_field_students(field_name)
 		rows = StudentsLookup.where('field_name = ? and display_name != \'unknown\'', field_name).order('display_name')
-  	res = rows.map do |option|
-    		[option.display_name, option.numeric_value]
-    end
+  	rows.map { |option| [option.display_name, option.numeric_value] }
   end
 
   def self.get_tag_by_code_students(field_name, code, tag_name)
-    #select_string = "substring(tags,locate('#{tag_name}=', tags) + length('#{tag_name}='), locate(';', tags,locate('#{tag_name}=', tags)) - (locate('#{tag_name}=', tags) + length('#{tag_name}=')) ) as val"
     res = StudentsLookup.where("field_name = ? and numeric_value = ?", field_name, code).select(:tags).first
     res.tags.match(/#{tag_name}=([a-zA-Z0-9_]*){1};/)[1]
   end
 
   def self.get_tag_by_code_regressions(field_name, code, tag_name)
-    #select_string = "substring(tags,locate('#{tag_name}=', tags) + length('#{tag_name}='), locate(';', tags,locate('#{tag_name}=', tags)) - (locate('#{tag_name}=', tags) + length('#{tag_name}=')) ) as val"
     res = RegressionsLookup.where("field_name = ? and id = ?", field_name, code).select(:tags).first
     res.tags.match(/#{tag_name}=([a-zA-Z0-9_]*){1};/)[1] if res.present?
   end
@@ -57,7 +53,7 @@ module NomineesHelper
       var_value = 0
     end
 
-    return var_value.to_i
+    var_value.to_i
   end
 
 
@@ -78,16 +74,14 @@ module NomineesHelper
   	  y = 1/(1+Math.exp(-y))
   	end
 
-  	return y
+  	y
   end
 
   def self.calc_graphs(query_code)
-    # school_rows = RegressionGraph.where(school_code: school_code)
-
     query_vars = RegressionFormula.where(query_code: query_code)
     y = 0
     query_vars.each do |var|
-      if (var.var_code.present?)
+      if var.var_code.present?
         field_value = get_field_value(checked_nominee, var.var_code)
         y += (field_value * var.var_coefficient) 
       else
@@ -96,13 +90,14 @@ module NomineesHelper
     end
 
     # Calc logistic regression
-    if (regression_type_code == 9)
+    if regression_type_code == 9
       y = 1/(1+Math.exp(-y))
     end
 
     return y  
   end
 
+  # Getting the data for the 1st graph. 
   def self.nominee_chart_data_linear(nominee, graph_query_code)
     # factors as in: ax + b
     a_factor = RegressionGraph.where("query_code = ? AND var_code IS NOT NULL", graph_query_code).first
@@ -118,20 +113,22 @@ module NomineesHelper
     return res
   end
 
+  # Getting data for the dots chart - the rest of the students
   def self.nominee_chart_data_dots_observations(school_code, x_axis_field, y_axis_field)
-    rows = StatRow.where(x_axis_field + ' is not null and ' + y_axis_field + ' is not null and graduation_school_code is not null AND graduation_school_code = ?', school_code).select(x_axis_field + ',' + y_axis_field)
+    where = "#{x_axis_field} IS NOT NULL AND #{y_axis_field} IS NOT NULL AND graduation_school_code IS NOT NULL AND graduation_school_code = ?"
+    select = "#{x_axis_field},#{y_axis_field}"
+    rows = StatRow.where(where, school_code).select(select)
 
-    res = rows.map { |r| [r[x_axis_field].to_f, r[y_axis_field].to_f] }
-    res
+    rows.map { |r| [r[x_axis_field].to_f, r[y_axis_field].to_f] }
   end
 
+  # Getting data for the dots chart - the obseravtion (one dot)
   def self.nominee_chart_data_dots_single(nominee, x_axis_field, graph_query_code)
     x_value = self.get_field_value(nominee, x_axis_field).to_f
-    
     a_factor = RegressionGraph.where("query_code = ? AND var_code IS NOT NULL", graph_query_code).first
     b_factor = RegressionGraph.where("query_code = ? AND var_code IS NULL", graph_query_code).first
 
-    res = [x_value, a_factor.var_coefficient * x_value + b_factor.var_coefficient]
+    [x_value, a_factor.var_coefficient * x_value + b_factor.var_coefficient]
   end
 
 end
