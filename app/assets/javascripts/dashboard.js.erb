@@ -288,11 +288,13 @@ $(function () {
 				rtl: true
 			},
 			tooltip: {
+				useHTML: true,
 				formatter: function() {
-				return 	"סטודנטים: " + this.point.y + ", טווח ציונים: " + this.series.name ;
+				return 	"טווח ציונים: <font color='" + this.series.color + "'>" + this.series.name + "</font>" +
+								", סטודנטים: " + this.point.y  ;
 				},
 				style: {
-					fontSize: '16px'				
+					fontSize: '16px'
 				}
 			},
 			plotOptions: {
