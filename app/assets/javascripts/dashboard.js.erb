@@ -15,12 +15,12 @@ $(function () {
 				text: 'פילוח לפי טווח ציוני סיום'
 			},
 			tooltip: {
-				pointFormat: 'יש {point.y} סטודנטים המהווים {point.percentage}%',
-				style: {
-					fontSize: '16px',
-					align: 'right'
+				formatter: function() {
+				return 	"סטודנטים: " + this.point.y + ". באחוזים: " + this.point.percentage.toFixed(0) + "%" ;
 				},
-				percentageDecimals: 2
+				style: {
+					fontSize: '16px'				
+				}
 			},
 			plotOptions: {
 				pie: {
@@ -75,10 +75,11 @@ $(function () {
 				rtl: true
 			},
 			tooltip: {
-				pointFormat: '{series.name}: {point.y}',
+				headerFormat: '',
+				pointFormat: '{series.name}: {point.y} ',
+				shared: true,
 				style: {
-					fontSize: '16px',
-					align: 'right'
+					fontSize: '16px'				
 				}
 			},
 			plotOptions: {
@@ -115,17 +116,28 @@ $(function () {
 			},
 			yAxis: [{ 
 				title: {
-					text: 'ציון ממוצע בתואר'
+					text: 'ציון בתואר'
 				}
 			}],
 			xAxis: [{ 
 				title: {
-					text: 'ציון משוקלל ( פסיכמוטרי ובגרויות )ו'
+					text: 'ציון משוקלל. מורכב משילוב פסיכמוטרי ובגרויות'
 				}
 			}],
 			legend: {
 				enabled: true,
 				rtl: true
+			},
+			tooltip: {
+				useHTML: true,
+        formatter: function() {
+				return 	this.series.name + "</br>" +
+								"ציון משוקלל: " + this.point.x.toFixed(0) + "</br>" +
+								"ציון תואר: " + this.point.y.toFixed(0) ;
+				},   
+				style: {
+					fontSize: '12px'				
+				}
 			},
 			series: [{
 				name: 'התנהגות',
@@ -202,9 +214,8 @@ $(function () {
 			},
 			tooltip: {
 				formatter: function() {
-
-				return this.point.name + '<br> ' +
-								this.point.percentage.toFixed(0) +'%';
+				return 	this.series.name + ": " + this.point.name + 
+								". באחוזים: " + this.point.percentage.toFixed(0) +'%';
 				},
 				style: {
 					fontSize: '16px'				
@@ -275,10 +286,11 @@ $(function () {
 				rtl: true
 			},
 			tooltip: {
-				pointFormat: "סטודנטים: {point.y}, טווח ציונים: {series.name}",
+				formatter: function() {
+				return 	"סטודנטים: " + this.point.y + ", טווח ציונים: " + this.series.name ;
+				},
 				style: {
-					fontSize: '16px',
-					align: 'right'
+					fontSize: '16px'				
 				}
 			},
 			plotOptions: {
@@ -397,10 +409,11 @@ $(function () {
 				rtl: true
 			},
 			tooltip: {
-				pointFormat: 'בית ספר: {series.name}',
+				formatter: function() {
+				return 	"בית ספר: " + this.series.name ;
+				},
 				style: {
-					fontSize: '16px',
-					align: 'right'
+					fontSize: '16px'				
 				}
 			},
 			plotOptions: {
