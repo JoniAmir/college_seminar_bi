@@ -28,7 +28,11 @@
         yAxis: {
             title: {
                 text: '<%= chart[:y_axis] %>'
+            }<% if chart[:tickInterval].present? %>,
+            labels: {
+                enabled: false
             }
+            <% end %>
         },
         title: {
             text: '<%= chart[:title] %>'

@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 module NomineesHelper
 	
 	def self.get_list_by_field_students(field_name)
@@ -131,4 +133,16 @@ module NomineesHelper
     [x_value, a_factor.var_coefficient * x_value + b_factor.var_coefficient]
   end
 
+  def self.format_degree_duration(length)
+    case length
+    when 1..3
+      return "עד 3 שנים"  
+    when 3.01..4
+      return "עד 4 שנים"  
+    when 4.01..100
+      return "מעל 4 שנים" 
+    else
+     return ""
+    end 
+  end
 end

@@ -1,3 +1,5 @@
+#encoding: utf-8
+
 class NomineesController < ApplicationController
   before_filter :require_login, :only => [:new, :show, :create]
   
@@ -9,9 +11,15 @@ class NomineesController < ApplicationController
     query_codes = RegressionFormula.where(school_code: @nominee.school_code).select("distinct query_code, regression_type_code, question, question_code, correlation_coefficient").order('question_code')
     query_codes.each do |f|
       next if f.question_code == 7 # Skip this one. didnt remove in db just in case..
-      y = NomineesHelper::calc_formula(@nominee, f.query_code, f.regression_type_code).round(2)
+      y = NomineesHelper.calc_formula(@nominee, f.query_code, f.regression_type_code).round(2)
       r = f.correlation_coefficient
-      y_formatted = (y * 100).round(2).to_s + "%" if (f.regression_type_code == 9)
+
+      if f.question_code == 3 # משך תואר משוער בשנים
+        y_formatted = NomineesHelper.format_degree_duration(y)
+      else
+        y_formatted = (y * 100).round(2).to_s + "%" if (f.regression_type_code == 9)
+      end
+
       @nominee_boxes << [f.question, y_formatted || y.to_s, r]
     end
 
