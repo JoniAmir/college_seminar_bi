@@ -275,7 +275,7 @@ $(function () {
 				rtl: true
 			},
 			tooltip: {
-				pointFormat: 'טווח ציונים: {series.name}',
+				pointFormat: "סטודנטים: {point.y}, טווח ציונים: {series.name}",
 				style: {
 					fontSize: '16px',
 					align: 'right'
@@ -290,7 +290,7 @@ $(function () {
 				name: '95-100',
 				data: <%= StatRowsHelper::grades_by_range(95) %>,
 				dataLabels: {
-				  enabled: true,
+				  enabled: false,
 				  color: 'white',
 				  formatter: function() {
 				     return this.y;
@@ -300,7 +300,7 @@ $(function () {
 				name: '90-95',
 				data: <%= StatRowsHelper::grades_by_range(90) %>,
 				dataLabels: {
-				  enabled: true,
+				  enabled: false,
 				  color: 'white',
 				  formatter: function() {
 				     return this.y;
@@ -310,7 +310,7 @@ $(function () {
 				name: '85-90',
 				data: <%= StatRowsHelper::grades_by_range(85) %>,
 				dataLabels: {
-				  enabled: true,
+				  enabled: false,
 				  color: 'white',
 				  formatter: function() {
 				     return this.y;
@@ -320,7 +320,7 @@ $(function () {
 				name: '80-85',
 				data: <%= StatRowsHelper::grades_by_range(80) %>,
 				dataLabels: {
-				  enabled: true,
+				  enabled: false,
 				  color: 'white',
 				  formatter: function() {
 				     return this.y;
@@ -330,7 +330,7 @@ $(function () {
 				name: '75-80',
 				data: <%= StatRowsHelper::grades_by_range(75) %>,
 				dataLabels: {
-				  enabled: true,
+				  enabled: false,
 				  color: 'white',
 				  formatter: function() {
 				     return this.y;
@@ -340,7 +340,7 @@ $(function () {
 				name: '70-75',
 				data: <%= StatRowsHelper::grades_by_range(70) %>,
 				dataLabels: {
-				  enabled: true,
+				  enabled: false,
 				  color: 'white',
 				  formatter: function() {
 				     return this.y;
@@ -350,7 +350,7 @@ $(function () {
 				name: '65-70',
 				data: <%= StatRowsHelper::grades_by_range(65) %>,
 				dataLabels: {
-				  enabled: true,
+				  enabled: false,
 				  color: 'white',
 				  formatter: function() {
 				     return this.y;
