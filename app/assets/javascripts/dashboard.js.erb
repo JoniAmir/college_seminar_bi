@@ -75,9 +75,11 @@ $(function () {
 				rtl: true
 			},
 			tooltip: {
+				useHTML: true,
 				headerFormat: '',
-				pointFormat: '{series.name}: {point.y} ',
+				// pointFormat: '{this.series.name}: {point.y} ',
 				shared: true,
+				crosshairs: true,
 				style: {
 					fontSize: '16px'				
 				}
@@ -88,11 +90,11 @@ $(function () {
 				}
 			},
 			series: [{
-				name: 'בוגרים',
-				data: <%= StatRowsHelper::graduates_by_period %>
-			}, {
 				name: 'מתחילים',
 				data: <%= StatRowsHelper::beginners_by_period %>
+			}, {
+				name: 'בוגרים',
+				data: <%= StatRowsHelper::graduates_by_period %>
 			}]
 		});
 	}); 
