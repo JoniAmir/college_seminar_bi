@@ -7,7 +7,7 @@ gem 'rails'
 gem 'jquery-rails'
 gem 'sorcery'
 gem 'pg'
-
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,7 +27,6 @@ group :development do
 	gem 'pry-rails'
 	gem 'pry'
 	gem 'awesome_print'
-  gem 'thin'
 end
 
 
